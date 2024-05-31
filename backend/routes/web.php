@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\PostsController;
 use App\Http\Controllers\Web\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,5 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('users', UsersController::class);
+    Route::resource('posts', PostsController::class);
 });
