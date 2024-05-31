@@ -1,0 +1,80 @@
+@extends('layouts.app')
+
+@section('main-content')
+    <div class="title-block">
+        <h1 class="title">Create User</h1>
+    </div>
+
+    @if(Session::has('success_message'))
+        <div class="alert alert-success">
+            <strong>Success:</strong> {{ Session::get('success_message') }}
+        </div>
+    @endif
+
+    @if(Session::has('error_message'))
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ Session::get('error_message') }}
+        </div>
+    @endif
+
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="{{ route('users.store') }}">
+                @csrf
+
+                <div class="form-group">
+                    <label for="name">Name <sup style='color: red'>*</sup></label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <sup style='color: red'>*</sup></label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username <sup style='color: red'>*</sup></label>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required>
+                    @error('username')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number <sup style='color: red'>*</sup></label>
+                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
+                    @error('phone_number')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Password <sup style='color: red'>*</sup></label>
+                    <input type="password" name="password" id="password" class="form-control" @error('password') is-invalid @enderror" placeholder="Enter Password">
+                    @error('phone_number')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password <sup style='color: red'>*</sup></label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" @error('password') is-invalid @enderror" placeholder="Confirm Password">
+                    @error('phone_number')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="d-flex justify-content-end" style="gap: 5px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('users.index') }}'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection

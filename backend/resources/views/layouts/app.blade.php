@@ -21,6 +21,7 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body id="page-top">
 
@@ -55,7 +56,7 @@
         <!-- Nav Item - Contents -->
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-fw fa-newspaper"></i>
                 <span>{{ __('Contents') }}</span>
             </a>
         </li>
@@ -69,8 +70,8 @@
         </div>
 
         <!-- Nav Item - Profile -->
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('User') }}</span>
             </a>
@@ -101,8 +102,7 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial=""></figure>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name . ' | ' . auth()->user()->email }}</span>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
