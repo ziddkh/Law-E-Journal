@@ -61,7 +61,7 @@
         <li class="nav-item {{ request()->routeIs('posts*') ? 'active' : '' }}"">
             <a class="nav-link" href="{{ route('posts.index') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
-                <span>{{ __('Contents') }}</span>
+                <span>{{ __('Posts') }}</span>
             </a>
         </li>
 
