@@ -15,17 +15,18 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('created_by')->nullable()->index();
             $table->unsignedBigInteger('updated_by')->nullable()->index();
+            $table->string('type')->nullable()->index();
             $table->string('title')->nullable()->index();
             $table->string('slug')->nullable()->index();
             $table->text('content')->nullable();
-            $table->dateTime('start_date')->nullable()->index();
-            $table->dateTime('end_date')->nullable()->index();
+            $table->date('start_date')->nullable()->index();
+            $table->date('end_date')->nullable()->index();
             $table->string('status')->nullable()->index();
             $table->timestamps();
             $table->softDeletes()->index();
         });
 
-        Schema::create('posts_tags', function (Blueprint $table) {
+        Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id')->nullable()->index();
             $table->string('tag')->nullable()->index();

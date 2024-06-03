@@ -32,19 +32,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" class="form-control" name="username" value="{{ $search_terms['username'] }}">
+                                        <input type="text" class="form-control" autocomplete="off" name="username" value="{{ $search_terms['username'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" name="email" value="{{ $search_terms['email'] }}">
+                                        <input type="text" class="form-control" autocomplete="off" name="email" value="{{ $search_terms['email'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{ $search_terms['name'] }}">
+                                        <input type="text" class="form-control" autocomplete="off" name="name" value="{{ $search_terms['name'] }}">
                                     </div>
                                 </div>
                             </div>

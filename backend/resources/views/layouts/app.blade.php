@@ -21,7 +21,11 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <link rel="stylesheet" href="{{ asset('selectize/selectize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('selectize/selectize.css') }}">
+    <link rel="stylesheet" href="{{ asset('summernote/summernote-bs4.min.css') }}">
+    @yield('styles')
 </head>
 <body id="page-top">
 
@@ -54,8 +58,8 @@
         </div>
 
         <!-- Nav Item - Contents -->
-        <li class="nav-item">
-            <a class="nav-link" href="">
+        <li class="nav-item {{ request()->routeIs('posts*') ? 'active' : '' }}"">
+            <a class="nav-link" href="{{ route('posts.index') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>{{ __('Contents') }}</span>
             </a>
@@ -70,7 +74,7 @@
         </div>
 
         <!-- Nav Item - Profile -->
-        <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+        <li class="nav-item {{ request()->routeIs('users*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('User') }}</span>
@@ -173,8 +177,13 @@
 
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/popper.js') }}"></script>
+<script src="{{ asset('summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('selectize/selectize.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

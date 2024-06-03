@@ -69,7 +69,7 @@ class UsersController extends Controller
             'phone_number' => 'nullable|string|max:20',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
@@ -77,7 +77,9 @@ class UsersController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
-        return redirect()->route('users.index')->with('success_message', 'User created successfully.');
+        return redirect()->route('users.show', [
+            $user
+        ])->with('success_message', 'User created successfully.');
     }
 
     /**
@@ -134,7 +136,9 @@ class UsersController extends Controller
             ]);
         }
 
-        return redirect()->route('users.index')->with('success_message', 'User updated successfully.');
+        return redirect()->route('users.show', [
+            $user
+        ])->with('success_message', 'User updated successfully.');
     }
 
     /**
