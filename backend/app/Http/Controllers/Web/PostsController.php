@@ -250,6 +250,6 @@ class PostsController extends Controller
         // Remove special characters except hyphens
         $slug = preg_replace('/[^a-z0-9-]/', '', $slug);
         
-        return $slug . Carbon::now()->format('YmdHis');
+        return $slug . '-' . Carbon::now()->format('YmdHis');
     }
 }

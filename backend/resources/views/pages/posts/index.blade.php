@@ -109,9 +109,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $no = 1;
-                                    @endphp
                                     @if(count($posts) <= 0)
                                         <tr>
                                             <td colspan="8">No posts</td>
@@ -119,7 +116,7 @@
                                     @else 
                                         @foreach($posts as $post)
                                             <tr>
-                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $post->type }}</td>
                                                 <td>{{ $post->title }}</td>
                                                 <td>{{ $post->slug }}</td>
