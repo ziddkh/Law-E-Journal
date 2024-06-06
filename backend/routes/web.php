@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\PartnersController;
 use App\Http\Controllers\Web\PostsController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\UsersController;
@@ -28,4 +29,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('users', UsersController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('services', ServicesController::class);
+    Route::resource('partners', PartnersController::class);
 });

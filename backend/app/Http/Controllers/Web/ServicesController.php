@@ -57,7 +57,7 @@ class ServicesController extends Controller
 
         return redirect()->route('services.show', [
             'service' => $service
-        ]);
+        ])->with('success_message', 'Service created successfully.');
     }
 
     /**
@@ -117,8 +117,6 @@ class ServicesController extends Controller
         ])->with('success_message', 'Service updated successfully!');
     }
     
-    
-
     /**
      * Remove the specified resource from storage.
      */

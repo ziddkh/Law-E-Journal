@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Service Management</h1>
+            <h1 class="page-header">Partner Management</h1>
         </div>
     </div>
 
@@ -24,10 +24,10 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Service</h3>
+                        <h3 class="panel-title">Search Partner</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ route('services.index') }}" method="GET">
+                        <form action="{{ route('partners.index') }}" method="GET">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -49,11 +49,11 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Services</h3>
+                        <h3 class="panel-title">Partners</h3>
                     </div>
                     <div class="panel-body">
                         <div class="pb-3">
-                            <a href="{{ route('services.create') }}" class='btn btn-primary'>Create Service</a>
+                            <a href="{{ route('partners.create') }}" class='btn btn-primary'>Create Partner</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
@@ -65,26 +65,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($services) <= 0)
+                                    @if(count($partners) <= 0)
                                         <tr>
-                                            <td colspan="3">No services</td>
+                                            <td colspan="3">No partners</td>
                                         </tr>
                                     @else 
-                                        @foreach($services as $service)
+                                        @foreach($partners as $partner)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $service->name }}</td>
+                                                <td>{{ $partner->name }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
-                                                        <a href="{{ route('services.show', [
-                                                            'service' => $service
+                                                        <a href="{{ route('partners.show', [
+                                                            'partner' => $partner
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
                                                         </a>
-                                                        <form id="delete-form-{{$service->id}}" action="{{ route('services.destroy', ['service' => $service->id]) }}" method="POST">
+                                                        <form id="delete-form-{{$partner->id}}" action="{{ route('partners.destroy', ['partner' => $partner->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this service?')">
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this partner?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -97,7 +97,7 @@
                             </table>
                         </div>
     
-                        {!! $services->appends($_GET)->links() !!}
+                        {!! $partners->appends($_GET)->links() !!}
                     </div>
                 </div>
             </div>

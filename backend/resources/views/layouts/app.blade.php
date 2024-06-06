@@ -74,6 +74,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Partners -->
+        <li class="nav-item {{ request()->routeIs('partners*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('partners.index') }}">
+                <i class="fas fa-fw fa-handshake"></i>
+                <span>{{ __('Partners') }}</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
