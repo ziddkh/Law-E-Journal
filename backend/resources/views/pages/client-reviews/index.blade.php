@@ -67,7 +67,7 @@
                                 <tbody>
                                     @if(count($clientReviews) <= 0)
                                         <tr>
-                                            <td colspan="3">No client-reviews</td>
+                                            <td colspan="3">No Client Reviews</td>
                                         </tr>
                                     @else 
                                         @foreach($clientReviews as $clientReview)
