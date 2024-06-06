@@ -88,7 +88,12 @@ class PostsController extends Controller
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
             'status' => 'required|in:Draft,Published',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:8192'
         ]);
+
+        if ($request->hasFile('image_url')) {
+            $imagePath = $request->file('image_url')->store('services', 'public');
+        }
 
         try {
             DB::beginTransaction();
@@ -108,6 +113,7 @@ class PostsController extends Controller
             $post->content = $request->content;
             $post->status = $request->status;
             $post->created_by = auth()->user()->id;
+            $post->image_url = $imagePath;
             $post->save();
 
             $tags = $request->tags;
@@ -171,11 +177,23 @@ class PostsController extends Controller
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
             'status' => 'required|in:Draft,Published',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:8192'
         ]);
     
         $post = Post::where('id', $id)->first();
         if(empty($post)) {
             return redirect()->back()->with('error_message', 'Post not found!');
+        }
+
+        $imagePath = $post->image_url;
+        if ($request->hasFile('image_url')) {
+            // Delete the old image if it exists
+            if ($post->image_url) {
+                \Storage::disk('public')->delete($post->image_url);
+            }
+    
+            // Store the new image
+            $imagePath = $request->file('image_url')->store('services', 'public');
         }
     
         // Get existing slugs except for the current post's slug
@@ -198,6 +216,7 @@ class PostsController extends Controller
             $post->content = $request->content;
             $post->status = $request->status;
             $post->updated_by = auth()->user()->id;
+            $post->image_url = $imagePath;
             $post->save();
     
             $tags = $request->tags;

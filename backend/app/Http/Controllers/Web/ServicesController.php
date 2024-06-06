@@ -45,7 +45,7 @@ class ServicesController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:512'
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         if ($request->hasFile('image_url')) {
@@ -125,7 +125,7 @@ class ServicesController extends Controller
     public function destroy(string $id)
     {
         $service = Service::where('id', $id)->first();
-        if(!empty($service)) {
+        if(empty($service)) {
             return redirect()->back()->with('error_message', 'Service not found!');
         }
         

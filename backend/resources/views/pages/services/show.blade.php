@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('services.index') }}'">Cancel</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('services.index') }}'">Back</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>

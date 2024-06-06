@@ -39,11 +39,11 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
-                    <label for="tags">Title <sup style='color: red'>*</sup></label>
+                    <label for="type">Type <sup style='color: red'>*</sup></label>
                     <select name="type" class="form-control" id="type">
                         <option value="">Select Type</option>
                         <option value="Article" {{ old('type') == 'Article' ? 'selected' : '' }}>Article</option>
@@ -97,6 +97,14 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="image_url">Image</label>
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
+                    @error('image_url')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <div class="form-group" style="position: relative">
                     <label for="content">Content <sup style='color: red'>*</sup></label>
                     <textarea name="content" class="form-control" id="text-area"></textarea>
@@ -106,7 +114,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('posts.index') }}'">Cancel</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('posts.index') }}'">Back</button>
                     <button type="submit" class="btn btn-primary" name="status" value="Draft">Save as Draft</button>
                     <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>
                 </div>

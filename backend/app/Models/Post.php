@@ -20,6 +20,7 @@ class Post extends Model
         'start_date',
         'end_date',
         'status',
+        'image_url'
     ];
 
     protected $dates = [
@@ -40,12 +41,12 @@ class Post extends Model
 
     public function getStartDateFormattedAttribute()
     {
-        return Carbon::parse($this->start_date)->format('d/m/Y'); 
+        return Carbon::parse($this->start_date)->format('d M Y'); 
     }
 
     public function getEndDateFormattedAttribute()
     {
-        return Carbon::parse($this->endDate)->format('d/m/Y'); 
+        return Carbon::parse($this->endDate)->format('d M Y'); 
     }
 
     public function getActivitylogOptions(): LogOptions

@@ -39,12 +39,12 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('posts.update', $post->id) }}">
+            <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="form-group">
-                    <label for="type">Title <sup style='color: red'>*</sup></label>
+                    <label for="type">Type <sup style='color: red'>*</sup></label>
                     <select name="type" class="form-control" id="type">
                         <option value="">Select Type</option>
                         <option value="Article" {{ old('type', $post->type) == 'Article' ? 'selected' : '' }}>Article</option>
@@ -101,6 +101,19 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="image_url">Image</label>
+                    @if($post->image_url)
+                        <div class="mb-2">
+                            <img src="{{ Storage::url($post->image_url) }}" alt="Service Image" class="img-thumbnail" width="150">
+                        </div>
+                    @endif
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
+                    @error('image_url')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <div class="form-group" style="position: relative">
                     <label for="content">Content <sup style='color: red'>*</sup></label>
                     <textarea name="content" class="form-control" id="text-area">{{ old('content', $post->content) }}</textarea>
@@ -110,7 +123,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{route('posts.index') }}'">Cancel</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{route('posts.index') }}'">Back</button>
                     <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">Update</button>
                     @if($post->status == 'Draft')
                         <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>

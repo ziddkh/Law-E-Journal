@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary d-block" onclick="window.location='{{ route('users.index') }}'">Cancel</button>
+                    <button type="button" class="btn btn-secondary d-block" onclick="window.location='{{ route('users.index') }}'">Back</button>
                     <button type="submit" class="btn btn-primary d-block">Update</button>
                 </div>
             </form>
