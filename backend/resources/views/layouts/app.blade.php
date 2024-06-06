@@ -82,6 +82,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Client Reviews -->
+        <li class="nav-item {{ request()->routeIs('client-reviews*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('client-reviews.index') }}">
+                <i class="fas fa-fw fa-star"></i>
+                <span>{{ __('Client Reviews') }}</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 

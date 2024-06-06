@@ -128,6 +128,7 @@ class PartnersController extends Controller
         }
         
         $partner->delete();
-        return redirect()->route('partners.index');
+        return redirect()->route('partners.index')
+            ->with('success_message', 'Service deleted successfully.');
     }
 }

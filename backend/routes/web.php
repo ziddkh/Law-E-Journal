@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Auth\LoginController;
+use App\Http\Controllers\Web\ClientReviewsController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\PartnersController;
 use App\Http\Controllers\Web\PostsController;
@@ -30,4 +31,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('posts', PostsController::class);
     Route::resource('services', ServicesController::class);
     Route::resource('partners', PartnersController::class);
+    Route::resource('client-reviews', ClientReviewsController::class);
 });

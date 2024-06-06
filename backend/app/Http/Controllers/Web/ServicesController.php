@@ -128,6 +128,7 @@ class ServicesController extends Controller
         }
         
         $service->delete();
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')
+            ->with('success_message', 'Service deleted successfully.');
     }
 }
