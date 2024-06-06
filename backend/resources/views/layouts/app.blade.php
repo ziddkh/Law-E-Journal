@@ -43,7 +43,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>{{ __('Dashboard') }}</span>
@@ -59,7 +59,7 @@
         </div>
 
         <!-- Nav Item - Contents -->
-        <li class="nav-item {{ request()->routeIs('posts*') ? 'active' : '' }}"">
+        <li class="nav-item {{ request()->routeIs('posts*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('posts.index') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>{{ __('Posts') }}</span>
@@ -67,7 +67,7 @@
         </li>
 
         <!-- Nav Item - Services -->
-        <li class="nav-item {{ request()->routeIs('services*') ? 'active' : '' }}"">
+        <li class="nav-item {{ request()->routeIs('services*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('services.index') }}">
                 <i class="fas fa-fw fa-tools"></i>
                 <span>{{ __('Services') }}</span>
