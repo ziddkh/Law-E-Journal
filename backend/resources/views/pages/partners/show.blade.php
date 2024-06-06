@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     <label for="url">URL <sup style='color: red'>*</sup></label>
-                    <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ old('url', $partner->url) }}" required>
+                    <input type="url" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ old('url', $partner->url) }}" required>
                     @error('url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
