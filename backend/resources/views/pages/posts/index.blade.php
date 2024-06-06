@@ -124,21 +124,25 @@
                                                 <td>{{ $post->end_date_formatted }}</td>
                                                 <td>
                                                     @if($post->status == 'Draft')
-                                                        <span class="badge badge-secondary">Draft</span>
+                                                        <span class="badge badge-secondary" style="width: 100px;height: 30px;padding:10px;font-size:13px">Draft</span>
                                                     @elseif($post->status == 'Published')
-                                                        <span class="badge badge-success">Published</span>
+                                                        <span class="badge badge-success" style="width: 100px;height: 30px;padding:10px;font-size:13px">Published</span>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('posts.show', [
                                                             'post' => $post
-                                                        ]) }}" class="btn btn-primary">View</a>
+                                                        ]) }}" class="btn btn-primary">
+                                                            <i class="fas fa-fw fa-pencil"></i>
+                                                        </a>
     
                                                         <form id="delete-form-{{$post->id}}" action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">
+                                                                <i class="fas fa-fw fa-trash"></i>
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>

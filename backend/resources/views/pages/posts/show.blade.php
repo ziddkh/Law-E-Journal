@@ -93,7 +93,7 @@
                     <select name="tags[]" class="selectize" id="tags" multiple>
                         <option value="">Please Select</option>
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}" {{ in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $tag->tag }}</option>
+                            <option value="{{ $tag }}" {{ in_array($tag, $tags) ? 'selected' : '' }}>{{ $tag }}</option>
                         @endforeach
                     </select>
                     @error('tags')
@@ -124,7 +124,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            let oldTags = {!! json_encode(old('tags')) !!};
+            let oldTags = {!! json_encode(old('tags', $tags)) !!};
             $("#text-area").summernote({
                 toolbar: [
                     ['style', ['style']],

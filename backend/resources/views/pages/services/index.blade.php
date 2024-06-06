@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">User Management</h1>
+            <h1 class="page-header">Service Management</h1>
         </div>
     </div>
 
@@ -24,24 +24,12 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Users</h3>
+                        <h3 class="panel-title">Search Service</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ route('users.index') }}" method="GET">
+                        <form action="{{ route('services.index') }}" method="GET">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="username" value="{{ $search_terms['username'] }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="email" value="{{ $search_terms['email'] }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" class="form-control" autocomplete="off" name="name" value="{{ $search_terms['name'] }}">
@@ -61,47 +49,42 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Users</h3>
+                        <h3 class="panel-title">Services</h3>
                     </div>
                     <div class="panel-body">
                         <div class="pb-3">
-                            <a href="{{ route('users.create') }}" class='btn btn-primary'>Create User</a>
+                            <a href="{{ route('services.create') }}" class='btn btn-primary'>Create Service</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
                                         <th>Name</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($users) <= 0)
+                                    @if(count($services) <= 0)
                                         <tr>
-                                            <td colspan="5">No users</td>
+                                            <td colspan="2">No services</td>
                                         </tr>
                                     @else 
-                                        @foreach($users as $user)
+                                        @foreach($services as $service)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $service->name }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
-                                                        <a href="{{ route('users.show', [
-                                                            'user' => $user
+                                                        <a href="{{ route('services.show', [
+                                                            'service' => $service
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
                                                         </a>
-    
-                                                        <form id="delete-form-{{$user->id}}" action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST">
+                                                        <form id="delete-form-{{$service->id}}" action="{{ route('services.destroy', ['service' => $service->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this service?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -114,7 +97,7 @@
                             </table>
                         </div>
     
-                        {!! $users->appends($_GET)->links() !!}
+                        {!! $services->appends($_GET)->links() !!}
                     </div>
                 </div>
             </div>

@@ -90,8 +90,6 @@ class PostsController extends Controller
             'status' => 'required|in:Draft,Published',
         ]);
 
-        $existingSlugs = Post::pluck('slug')->toArray();
-
         try {
             DB::beginTransaction();
             // Create new post
@@ -146,7 +144,7 @@ class PostsController extends Controller
 
         return view('pages.posts.show', [
             'post' => $post,
-            'tags' => $post->tags ?? []
+            'tags' => $post->tags->pluck('tag')->toArray() ?? []
         ]);
     }
 

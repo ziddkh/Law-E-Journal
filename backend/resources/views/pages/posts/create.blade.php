@@ -108,7 +108,7 @@
                 <div class="d-flex justify-content-end" style="gap: 5px">
                     <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('posts.index') }}'">Cancel</button>
                     <button type="submit" class="btn btn-primary" name="status" value="Draft">Save as Draft</button>
-                    <button type="submit" class="btn btn-primary"name="status" value="Published">Publish</button>
+                    <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>
                 </div>
             </form>
         </div>
