@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\ClientReviewsController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\PartnersController;
 use App\Http\Controllers\Web\PostsController;
+use App\Http\Controllers\Web\ProfilesController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +33,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('services', ServicesController::class);
     Route::resource('partners', PartnersController::class);
     Route::resource('client-reviews', ClientReviewsController::class);
+    Route::resource('profiles', ProfilesController::class);
 });

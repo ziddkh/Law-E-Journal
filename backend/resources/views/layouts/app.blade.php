@@ -90,6 +90,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Profiles -->
+        <li class="nav-item {{ request()->routeIs('profiles*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('profiles.index') }}">
+                <i class="fas fa-fw fa-id-badge"></i>
+                <span>{{ __('Profiles') }}</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
