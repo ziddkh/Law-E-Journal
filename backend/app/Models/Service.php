@@ -36,6 +36,6 @@ class Service extends Model
 
     public function getSignedImageUrlAttribute()
     {
-        return asset($this->image_url);
+        return asset("storage/$this->image_url");
     }
 }

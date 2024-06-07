@@ -38,6 +38,6 @@ class Profile extends Model
 
     public function getSignedImageUrlAttribute()
     {
-        return asset($this->image_url);
+        return asset("storage/$this->image_url");
     }
 }
