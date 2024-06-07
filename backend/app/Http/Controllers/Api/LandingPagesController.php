@@ -25,6 +25,7 @@ class LandingPagesController extends Controller
     {
         // Get latest 5 posts
         $posts = Post::search($request)
+            ->published()
             ->orderBy('id', 'DESC')
             ->take(5)
             ->get();

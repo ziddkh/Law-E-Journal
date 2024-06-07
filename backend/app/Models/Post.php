@@ -50,6 +50,11 @@ class Post extends Model
         return Carbon::parse($this->endDate)->format('d M Y'); 
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'Published');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();
@@ -64,6 +69,7 @@ class Post extends Model
             'end_date' => '>=',
             'status' => '=',
             'type' => '=',
+            'id' => '='
         ];
     }
 }

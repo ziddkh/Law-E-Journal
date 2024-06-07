@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\LandingPagesController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\PostsController;
+use App\Models\ConsultationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingPagesController::class, 'index']);
+
+Route::prefix('posts')->group(function() {
+    Route::get('/', [PostsController::class, 'index']);
+    Route::get('/show', [PostsController::class, 'show']);
+});
+
+Route::prefix('contact-us')->group(function() {
+    Route::get('/', [ContactUsController::class, 'index']);
+});
+
+Route::prefix('consultation-requests')->group(function() {
+    Route::post('/submit', [ConsultationRequest::class, 'submit']);
+});
