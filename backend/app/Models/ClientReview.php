@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
@@ -10,7 +10,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class ClientReview extends Model
 {
-    use SoftDeletes, LogsActivity;
+    use SoftDeletes, LogsActivity, Searchable;
 
     protected $fillable = [
         'name',
@@ -22,5 +22,13 @@ class ClientReview extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();
+    }
+
+    public function searchableColumns(): array
+    {
+        return [
+            'name' => 'LIKE',
+            'position' => 'LIKE'
+        ];
     }
 }
