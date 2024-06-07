@@ -58,11 +58,19 @@
             {{ __('Content Management') }}
         </div>
 
-        <!-- Nav Item - Contents -->
+        <!-- Nav Item - Posts -->
         <li class="nav-item {{ request()->routeIs('posts*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('posts.index') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>{{ __('Posts') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Banners -->
+        <li class="nav-item {{ request()->routeIs('banners*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('banners.index') }}">
+                <i class="fas fa-fw fa-images"></i>
+                <span>{{ __('Banners') }}</span>
             </a>
         </li>
 

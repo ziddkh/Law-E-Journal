@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Auth\LoginController;
+use App\Http\Controllers\Web\BannersController;
 use App\Http\Controllers\Web\ClientReviewsController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\PartnersController;
@@ -36,4 +37,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('client-reviews', ClientReviewsController::class);
     Route::resource('profiles', ProfilesController::class);
     Route::resource('settings', SettingsController::class);
+    Route::resource('banners', BannersController::class);
 });
