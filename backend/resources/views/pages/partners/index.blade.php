@@ -73,7 +73,7 @@
                                 <tbody>
                                     @if(count($partners) <= 0)
                                         <tr>
-                                            <td colspan="3">No partners</td>
+                                            <td colspan="3">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($partners as $partner)

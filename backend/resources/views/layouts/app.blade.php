@@ -119,6 +119,22 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
+            {{ __('Data Management') }}
+        </div>
+
+        <!-- Nav Item - Profile -->
+        <li class="nav-item {{ request()->routeIs('consultation-requests*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('consultation-requests.index') }}">
+                <i class="fas fa-fw fa-message"></i>
+                <span>{{ __('Consultation Requests') }}</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
             {{ __('User Management') }}
         </div>
 

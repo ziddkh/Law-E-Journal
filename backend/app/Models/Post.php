@@ -51,9 +51,19 @@ class Post extends Model
         return Carbon::parse($this->endDate)->format('d M Y'); 
     }
 
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'Draft');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 'Published');
+    }
+
+    public function scopeArchived($query)
+    {
+        return $query->where('status', 'Archived');
     }
 
     public function getActivitylogOptions(): LogOptions

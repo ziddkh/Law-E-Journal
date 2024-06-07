@@ -117,7 +117,7 @@
                                 <tbody>
                                     @if(count($posts) <= 0)
                                         <tr>
-                                            <td colspan="8">No posts</td>
+                                            <td colspan="8">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($posts as $post)

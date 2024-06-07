@@ -75,7 +75,7 @@
                                 <tbody>
                                     @if(count($banners) <= 0)
                                         <tr>
-                                            <td colspan="5">No banners</td>
+                                            <td colspan="5">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($banners as $banner)

@@ -87,7 +87,7 @@
                                 <tbody>
                                     @if(count($users) <= 0)
                                         <tr>
-                                            <td colspan="5">No users</td>
+                                            <td colspan="5">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($users as $user)

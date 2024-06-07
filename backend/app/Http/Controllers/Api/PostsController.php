@@ -20,7 +20,7 @@ class PostsController extends Controller
         $posts = Post::search($request)
             ->published()
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate(10);
 
         return response()->json([
             'posts' => $posts

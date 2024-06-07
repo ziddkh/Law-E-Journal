@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Settings</h1>
+            <h1 class="page-header">Consultation Request</h1>
         </div>
     </div>
 
@@ -24,21 +24,21 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Setting</h3>
+                        <h3 class="panel-title">Search Requests</h3>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('settings.index') }}" method="GET">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Key</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="key" value="{{ $search_terms['key'] }}">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" autocomplete="off" name="name" value="{{ $search_terms['name'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Value</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="value" value="{{ $search_terms['value'] }}">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" autocomplete="off" name="email" value="{{ $search_terms['email'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
-                        <h3 class="panel-title">Settings</h3>
+                        <h3 class="panel-title">Consultation Request</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -66,29 +66,31 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Key</th>
-                                        <th>Value</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($settings) <= 0)
+                                    @if(count($consultation_requests) <= 0)
                                         <tr>
-                                            <td colspan="4">No data</td>
+                                            <td colspan="5">No data</td>
                                         </tr>
                                     @else 
-                                        @foreach($settings as $setting)
+                                        @foreach($consultation_requests as $consultation_request)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $setting->key }}</td>
-                                                <td>{{ $setting->value }}</td>
+                                                <td>{{ $consultation_request->name }}</td>
+                                                <td>{{ $consultation_request->email }}</td>
+                                                <td>{{ $consultation_request->phone_number }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
-                                                        <a href="{{ route('settings.show', [
-                                                            'setting' => $setting
+                                                        <a href="{{ route('consultation-requests.show', [
+                                                            $consultation_request->id
                                                         ]) }}" class="btn btn-primary">
-                                                            <i class="fas fa-fw fa-pencil"></i>
-                                                            Edit
+                                                            <i class="fas fa-fw fa-eye"></i>
+                                                            View
                                                         </a>
                                                     </div>
                                                 </td>
@@ -99,7 +101,7 @@
                             </table>
                         </div>
     
-                        {!! $settings->appends($_GET)->links() !!}
+                        {!! $consultation_requests->appends($_GET)->links() !!}
                     </div>
                 </div>
             </div>
