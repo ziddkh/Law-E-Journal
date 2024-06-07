@@ -25,7 +25,7 @@ class Banner extends Model
         return LogOptions::defaults()->logAll()->logOnlyDirty();
     }
 
-    public function searchableColumns()
+    public function searchableColumns(): array
     {
         return [
             'title' => 'LIKE'
