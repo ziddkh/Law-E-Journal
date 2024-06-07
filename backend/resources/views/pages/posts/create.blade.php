@@ -106,6 +106,13 @@
                 </div>
 
                 <div class="form-group" style="position: relative">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended">
+                        <label class="form-check-label" for="is-recommended">Recommended Post</label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="position: relative">
                     <label for="content">Content <sup style='color: red'>*</sup></label>
                     <textarea name="content" class="form-control" id="text-area"></textarea>
                     @error('content')

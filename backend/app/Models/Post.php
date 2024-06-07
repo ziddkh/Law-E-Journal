@@ -21,7 +21,8 @@ class Post extends Model
         'start_date',
         'end_date',
         'status',
-        'image_url'
+        'image_url',
+        'is_recommended'
     ];
 
     protected $dates = [
@@ -64,6 +65,11 @@ class Post extends Model
     public function scopeArchived($query)
     {
         return $query->where('status', 'Archived');
+    }
+
+    public function scopeRecommended($query)
+    {
+        return $query->where('is_recommended', 1);
     }
 
     public function getActivitylogOptions(): LogOptions

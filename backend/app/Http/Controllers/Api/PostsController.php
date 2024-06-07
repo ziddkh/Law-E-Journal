@@ -27,8 +27,14 @@ class PostsController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
+
         return response()->json([
-            'posts' => $posts
+            'posts' => $posts,
+            'recommended_posts' => $recommendedPosts
         ], JsonResponse::HTTP_OK);
     }
 

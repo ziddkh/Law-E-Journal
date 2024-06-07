@@ -88,6 +88,7 @@ class PostsController extends Controller
             $post->status = $request->status;
             $post->created_by = auth()->user()->id;
             $post->image_url = $imagePath;
+            $post->is_recommended = !empty($request->is_recommended) ? 1 : 0;
             $post->save();
 
             $tags = $request->tags;
@@ -191,6 +192,7 @@ class PostsController extends Controller
             $post->status = $request->status;
             $post->updated_by = auth()->user()->id;
             $post->image_url = $imagePath;
+            $post->is_recommended = !empty($request->is_recommended) ? 1 : 0;
             $post->save();
     
             $tags = $request->tags;
