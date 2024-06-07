@@ -127,9 +127,15 @@
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>
-                    <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">Update</button>
+                    <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">
+                        <i class="fas fa-save"></i>
+                        Update
+                    </button>
                     @if($post->status == 'Draft')
-                        <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>
+                        <button type="submit" class="btn btn-primary" name="status" value="Published">
+                            <i class="fas fa-upload"></i>
+                            Publish
+                        </button>
                     @endif
                 </div>
             </form>

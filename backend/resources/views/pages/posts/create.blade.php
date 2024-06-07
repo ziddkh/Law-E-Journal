@@ -118,8 +118,14 @@
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>
-                    <button type="submit" class="btn btn-primary" name="status" value="Draft">Save as Draft</button>
-                    <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>
+                    <button type="submit" class="btn btn-primary" name="status" value="Draft">
+                        <i class="fas fa-file"></i>
+                        Save as Draft
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="status" value="Published">
+                        <i class="fas fa-upload"></i>
+                        Publish
+                    </button>
                 </div>
             </form>
         </div>
