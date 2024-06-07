@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Client Review Management</h1>
+            <h1 class="page-header">Settings</h1>
         </div>
     </div>
 
@@ -24,15 +24,21 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Client Review</h3>
+                        <h3 class="panel-title">Search Setting</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ route('client-reviews.index') }}" method="GET">
+                        <form action="{{ route('settings.index') }}" method="GET">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="name" value="{{ $search_terms['name'] }}">
+                                        <label>Key</label>
+                                        <input type="text" class="form-control" autocomplete="off" name="key" value="{{ $search_terms['key'] }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Value</label>
+                                        <input type="text" class="form-control" autocomplete="off" name="value" value="{{ $search_terms['value'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -52,13 +58,7 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
-                        <h3 class="panel-title">Client Reviews</h3>
-                        <div>
-                            <a href="{{ route('client-reviews.create') }}" class='btn btn-primary'>
-                                <i class="fas fa-plus"></i>
-                                Create Client Review
-                            </a>
-                        </div>
+                        <h3 class="panel-title">Settings</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -66,36 +66,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Key</th>
+                                        <th>Value</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($clientReviews) <= 0)
+                                    @if(count($settings) <= 0)
                                         <tr>
-                                            <td colspan="3">No client reviews</td>
+                                            <td colspan="4">No settings</td>
                                         </tr>
                                     @else 
-                                        @foreach($clientReviews as $clientReview)
+                                        @foreach($settings as $setting)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $clientReview->name }}</td>
+                                                <td>{{ $setting->key }}</td>
+                                                <td>{{ $setting->value }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
-                                                        <a href="{{ route('client-reviews.show', [
-                                                            $clientReview->id
+                                                        <a href="{{ route('settings.show', [
+                                                            'setting' => $setting
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
                                                             Edit
                                                         </a>
-                                                        <form id="delete-form-{{$clientReview->id}}" action="{{ route('client-reviews.destroy', [$clientReview->id]) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this clientReview?')">
-                                                                <i class="fas fa-fw fa-trash"></i>
-                                                                Delete
-                                                            </button>
-                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -105,7 +99,7 @@
                             </table>
                         </div>
     
-                        {!! $clientReviews->appends($_GET)->links() !!}
+                        {!! $settings->appends($_GET)->links() !!}
                     </div>
                 </div>
             </div>

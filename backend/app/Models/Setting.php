@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Service extends Model
+class Setting extends Model
 {
     use SoftDeletes, LogsActivity;
 
     protected $fillable = [
-        'name',
-        'description',
-        'image_url',
+        'key',
+        'value'
     ];
 
     public function getActivitylogOptions(): LogOptions

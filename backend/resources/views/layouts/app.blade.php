@@ -55,7 +55,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Management') }}
+            {{ __('Content Management') }}
         </div>
 
         <!-- Nav Item - Contents -->
@@ -98,12 +98,20 @@
             </a>
         </li>
 
+        <!-- Nav Item - Settings -->
+        <li class="nav-item {{ request()->routeIs('settings*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('settings.index') }}">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>{{ __('Settings') }}</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Settings') }}
+            {{ __('User Management') }}
         </div>
 
         <!-- Nav Item - Profile -->
