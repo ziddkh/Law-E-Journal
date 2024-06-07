@@ -20,6 +20,10 @@ class Banner extends Model
         'image_url',
     ];
 
+    protected $appends = [
+        'signed_image_url',
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();
@@ -30,5 +34,10 @@ class Banner extends Model
         return [
             'title' => 'LIKE'
         ];
+    }
+
+    public function getSignedImageUrlAttribute()
+    {
+        return asset($this->image_url);
     }
 }

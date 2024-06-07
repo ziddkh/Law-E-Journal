@@ -32,7 +32,8 @@ class Post extends Model
 
     protected $appends = [
         'start_date_formatted',
-        'end_date_formatted'
+        'end_date_formatted',
+        'signed_image_url',
     ];
 
     public function tags()
@@ -71,5 +72,10 @@ class Post extends Model
             'type' => '=',
             'id' => '='
         ];
+    }
+
+    public function getSignedImageUrlAttribute()
+    {
+        return asset($this->image_url);
     }
 }

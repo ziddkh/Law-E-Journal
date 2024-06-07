@@ -18,6 +18,10 @@ class Partner extends Model
         'url'
     ];
 
+    protected $appends = [
+        'signed_image_url',
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();
@@ -28,5 +32,10 @@ class Partner extends Model
         return [
             'name' => 'LIKE'
         ];
+    }
+
+    public function getSignedImageUrlAttribute()
+    {
+        return asset($this->image_url);
     }
 }
