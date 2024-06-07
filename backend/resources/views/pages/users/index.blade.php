@@ -48,7 +48,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-fw fa-search"></i>
+                                Search
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -60,13 +63,16 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="card">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
                         <h3 class="panel-title">Users</h3>
+                        <div>
+                            <a href="{{ route('users.create') }}" class='btn btn-primary'>
+                                <i class="fas fa-plus"></i>
+                                Create User
+                            </a>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <div class="pb-3">
-                            <a href="{{ route('users.create') }}" class='btn btn-primary'>Create User</a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>

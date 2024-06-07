@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label>Password <sup style='color: red'>*</sup></label>
                     <input type="password" name="password" id="password" class="form-control" @error('password') is-invalid @enderror" placeholder="Enter Password">
-                    @error('phone_number')
+                    @error('password')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </div>
@@ -65,14 +65,20 @@
                 <div class="form-group">
                     <label>Confirm Password <sup style='color: red'>*</sup></label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" @error('password') is-invalid @enderror" placeholder="Confirm Password">
-                    @error('phone_number')
+                    @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('users.index') }}'">Back</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                <div class="d-flex justify-content-start" style="gap: 5px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('users.index') }}'">
+                        <i class="fas fa-fw fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-fw fa-save"></i>
+                        Save
+                    </button>
                 </div>
             </form>
         </div>

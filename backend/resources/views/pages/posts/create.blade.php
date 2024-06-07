@@ -113,8 +113,11 @@
                     @enderror
                 </div>
 
-                <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('posts.index') }}'">Back</button>
+                <div class="d-flex justify-content-start" style="gap: 5px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('posts.index') }}'">
+                        <i class="fas fa-fw fa-arrow-left"></i>
+                        Back
+                    </button>
                     <button type="submit" class="btn btn-primary" name="status" value="Draft">Save as Draft</button>
                     <button type="submit" class="btn btn-primary" name="status" value="Published">Publish</button>
                 </div>

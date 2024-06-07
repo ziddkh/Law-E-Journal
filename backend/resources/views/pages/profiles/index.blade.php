@@ -42,7 +42,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-fw fa-search"></i>
+                                Search
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -54,13 +57,16 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="card">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
                         <h3 class="panel-title">Profiles</h3>
+                        <div>
+                            <a href="{{ route('profiles.create') }}" class='btn btn-primary'>
+                                <i class="fas fa-plus"></i>
+                                Create Profile
+                            </a>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <div class="pb-3">
-                            <a href="{{ route('profiles.create') }}" class='btn btn-primary'>Create Profile</a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
@@ -88,12 +94,14 @@
                                                             'profile' => $profile
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
+                                                            Edit
                                                         </a>
                                                         <form id="delete-form-{{$profile->id}}" action="{{ route('profiles.destroy', ['profile' => $profile->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this profile?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
+                                                                Delete
                                                             </button>
                                                         </form>
                                                     </div>

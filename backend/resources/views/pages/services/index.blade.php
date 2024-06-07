@@ -36,7 +36,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-fw fa-search"></i>
+                                Search
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -48,13 +51,16 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="card">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
                         <h3 class="panel-title">Services</h3>
+                        <div>
+                            <a href="{{ route('services.create') }}" class='btn btn-primary'>
+                                <i class="fas fa-plus"></i>
+                                Create Service
+                            </a>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <div class="pb-3">
-                            <a href="{{ route('services.create') }}" class='btn btn-primary'>Create Service</a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
@@ -80,12 +86,14 @@
                                                             'service' => $service
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
+                                                            Edit
                                                         </a>
                                                         <form id="delete-form-{{$service->id}}" action="{{ route('services.destroy', ['service' => $service->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this service?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
+                                                                Delete
                                                             </button>
                                                         </form>
                                                     </div>

@@ -54,9 +54,15 @@
                     @enderror
                 </div>
 
-                <div class="d-flex justify-content-end" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('profiles.index') }}'">Back</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                <div class="d-flex justify-content-start" style="gap: 5px">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('profiles.index') }}'">
+                        <i class="fas fa-fw fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-fw fa-save"></i>
+                        Save
+                    </button>
                 </div>
             </form>
         </div>
