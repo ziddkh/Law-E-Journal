@@ -54,15 +54,13 @@ class LandingPagesController extends Controller
 
         // Return the collected data as JSON response
         return response()->json([
-            'data' => [
-                'posts' => $posts,
-                'banners' => $banners,
-                'profiles' => $profiles,
-                'services' => $services,
-                'settings' => $settings,
-                'partners' => $partners,
-                'client_reviews' => $clientReviews
-            ]
+            'posts' => $posts,
+            'banners' => $banners,
+            'profiles' => $profiles,
+            'services' => $services,
+            'settings' => $settings,
+            'partners' => $partners,
+            'client_reviews' => $clientReviews
         ], JsonResponse::HTTP_OK);
     }
 
