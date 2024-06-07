@@ -13,13 +13,9 @@ class BannersController extends Controller
      */
     public function index(Request $request)
     {
-        $banners = new Banner;
-
-        if(!empty($request->title)) {
-            $banners = $banners->where('title', 'LIKE', '%' . $request->title . '%');
-        }
-
-        $banners = $banners->orderBy('id', 'DESC')->paginate(10);
+        $banners = Banner::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.banners.index', [
             'banners' => $banners,

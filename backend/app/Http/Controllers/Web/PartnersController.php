@@ -13,13 +13,9 @@ class PartnersController extends Controller
      */
     public function index(Request $request)
     {
-        $partners = new Partner;
-
-        if(!empty($request->name)) {
-            $partners = $partners->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $partners = $partners->orderBy('id', 'DESC')->paginate(10);
+        $partners = Partner::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.partners.index', [
             'partners' => $partners,

@@ -13,13 +13,9 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
-        $services = new Service;
-
-        if(!empty($request->name)) {
-            $services = $services->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $services = $services->orderBy('id', 'DESC')->paginate(10);
+        $services = Service::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.services.index', [
             'services' => $services,

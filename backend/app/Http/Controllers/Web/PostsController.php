@@ -24,33 +24,7 @@ class PostsController extends Controller
             }
         }
 
-        $posts = new Post;
-
-        if(!empty($request->title)) {
-            $posts = $posts->where('title', 'LIKE', '%' . $request->title . '%');
-        }
-
-        if(!empty($request->slug)) {
-            $posts = $posts->where('slug', 'LIKE', '%' . $request->slug . '%');
-        }
-
-        if(!empty($request->start_date)) {
-            $posts = $posts->where('start_date', '<=', $request->start_date);
-        }
-
-        if(!empty($request->end_date)) {
-            $posts = $posts->where('end_date', '>=', $request->end_date);
-        }
-
-        if(!empty($request->status)) {
-            $posts = $posts->where('status', $request->status);
-        }
-
-        if(!empty($request->type)) {
-            $posts = $posts->where('type', $request->type);
-        }
-
-        $posts = $posts->paginate(10);
+        $posts = Post::search($request)->paginate(10);
 
         return view('pages.posts.index', [
             'posts' => $posts,

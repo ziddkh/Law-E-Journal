@@ -13,13 +13,9 @@ class ClientReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        $clientReviews = new ClientReview;
-
-        if(!empty($request->name)) {
-            $clientReviews = $clientReviews->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $clientReviews = $clientReviews->orderBy('id', 'DESC')->paginate(10);
+        $clientReviews = ClientReview::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.client-reviews.index', [
             'clientReviews' => $clientReviews,

@@ -13,17 +13,9 @@ class ConsultationRequestController extends Controller
      */
     public function index(Request $request)
     {
-        $consultationRequests = new ConsultationRequest;
-
-        if(!empty($request->name)) {
-            $consultationRequests = $consultationRequests->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        if(!empty($request->email)) {
-            $consultationRequests = $consultationRequests->where('email', 'LIKE', '%' . $request->email . '%');
-        }
-
-        $consultationRequests = $consultationRequests->orderBy('id', 'DESC')->paginate(10);
+        $consultationRequests = ConsultationRequest::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.consultation-requests.index', [
             'consultation_requests' => $consultationRequests,
