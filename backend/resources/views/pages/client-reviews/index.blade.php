@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Client Review Management</h1>
+            <h1 class="page-header">Testimonials Management</h1>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Client Review</h3>
+                        <h3 class="panel-title">Search Testimonials</h3>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('client-reviews.index') }}" method="GET">
@@ -52,11 +52,11 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
-                        <h3 class="panel-title">Client Reviews</h3>
+                        <h3 class="panel-title">Testimonials</h3>
                         <div>
                             <a href="{{ route('client-reviews.create') }}" class='btn btn-primary'>
                                 <i class="fas fa-plus"></i>
-                                Create Client Review
+                                Create Testimonials
                             </a>
                         </div>
                     </div>

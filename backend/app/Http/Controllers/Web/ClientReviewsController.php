@@ -54,7 +54,7 @@ class ClientReviewsController extends Controller
 
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Client Review created successfully.');
+        ])->with('success_message', 'Testimonials created successfully.');
     }
 
     /**
@@ -112,7 +112,7 @@ class ClientReviewsController extends Controller
     
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Client Review updated successfully!');
+        ])->with('success_message', 'Testimonials updated successfully!');
     }
     
     /**
@@ -132,6 +132,6 @@ class ClientReviewsController extends Controller
         
         $clientReview->delete();
         return redirect()->route('client-reviews.index')
-            ->with('success_message', 'Client Review deleted successfully.');;
+            ->with('success_message', 'Testimonials deleted successfully.');;
     }
 }
