@@ -60,6 +60,7 @@
                                             <option value="">Status</option>
                                             <option value="Draft" {{ $search_terms['status'] == 'Draft' ? 'selected' : '' }}>Draft</option>
                                             <option value="Published" {{ $search_terms['status'] == 'Published' ? 'selected' : '' }}>Published</option>
+                                            <option value="Archived" {{ $search_terms['status'] == 'Archived' ? 'selected' : '' }}>Archived</option>
                                         </select>
                                     </div>
                                 </div>
