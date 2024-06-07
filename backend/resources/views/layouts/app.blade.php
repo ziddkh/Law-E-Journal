@@ -119,7 +119,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Data Management') }}
+            {{ __('Submission Management') }}
         </div>
 
         <!-- Nav Item - Profile -->
