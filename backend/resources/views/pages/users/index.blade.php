@@ -102,6 +102,7 @@
                                                             'user' => $user
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
+                                                            Edit
                                                         </a>
     
                                                         <form id="delete-form-{{$user->id}}" action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST">
@@ -109,6 +110,7 @@
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
+                                                                Delete
                                                             </button>
                                                         </form>
                                                     </div>
