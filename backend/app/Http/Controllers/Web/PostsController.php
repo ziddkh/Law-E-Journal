@@ -94,7 +94,7 @@ class PostsController extends Controller
             foreach($tags as $tag) {
                 PostTag::create([
                     'post_id' => $post->id,
-                    'tag' => $tag
+                    'tag' => strtolower($tag)
                 ]);
             }
             DB::commit();
@@ -198,7 +198,7 @@ class PostsController extends Controller
             foreach($tags as $tag) {
                 PostTag::create([
                     'post_id' => $post->id,
-                    'tag' => $tag
+                    'tag' => strtolower($tag)
                 ]);
             }
             DB::commit();
