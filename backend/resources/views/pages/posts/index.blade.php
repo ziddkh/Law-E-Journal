@@ -133,6 +133,8 @@
                                                         <span class="badge badge-secondary" style="width: 100px;height: 30px;padding:10px;font-size:13px">Draft</span>
                                                     @elseif($post->status == 'Published')
                                                         <span class="badge badge-success" style="width: 100px;height: 30px;padding:10px;font-size:13px">Published</span>
+                                                    @elseif($post->status == 'Archived')
+                                                        <span class="badge badge-danger" style="width: 100px;height: 30px;padding:10px;font-size:13px">Archived</span>
                                                     @endif
                                                 </td>
                                                 <td>

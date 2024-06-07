@@ -176,7 +176,7 @@ class PostsController extends Controller
             'tags' => 'required|array|min:1',
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
-            'status' => 'required|in:Draft,Published',
+            'status' => 'required|in:Draft,Published,Archived',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:8192'
         ]);
     

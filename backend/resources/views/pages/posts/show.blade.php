@@ -127,14 +127,22 @@
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>
-                    <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">
-                        <i class="fas fa-save"></i>
-                        Update
-                    </button>
+                    @if($post->status != 'Archived')
+                        <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">
+                            <i class="fas fa-save"></i>
+                            Update
+                        </button>
+                    @endif
                     @if($post->status == 'Draft')
                         <button type="submit" class="btn btn-primary" name="status" value="Published">
                             <i class="fas fa-upload"></i>
                             Publish
+                        </button>
+                    @endif
+                    @if($post->status == 'Published')
+                        <button type="submit" class="btn btn-danger" name="status" value="Archived">
+                            <i class="fas fa-archive"></i>
+                            Archive
                         </button>
                     @endif
                 </div>
