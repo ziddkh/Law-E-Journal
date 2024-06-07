@@ -130,6 +130,11 @@ class BannersController extends Controller
         if(empty($banner)) {
             return redirect()->back()->with('error_message', 'Banner not found!');
         }
+
+        // Delete the old image if it exists
+        if ($banner->image_url) {
+            \Storage::disk('public')->delete($banner->image_url);
+        }
         
         $banner->delete();
         return redirect()->route('banners.index')

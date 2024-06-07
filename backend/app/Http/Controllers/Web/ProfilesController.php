@@ -133,6 +133,11 @@ class ProfilesController extends Controller
         if(empty($profile)) {
             return redirect()->back()->with('error_message', 'Profile not found!');
         }
+
+        // Delete the old image if it exists
+        if ($profile->image_url) {
+            \Storage::disk('public')->delete($profile->image_url);
+        }
         
         $profile->delete();
         return redirect()->route('profiles.index')

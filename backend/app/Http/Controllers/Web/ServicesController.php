@@ -127,6 +127,11 @@ class ServicesController extends Controller
             return redirect()->back()->with('error_message', 'Service not found!');
         }
         
+        // Delete the old image if it exists
+        if ($service->image_url) {
+            \Storage::disk('public')->delete($service->image_url);
+        }
+
         $service->delete();
         return redirect()->route('services.index')
             ->with('success_message', 'Service deleted successfully.');

@@ -126,6 +126,11 @@ class PartnersController extends Controller
         if(empty($partner)) {
             return redirect()->back()->with('error_message', 'Partner not found!');
         }
+
+        // Delete the old image if it exists
+        if ($partner->image_url) {
+            \Storage::disk('public')->delete($partner->image_url);
+        }
         
         $partner->delete();
         return redirect()->route('partners.index')

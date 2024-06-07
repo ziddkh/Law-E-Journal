@@ -128,6 +128,11 @@ class ClientReviewsController extends Controller
         if(empty($clientReview)) {
             return redirect()->back()->with('error_message', 'ClientReview not found!');
         }
+
+        // Delete the old image if it exists
+        if ($clientReview->image_url) {
+            \Storage::disk('public')->delete($clientReview->image_url);
+        }
         
         $clientReview->delete();
         return redirect()->route('client-reviews.index')

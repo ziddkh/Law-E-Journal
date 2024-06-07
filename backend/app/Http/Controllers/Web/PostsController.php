@@ -249,6 +249,11 @@ class PostsController extends Controller
 
         PostTag::where('post_id', $post->id)->delete();
 
+        // Delete the old image if it exists
+        if ($post->image_url) {
+            \Storage::disk('public')->delete($post->image_url);
+        }
+
         // Delete the post
         $post->delete();
 
