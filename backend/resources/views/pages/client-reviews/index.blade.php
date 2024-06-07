@@ -67,19 +67,22 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
+                                        <th>Position</th>
                                         <th>Options</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if(count($clientReviews) <= 0)
                                         <tr>
-                                            <td colspan="3">No client reviews</td>
+                                            <td colspan="4">No client reviews</td>
                                         </tr>
                                     @else 
                                         @foreach($clientReviews as $clientReview)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $clientReview->name }}</td>
+                                                <td>{{ $clientReview->position }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('client-reviews.show', [

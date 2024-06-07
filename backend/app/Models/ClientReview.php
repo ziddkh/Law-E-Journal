@@ -14,6 +14,7 @@ class ClientReview extends Model
 
     protected $fillable = [
         'name',
+        'position',
         'description',
         'image_url',
     ];

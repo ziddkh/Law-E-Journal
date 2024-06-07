@@ -31,6 +31,15 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="position">Position <sup style='color: red'>*</sup></label>
+                    <input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" value="{{ old('position', $clientReview->position) }}" required>
+                    @error('position')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
                 <div class="form-group" style="position: relative">
                     <label for="description">Description <sup style='color: red'>*</sup></label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="text-area">{{ old('description', $clientReview->description) }}</textarea>

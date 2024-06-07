@@ -44,6 +44,7 @@ class ClientReviewsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
@@ -90,6 +91,7 @@ class ClientReviewsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
