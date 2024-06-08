@@ -74,14 +74,22 @@
                                 <tbody>
                                     @if(count($settings) <= 0)
                                         <tr>
-                                            <td colspan="4">No settings</td>
+                                            <td colspan="4">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($settings as $setting)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $setting->key }}</td>
-                                                <td>{{ $setting->value }}</td>
+                                                @if($setting->value && $setting->key == 'Company Logo')
+                                                    <td>
+                                                        <div class="mb-2">
+                                                            <img src="{{ Storage::url($setting->value) }}" alt="Company Logo" class="img-thumbnail" width="150">
+                                                        </div>
+                                                    </td>
+                                                @else
+                                                    <td>{{ $setting->value }}</td>
+                                                @endif
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('settings.show', [

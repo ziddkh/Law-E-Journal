@@ -1,0 +1,84 @@
+<swiper-container navigation="false" effect="fade" pagination="true" pagination-clickable="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+    <swiper-slide *ngFor="let banner of banners">
+      <div class="relative h-full w-full">
+        <div class="my-swiper-img-wrapper w-full h-full">
+          <img [src]="banner.signed_image_url" [alt]="banner.title + ' Image'" class="w-full h-full object-cover">
+        </div>
+        <div></div>
+        <div class="absolute top-1/2 lg:left-1/2 -translate-y-1/2 lg:-translate-x-1/2 left-4 right-4 lg:w-[64rem] max-w-5xl lg:px-0">
+          <h1 class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-slate-50">{{ banner.title }}</h1>
+          <p class="text-base md:text-lg leading-6 tracking-normal mb-8 text-slate-50">{{ banner.description }}</p>
+          <div class="flex gap-3">
+            <div>
+              <a [href]="banner.cta_button_url" class="w-full px-5 py-2.5 text-sm inline-flex leading-4 gap-2 bg-yellow-700 text-slate-50">
+                <span>{{ banner.cta_button_text }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+</swiper-container>
+
+<!-- About Us -->
+<section class="relative py-10">
+  <div id="about-us" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <div class="py-10 relative">
+      <div class="flex">
+        <div class="flex-1">
+          <div class="bg-slate-50 pr-8 py-8">
+            <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Sekilas Tentang Kami</h2>
+            <p class="text-sm mb-2">Torchic has a place inside its body where it keeps its flame. Give it a hug—it will be glowing with warmth.</p>
+            <p class="text-sm mb-5">It is so dense, while on a run it forgets why it started running in the first place. It apparently remembers sometimes if it demolishes something.</p>
+            <a href="#" class="w-full px-5 py-2.5 text-sm leading-4 gap-2 bg-black text-slate-50">Selengkapnya</a>
+          </div>
+        </div>
+        <div class="hidden sm:block flex-1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Clients -->
+
+<!-- Services -->
+<!-- Service Wrapper -->
+<section class="relative pb-6">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
+    <div class="border-b border-violet-700/10 pb-6 mb-6">
+      <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Kenapa Memilih Jasa Kami</h2>
+      <p class="text-sm md:text-base leading-6 tracking-normal text-slate-600">{{ settingService.getCompanyName() ?? 'Company Name' }} menjunjung tinggi nilai-nilai dan prinsip yang dapat mendorong kami untuk selalu memberikan serta menjalin hubungan baik dengan Klien kami. Nilai-nilai inilah yang membedakan kami dengan yang lain:</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+      <ng-container *ngFor="let service of services">
+        <div class="">
+          <span class="block mb-2">{{ service.name }}</span>
+          <span class="block w-1/4 h-0.5 bg-violet-700/10"></span>
+        </div>
+      </ng-container>
+    </div>
+    <div>
+      <a href="/layanan">Selengkapnya</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Contact Us -->
+<!-- Background -->
+<section class="relative overflow-hidden py-10">
+  <div aria-hidden="true" class="bg-law bg-gradient-to-tr -z-10 pointer-events-none absolute inset-0 from-violet-500 to-violet-800"></div>
+  <!-- Contact Us Wrapper -->
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <div class="block w-fit mb-3 mx-auto">
+      <div class="w-12 h-12 rounded-full bg-black"></div>
+    </div>
+    <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
+    <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-slate-700 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
+    <p class="text-center text-sm md:text-base leading-6 tracking-normal text-slate-600 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
+    <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-slate-50">
+      <span>Contact Us</span>
+    </a>
+  </div>
+</section>

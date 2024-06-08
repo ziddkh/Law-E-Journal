@@ -17,21 +17,9 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::where('id', '!=', auth()->user()->id);
-
-        if (!empty($request->username)) {
-            $users = $users->where('username', 'LIKE', '%' . $request->username . '%');
-        }
-
-        if (!empty($request->email)) {
-            $users = $users->where('email', 'LIKE', '%' . $request->email . '%');
-        }
-
-        if (!empty($request->name)) {
-            $users = $users->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $users = $users->paginate(10);
+        $users = User::search($request)
+            ->where('id', '!=', auth()->user()->id)
+            ->paginate(10);
 
         return view('pages.users.index', [
             'users' => $users,

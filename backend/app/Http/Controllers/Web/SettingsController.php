@@ -13,17 +13,9 @@ class SettingsController extends Controller
      */
     public function index(Request $request)
     {
-        $settings = new Setting();
-
-        if(!empty($request->key)) {
-            $settings = $settings->where('key', 'LIKE', '%' . $request->key . '%');
-        }
-
-        if(!empty($request->value)) {
-            $settings = $settings->where('value', 'LIKE', '%' . $request->value . '%');
-        }
-
-        $settings = $settings->orderBy('id', 'DESC')->paginate(10);
+        $settings = Setting::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.settings.index', [
             'settings' => $settings,

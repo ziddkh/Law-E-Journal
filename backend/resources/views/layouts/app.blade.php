@@ -90,11 +90,11 @@
             </a>
         </li>
 
-        <!-- Nav Item - Client Reviews -->
+        <!-- Nav Item - Testimonials -->
         <li class="nav-item {{ request()->routeIs('client-reviews*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('client-reviews.index') }}">
                 <i class="fas fa-fw fa-star"></i>
-                <span>{{ __('Client Reviews') }}</span>
+                <span>{{ __('Testimonials') }}</span>
             </a>
         </li>
 
@@ -106,11 +106,35 @@
             </a>
         </li>
 
+        <!-- Nav Item - Company Informations -->
+        <li class="nav-item {{ request()->routeIs('company-informations*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('company-informations.index') }}">
+                <i class="fas fa-fw fa-info-circle"></i>
+                <span>{{ __('Company Informations') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Settings -->
         <li class="nav-item {{ request()->routeIs('settings*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('settings.index') }}">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>{{ __('Settings') }}</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            {{ __('Submission Management') }}
+        </div>
+
+        <!-- Nav Item - Profile -->
+        <li class="nav-item {{ request()->routeIs('consultation-requests*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('consultation-requests.index') }}">
+                <i class="fas fa-fw fa-message"></i>
+                <span>{{ __('Consultation Requests') }}</span>
             </a>
         </li>
 

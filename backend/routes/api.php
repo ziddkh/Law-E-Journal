@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CompanyInformationsController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingPagesController::class, 'index']);
+Route::get('/home-data', [LandingPagesController::class, 'index']);
 
 Route::prefix('posts')->group(function() {
     Route::get('/', [PostsController::class, 'index']);
@@ -30,4 +31,8 @@ Route::prefix('contact-us')->group(function() {
 
 Route::prefix('consultation-requests')->group(function() {
     Route::post('/submit', [ConsultationRequest::class, 'submit']);
+});
+
+Route::prefix('company-informations')->group(function() {
+    Route::get('/show', [CompanyInformationsController::class, 'show']);
 });

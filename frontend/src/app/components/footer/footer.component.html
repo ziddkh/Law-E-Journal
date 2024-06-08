@@ -1,0 +1,61 @@
+<nav class="relative">
+  <div class="relative max-w-5xl px-4 lg:px-0 pb-10 pt-20 mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-14">
+      <div>
+        <div class="inline-flex items-center gap-3 w-fit mb-3">
+          <ng-container *ngIf="settingService.getCompanyLogo(); else defaultCompanyLogo">
+            <div class="max-h-10">
+              <img src="" alt="">
+            </div>
+          </ng-container>
+          <ng-template #defaultCompanyLogo>
+            <div class="w-8 h-8 bg-yellow-700 rounded-full"></div>
+          </ng-template>
+          <span class="font-bold text-base uppercase">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+        </div>
+        <p class="max-w-[15rem] text-sm leading-5 tracking-normal font-semibold">Our Commitment to Excellence Has Been Recognized</p>
+      </div>
+      <div class="flex-1">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-0">
+          <ul class="flex flex-col gap-2">
+            <li class="text-base font-bold">Navigation</li>
+            <li class="text-sm">
+              <a href="#" class="text-sm hover:underline underline-offset-2">Home</a>
+            </li>
+            <li class="text-sm">
+              <a href="#" class="text-sm hover:underline underline-offset-2">Services</a>
+            </li>
+            <li class="text-sm">
+              <a href="#" class="text-sm hover:underline underline-offset-2">Contact Us</a>
+            </li>
+          </ul>
+          <ul class="flex flex-col gap-2">
+            <li class="text-base font-bold">Posts</li>
+            <li class="text-sm">
+              <a href="#" class="text-sm hover:underline underline-offset-2">Article</a>
+            </li>
+            <li class="text-sm">
+              <a href="#" class="text-sm hover:underline underline-offset-2">News</a>
+            </li>
+          </ul>
+          <ul class="flex flex-col gap-1">
+            <li class="text-base font-bold">Kontak</li>
+            <li class="text-sm">
+              <span href="#" class="text-sm block font-bold">Email:</span>
+              <a href="#" class="text-violet-700 tracking-wide">{{ settingService.getEmail() ?? 'your@email.com' }}</a>
+            </li>
+            <li class="text-sm">
+              <span class="text-sm font-bold">No Telp: <span class="font-normal">{{ settingService.getPhoneNumber() ?? 'Your phone number' }}</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<footer class="w-full border-t">
+  <div class="relative max-w-5xl px-4 lg:px-0 py-3 mx-auto">
+    <span class="text-sm block text-center text-slate-500">Copyright &copy; 2020 &ndash; 2024. {{ settingService.getCompanyName() ?? 'Company Name' }}. All Right Reserved</span>
+  </div>
+</footer>

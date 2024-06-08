@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\ClientReview;
+use App\Models\CompanyInformation;
 use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Profile;
@@ -41,9 +42,6 @@ class LandingPagesController extends Controller
         // Get all services ordered by latest
         $services = Service::orderBy('id', 'DESC')->get();
 
-        // Get all settings ordered by latest
-        $settings = Setting::orderBy('id', 'DESC')->get();
-
         // Get all partners ordered by latest
         $partners = Partner::orderBy('id', 'DESC')->get();
 
@@ -52,17 +50,17 @@ class LandingPagesController extends Controller
             ->take(10)
             ->get();
 
+        $companyInformation = CompanyInformation::orderBy('id', 'DESC')->first();
+
         // Return the collected data as JSON response
         return response()->json([
-            'data' => [
-                'posts' => $posts,
-                'banners' => $banners,
-                'profiles' => $profiles,
-                'services' => $services,
-                'settings' => $settings,
-                'partners' => $partners,
-                'client_reviews' => $clientReviews
-            ]
+            'posts' => $posts,
+            'banners' => $banners,
+            'profiles' => $profiles,
+            'services' => $services,
+            'partners' => $partners,
+            'client_reviews' => $clientReviews,
+            'company_information' => $companyInformation ?? NULL
         ], JsonResponse::HTTP_OK);
     }
 

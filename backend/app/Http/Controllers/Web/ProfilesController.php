@@ -13,17 +13,9 @@ class ProfilesController extends Controller
      */
     public function index(Request $request)
     {
-        $profiles = new Profile;
-
-        if(!empty($request->name)) {
-            $profiles = $profiles->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        if(!empty($request->position)) {
-            $profiles = $profiles->where('position', 'LIKE', '%' . $request->position . '%');
-        }
-
-        $profiles = $profiles->orderBy('id', 'DESC')->paginate(10);
+        $profiles = Profile::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.profiles.index', [
             'profiles' => $profiles,
@@ -132,6 +124,11 @@ class ProfilesController extends Controller
         $profile = Profile::where('id', $id)->first();
         if(empty($profile)) {
             return redirect()->back()->with('error_message', 'Profile not found!');
+        }
+
+        // Delete the old image if it exists
+        if ($profile->image_url) {
+            \Storage::disk('public')->delete($profile->image_url);
         }
         
         $profile->delete();

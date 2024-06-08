@@ -60,6 +60,7 @@
                                             <option value="">Status</option>
                                             <option value="Draft" {{ $search_terms['status'] == 'Draft' ? 'selected' : '' }}>Draft</option>
                                             <option value="Published" {{ $search_terms['status'] == 'Published' ? 'selected' : '' }}>Published</option>
+                                            <option value="Archived" {{ $search_terms['status'] == 'Archived' ? 'selected' : '' }}>Archived</option>
                                         </select>
                                     </div>
                                 </div>
@@ -117,7 +118,7 @@
                                 <tbody>
                                     @if(count($posts) <= 0)
                                         <tr>
-                                            <td colspan="8">No posts</td>
+                                            <td colspan="8">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($posts as $post)
@@ -133,6 +134,8 @@
                                                         <span class="badge badge-secondary" style="width: 100px;height: 30px;padding:10px;font-size:13px">Draft</span>
                                                     @elseif($post->status == 'Published')
                                                         <span class="badge badge-success" style="width: 100px;height: 30px;padding:10px;font-size:13px">Published</span>
+                                                    @elseif($post->status == 'Archived')
+                                                        <span class="badge badge-danger" style="width: 100px;height: 30px;padding:10px;font-size:13px">Archived</span>
                                                     @endif
                                                 </td>
                                                 <td>

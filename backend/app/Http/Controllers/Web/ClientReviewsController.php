@@ -13,13 +13,9 @@ class ClientReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        $clientReviews = new ClientReview;
-
-        if(!empty($request->name)) {
-            $clientReviews = $clientReviews->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $clientReviews = $clientReviews->orderBy('id', 'DESC')->paginate(10);
+        $clientReviews = ClientReview::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.client-reviews.index', [
             'clientReviews' => $clientReviews,
@@ -58,7 +54,7 @@ class ClientReviewsController extends Controller
 
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Client Review created successfully.');
+        ])->with('success_message', 'Testimonial created successfully.');
     }
 
     /**
@@ -68,7 +64,7 @@ class ClientReviewsController extends Controller
     {
         $clientReview = ClientReview::where('id', $id)->first();
         if(empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
         }
 
         return view('pages.client-reviews.show', [
@@ -98,7 +94,7 @@ class ClientReviewsController extends Controller
     
         $clientReview = ClientReview::where('id', $id)->first();
         if (empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
         }
     
         if ($request->hasFile('image_url')) {
@@ -116,7 +112,7 @@ class ClientReviewsController extends Controller
     
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Client Review updated successfully!');
+        ])->with('success_message', 'Testimonial updated successfully!');
     }
     
     /**
@@ -126,11 +122,16 @@ class ClientReviewsController extends Controller
     {
         $clientReview = ClientReview::where('id', $id)->first();
         if(empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
+        }
+
+        // Delete the old image if it exists
+        if ($clientReview->image_url) {
+            \Storage::disk('public')->delete($clientReview->image_url);
         }
         
         $clientReview->delete();
         return redirect()->route('client-reviews.index')
-            ->with('success_message', 'Client Review deleted successfully.');;
+            ->with('success_message', 'Testimonial deleted successfully.');;
     }
 }

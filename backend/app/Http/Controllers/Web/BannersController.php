@@ -13,13 +13,9 @@ class BannersController extends Controller
      */
     public function index(Request $request)
     {
-        $banners = new Banner;
-
-        if(!empty($request->title)) {
-            $banners = $banners->where('title', 'LIKE', '%' . $request->title . '%');
-        }
-
-        $banners = $banners->orderBy('id', 'DESC')->paginate(10);
+        $banners = Banner::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.banners.index', [
             'banners' => $banners,
@@ -45,10 +41,13 @@ class BannersController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'cta_button_text' => 'required|string|max:255',
-            'cta_button_url' => 'required|string|max:255',
+            'cta_button_text' => 'nullable|string|max:255',
+            'cta_button_url' => 'nullable|string|max:255',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:16384'
         ]);
+
+        // Prepend https:// if not already present
+        $validated['cta_button_url'] = str_replace('https://', '', $request->cta_button_url);
 
         if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('banners', 'public');
@@ -93,10 +92,12 @@ class BannersController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'cta_button_text' => 'required|string|max:255',
-            'cta_button_url' => 'required|string|max:255',
+            'cta_button_text' => 'nullable|string|max:255',
+            'cta_button_url' => 'nullable|string|max:255',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:16384'
         ]);
+
+        $validated['cta_button_url'] = str_replace('https://', '', $request->cta_button_url);
     
         $banner = Banner::where('id', $id)->first();
         if (empty($banner)) {
@@ -129,6 +130,11 @@ class BannersController extends Controller
         $banner = Banner::where('id', $id)->first();
         if(empty($banner)) {
             return redirect()->back()->with('error_message', 'Banner not found!');
+        }
+
+        // Delete the old image if it exists
+        if ($banner->image_url) {
+            \Storage::disk('public')->delete($banner->image_url);
         }
         
         $banner->delete();

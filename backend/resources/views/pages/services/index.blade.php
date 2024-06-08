@@ -73,7 +73,7 @@
                                 <tbody>
                                     @if(count($services) <= 0)
                                         <tr>
-                                            <td colspan="3">No services</td>
+                                            <td colspan="3">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($services as $service)

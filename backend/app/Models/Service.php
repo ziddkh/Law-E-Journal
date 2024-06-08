@@ -18,6 +18,10 @@ class Service extends Model
         'image_url',
     ];
 
+    protected $appends = [
+        'signed_image_url',
+    ];
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();
@@ -28,5 +32,10 @@ class Service extends Model
         return [
             'name' => 'LIKE'
         ];
+    }
+
+    public function getSignedImageUrlAttribute()
+    {
+        return asset("storage/$this->image_url");
     }
 }

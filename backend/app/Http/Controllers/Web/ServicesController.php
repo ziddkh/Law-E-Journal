@@ -13,13 +13,9 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
-        $services = new Service;
-
-        if(!empty($request->name)) {
-            $services = $services->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $services = $services->orderBy('id', 'DESC')->paginate(10);
+        $services = Service::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.services.index', [
             'services' => $services,
@@ -127,6 +123,11 @@ class ServicesController extends Controller
             return redirect()->back()->with('error_message', 'Service not found!');
         }
         
+        // Delete the old image if it exists
+        if ($service->image_url) {
+            \Storage::disk('public')->delete($service->image_url);
+        }
+
         $service->delete();
         return redirect()->route('services.index')
             ->with('success_message', 'Service deleted successfully.');

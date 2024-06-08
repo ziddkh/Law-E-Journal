@@ -75,7 +75,7 @@
                                 <tbody>
                                     @if(count($banners) <= 0)
                                         <tr>
-                                            <td colspan="5">No banners</td>
+                                            <td colspan="5">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($banners as $banner)
@@ -83,7 +83,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $banner->title }}</td>
                                                 <td>{{ $banner->cta_button_text }}</td>
-                                                <td>{{ $banner->cta_button_url }}</td>
+                                                <td>{{ $banner->cta_button_url_formatted }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('banners.show', [

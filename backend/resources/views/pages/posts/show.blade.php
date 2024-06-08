@@ -81,8 +81,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="end_date">End Date <sup style='color: red'>*</sup></label>
-                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date', $post->end_date) }}" required>
+                    <label for="end_date">End Date</label>
+                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date', $post->end_date) }}">
                     @error('end_date')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -115,6 +115,13 @@
                 </div>
 
                 <div class="form-group" style="position: relative">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended" {{ $post->is_recommended ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is-recommended">Is Recommended</label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="position: relative">
                     <label for="content">Content <sup style='color: red'>*</sup></label>
                     <textarea name="content" class="form-control" id="text-area">{{ old('content', $post->content) }}</textarea>
                     @error('content')
@@ -127,14 +134,22 @@
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>
-                    <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">
-                        <i class="fas fa-save"></i>
-                        Update
-                    </button>
+                    @if($post->status != 'Archived')
+                        <button type="submit" class="btn btn-primary" name="status" value="{{ $post->status }}">
+                            <i class="fas fa-save"></i>
+                            Update
+                        </button>
+                    @endif
                     @if($post->status == 'Draft')
                         <button type="submit" class="btn btn-primary" name="status" value="Published">
                             <i class="fas fa-upload"></i>
                             Publish
+                        </button>
+                    @endif
+                    @if($post->status == 'Published')
+                        <button type="submit" class="btn btn-danger" name="status" value="Archived">
+                            <i class="fas fa-archive"></i>
+                            Archive
                         </button>
                     @endif
                 </div>

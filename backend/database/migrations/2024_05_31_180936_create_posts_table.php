@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type')->nullable()->index();
             $table->string('title')->nullable()->index();
             $table->string('slug')->nullable()->index();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->date('start_date')->nullable()->index();
             $table->date('end_date')->nullable()->index();
             $table->string('status')->nullable()->index();

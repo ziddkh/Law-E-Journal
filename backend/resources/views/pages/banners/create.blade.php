@@ -31,16 +31,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cta_button_text">CTA Button Text <sup style='color: red'>*</sup></label>
-                    <input type="text" class="form-control @error('cta_button_text') is-invalid @enderror" id="cta_button_text" name="cta_button_text" value="{{ old('cta_button_text') }}" required>
+                    <label for="cta_button_text">CTA Button Text</label>
+                    <input type="text" class="form-control @error('cta_button_text') is-invalid @enderror" id="cta_button_text" name="cta_button_text" value="{{ old('cta_button_text') }}">
                     @error('cta_button_text')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="cta_button_url">CTA Button URL <sup style='color: red'>*</sup></label>
-                    <input type="url" class="form-control @error('cta_button_url') is-invalid @enderror" id="cta_button_url" name="cta_button_url" value="{{ old('cta_button_url') }}" required>
+                    <label for="cta_button_url">CTA Button URL</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">https://</span>
+                        </div>
+                        <input type="text" class="form-control @error('cta_button_url') is-invalid @enderror" id="cta_button_url" name="cta_button_url" value="{{ old('cta_button_url') }}">
+                    </div>
                     @error('cta_button_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror

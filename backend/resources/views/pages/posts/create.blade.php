@@ -80,8 +80,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="end_date">End Date <sup style='color: red'>*</sup></label>
-                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date') }}" required>
+                    <label for="end_date">End Date</label>
+                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date') }}">
                     @error('end_date')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -103,6 +103,13 @@
                     @error('image_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
+                </div>
+
+                <div class="form-group" style="position: relative">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended">
+                        <label class="form-check-label" for="is-recommended">Recommended Post</label>
+                    </div>
                 </div>
 
                 <div class="form-group" style="position: relative">

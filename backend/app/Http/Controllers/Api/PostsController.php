@@ -17,13 +17,24 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::search($request)
-            ->published()
+        $posts = Post::search($request);
+        if(!empty($request->tags)) {
+            $posts = $posts->whereHas('tags', function($query, $request) {
+                $query->whereIn('tag', $request->tags);
+            });
+        }
+        $posts = $posts->published()
             ->orderBy('id', 'DESC')
+            ->paginate(10);
+
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(5)
             ->get();
 
         return response()->json([
-            'posts' => $posts
+            'posts' => $posts,
+            'recommended_posts' => $recommendedPosts
         ], JsonResponse::HTTP_OK);
     }
 
@@ -45,8 +56,14 @@ class PostsController extends Controller
             ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
+
         return response()->json([
-            'post' => $post
+            'post' => $post,
+            'recommended_post' => $recommendedPosts
         ], JsonResponse::HTTP_OK);
     }
 }

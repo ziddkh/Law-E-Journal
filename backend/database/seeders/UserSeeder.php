@@ -9,11 +9,15 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'username' => 'admin',
-            'password' => bcrypt('password'), // Hash the password
-        ]);
+        User::firstOrCreate(
+            [
+                'email' => 'admin@admin.com', // Attributes to search for
+            ],
+            [
+                'name' => 'Admin',
+                'username' => 'admin',
+                'password' => bcrypt('password'), // Attributes to set if creating
+            ]
+        );
     }
 }

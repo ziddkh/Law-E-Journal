@@ -13,13 +13,9 @@ class PartnersController extends Controller
      */
     public function index(Request $request)
     {
-        $partners = new Partner;
-
-        if(!empty($request->name)) {
-            $partners = $partners->where('name', 'LIKE', '%' . $request->name . '%');
-        }
-
-        $partners = $partners->orderBy('id', 'DESC')->paginate(10);
+        $partners = Partner::search($request)
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
         return view('pages.partners.index', [
             'partners' => $partners,
@@ -47,6 +43,9 @@ class PartnersController extends Controller
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'url' => 'required'
         ]);
+
+        // Prepend https:// if not already present
+        $validated['url'] = str_replace('https://', '', $request->url);
 
         if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('partners', 'public');
@@ -93,6 +92,9 @@ class PartnersController extends Controller
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'url' => 'required'
         ]);
+
+        // Prepend https:// if not already present
+        $validated['url'] = str_replace('https://', '', $request->url);
     
         $partner = Partner::where('id', $id)->first();
         if (empty($partner)) {
@@ -125,6 +127,11 @@ class PartnersController extends Controller
         $partner = Partner::where('id', $id)->first();
         if(empty($partner)) {
             return redirect()->back()->with('error_message', 'Partner not found!');
+        }
+
+        // Delete the old image if it exists
+        if ($partner->image_url) {
+            \Storage::disk('public')->delete($partner->image_url);
         }
         
         $partner->delete();

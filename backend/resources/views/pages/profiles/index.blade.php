@@ -80,7 +80,7 @@
                                 <tbody>
                                     @if(count($profiles) <= 0)
                                         <tr>
-                                            <td colspan="4">No profiles</td>
+                                            <td colspan="4">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($profiles as $profile)

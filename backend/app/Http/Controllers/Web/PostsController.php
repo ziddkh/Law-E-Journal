@@ -24,33 +24,7 @@ class PostsController extends Controller
             }
         }
 
-        $posts = new Post;
-
-        if(!empty($request->title)) {
-            $posts = $posts->where('title', 'LIKE', '%' . $request->title . '%');
-        }
-
-        if(!empty($request->slug)) {
-            $posts = $posts->where('slug', 'LIKE', '%' . $request->slug . '%');
-        }
-
-        if(!empty($request->start_date)) {
-            $posts = $posts->where('start_date', '<=', $request->start_date);
-        }
-
-        if(!empty($request->end_date)) {
-            $posts = $posts->where('end_date', '>=', $request->end_date);
-        }
-
-        if(!empty($request->status)) {
-            $posts = $posts->where('status', $request->status);
-        }
-
-        if(!empty($request->type)) {
-            $posts = $posts->where('type', $request->type);
-        }
-
-        $posts = $posts->paginate(10);
+        $posts = Post::search($request)->paginate(10);
 
         return view('pages.posts.index', [
             'posts' => $posts,
@@ -83,7 +57,7 @@ class PostsController extends Controller
             'type' => 'required|in:Article,News,Media',
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'end_date' => 'nullable|date|after:start_date',
             'tags' => 'required|array|min:1',
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
@@ -114,13 +88,14 @@ class PostsController extends Controller
             $post->status = $request->status;
             $post->created_by = auth()->user()->id;
             $post->image_url = $imagePath;
+            $post->is_recommended = !empty($request->is_recommended) ? 1 : 0;
             $post->save();
 
             $tags = $request->tags;
             foreach($tags as $tag) {
                 PostTag::create([
                     'post_id' => $post->id,
-                    'tag' => $tag
+                    'tag' => strtolower($tag)
                 ]);
             }
             DB::commit();
@@ -172,11 +147,11 @@ class PostsController extends Controller
             'type' => 'required|in:Article,News,Media',
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'end_date' => 'nullable|date|after:start_date',
             'tags' => 'required|array|min:1',
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
-            'status' => 'required|in:Draft,Published',
+            'status' => 'required|in:Draft,Published,Archived',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:8192'
         ]);
     
@@ -217,6 +192,7 @@ class PostsController extends Controller
             $post->status = $request->status;
             $post->updated_by = auth()->user()->id;
             $post->image_url = $imagePath;
+            $post->is_recommended = !empty($request->is_recommended) ? 1 : 0;
             $post->save();
     
             $tags = $request->tags;
@@ -224,7 +200,7 @@ class PostsController extends Controller
             foreach($tags as $tag) {
                 PostTag::create([
                     'post_id' => $post->id,
-                    'tag' => $tag
+                    'tag' => strtolower($tag)
                 ]);
             }
             DB::commit();
@@ -248,6 +224,11 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
 
         PostTag::where('post_id', $post->id)->delete();
+
+        // Delete the old image if it exists
+        if ($post->image_url) {
+            \Storage::disk('public')->delete($post->image_url);
+        }
 
         // Delete the post
         $post->delete();

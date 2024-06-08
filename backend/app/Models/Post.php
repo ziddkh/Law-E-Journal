@@ -21,7 +21,8 @@ class Post extends Model
         'start_date',
         'end_date',
         'status',
-        'image_url'
+        'image_url',
+        'is_recommended'
     ];
 
     protected $dates = [
@@ -32,7 +33,8 @@ class Post extends Model
 
     protected $appends = [
         'start_date_formatted',
-        'end_date_formatted'
+        'end_date_formatted',
+        'signed_image_url',
     ];
 
     public function tags()
@@ -50,9 +52,24 @@ class Post extends Model
         return Carbon::parse($this->endDate)->format('d M Y'); 
     }
 
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'Draft');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 'Published');
+    }
+
+    public function scopeArchived($query)
+    {
+        return $query->where('status', 'Archived');
+    }
+
+    public function scopeRecommended($query)
+    {
+        return $query->where('is_recommended', 1);
     }
 
     public function getActivitylogOptions(): LogOptions
@@ -71,5 +88,10 @@ class Post extends Model
             'type' => '=',
             'id' => '='
         ];
+    }
+
+    public function getSignedImageUrlAttribute()
+    {
+        return asset("storage/$this->image_url");
     }
 }

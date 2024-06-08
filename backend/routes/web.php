@@ -3,6 +3,8 @@
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\BannersController;
 use App\Http\Controllers\Web\ClientReviewsController;
+use App\Http\Controllers\Web\CompanyInformationsController;
+use App\Http\Controllers\Web\ConsultationRequestController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\PartnersController;
 use App\Http\Controllers\Web\PostsController;
@@ -38,4 +40,6 @@ Route::middleware('auth')->group(function() {
     Route::resource('profiles', ProfilesController::class);
     Route::resource('settings', SettingsController::class);
     Route::resource('banners', BannersController::class);
+    Route::resource('consultation-requests', ConsultationRequestController::class)->only(['index', 'show']);
+    Route::resource('company-informations', CompanyInformationsController::class)->only(['index', 'show', 'update']);
 });
