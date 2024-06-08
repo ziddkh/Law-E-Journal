@@ -72,6 +72,21 @@ class Post extends Model
         return $query->where('is_recommended', 1);
     }
 
+    public function scopeArticle($query)
+    {
+        return $query->where('type', 'Article');
+    }
+
+    public function scopeNews($query)
+    {
+        return $query->where('type', 'News');
+    }
+
+    public function scopeMedia($query)
+    {
+        return $query->where('type', 'Media');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();

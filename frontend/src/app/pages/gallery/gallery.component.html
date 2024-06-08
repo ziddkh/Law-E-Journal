@@ -1,0 +1,36 @@
+<section id="article-banner" class="h-[200px] w-full mb-10">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
+    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">Galeri</h1>
+  </div>
+</section>
+
+<section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <ng-container *ngIf="isLoading; else showGalleries">
+      <ng-container *ngFor="let dummy of [1,2,3,4]">
+        <div class="relative cursor-pointer">
+          <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+          </span>
+          <div class="pt-2">
+            <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
+            <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-template #showGalleries>
+      <ng-container *ngFor="let gallery of galleries">
+        <div class="relative cursor-pointer">
+          <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+            <img loading="lazy" src="{{ gallery.signed_image_url }}" [alt]="gallery.name + ' Image'" class="w-full h-full object-cover">
+          </div>
+          <div class="p-1 pt-2">
+            <p class="text-sm text-neutral-600">
+              {{ gallery.description }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+  </div>
+</section>

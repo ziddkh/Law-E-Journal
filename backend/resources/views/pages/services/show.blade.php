@@ -1,5 +1,25 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .note-toolbar {
+            margin: 0 !important;
+            padding: 0 0 5px 5px !important;
+            background-color: rgba(0,0,0,.03) !important;
+            border-bottom: 1px solid rgba(0,0,0,.125) !important;
+            display: block !important;
+        }
+
+        .note-toolbar .btn {
+            color: black !important;
+        }
+
+        .note-editor.note-frame .note-editing-area .note-editable {
+            width: auto !important;
+        }
+    </style>
+@stop
+
 @section('main-content')
     <div class="title-block">
         <h1 class="title">Edit Service</h1>
@@ -33,7 +53,7 @@
 
                 <div class="form-group" style="position: relative">
                     <label for="description">Description <sup style='color: red'>*</sup></label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="text-area">{{ old('description', $service->description) }}</textarea>
+                    <textarea name="description" class="form-control" id="text-area">{{ old('description', $service->description) }}</textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -66,3 +86,22 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#text-area").summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', [ 'codeview', 'help']],
+                ],
+            });
+        });
+    </script>
+@stop

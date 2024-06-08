@@ -10,7 +10,6 @@ use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Service;
-use App\Models\Setting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

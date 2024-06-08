@@ -67,4 +67,45 @@ class PostsController extends Controller
             'recommended_post' => $recommendedPosts
         ], JsonResponse::HTTP_OK);
     }
+
+    /**
+     * Filter and retrieve posts by types (articles, news, media) and recommended posts.
+     *
+     * This method retrieves a specified number of published posts for each type (articles, news, media),
+     * and recommended posts, ordered by descending ID, and returns them in a JSON response.
+     * If the 'take' parameter is not specified in the request, it defaults to 6.
+     *
+     * @param \Illuminate\Http\Request $request The incoming HTTP request instance.
+     * @return \Illuminate\Http\JsonResponse A JSON response containing the filtered posts.
+     */
+    public function filteredPostsByTypes(Request $request)
+    {
+        $take = $request->take ?? 6;
+        $articles = Post::published()
+            ->article()
+            ->orderBy('id', 'DESC')
+            ->take($take);
+
+        $news = Post::published()
+            ->news()
+            ->orderBy('id', 'DESC')
+            ->take($take);
+
+        $media = Post::published()
+            ->media()
+            ->orderBy('id', 'DESC')
+            ->take($take);
+
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take($take)
+            ->get();
+
+        return response()->json([
+            'articles' => $articles,
+            'news' => $news,
+            'media' => $media,
+            'recommended_posts' => $recommendedPosts,
+        ], JsonResponse::HTTP_OK);
+    }
 }

@@ -1,28 +1,8 @@
 @extends('layouts.app')
 
-@section('styles')
-    <style>
-        .note-toolbar {
-            margin: 0 !important;
-            padding: 0 0 5px 5px !important;
-            background-color: rgba(0,0,0,.03) !important;
-            border-bottom: 1px solid rgba(0,0,0,.125) !important;
-            display: block !important;
-        }
-
-        .note-toolbar .btn {
-            color: black !important;
-        }
-
-        .note-editor.note-frame .note-editing-area .note-editable {
-            width: auto !important;
-        }
-    </style>
-@stop
-
 @section('main-content')
     <div class="title-block">
-        <h1 class="title">Create Service</h1>
+        <h1 class="title">Create Gallery</h1>
     </div>
 
     @if(Session::has('success_message'))
@@ -39,7 +19,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('services.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('galleries.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -67,7 +47,7 @@
                 </div>
 
                 <div class="d-flex justify-content-start" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('services.index') }}'">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('galleries.index') }}'">
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>
@@ -81,21 +61,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $("#text-area").summernote({
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture']],
-                    ['view', [ 'codeview', 'help']],
-                ],
-            });
-        });
-    </script>
-@stop
