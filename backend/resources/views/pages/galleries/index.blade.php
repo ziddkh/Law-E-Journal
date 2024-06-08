@@ -52,7 +52,7 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
-                        <h3 class="panel-title">Gallerys</h3>
+                        <h3 class="panel-title">Galleries</h3>
                         <div>
                             <a href="{{ route('galleries.create') }}" class='btn btn-primary'>
                                 <i class="fas fa-plus"></i>
@@ -67,19 +67,25 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
+                                        <th>Imager</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if(count($galleries) <= 0)
                                         <tr>
-                                            <td colspan="3">No data</td>
+                                            <td colspan="4">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($galleries as $gallery)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $gallery->name }}</td>
+                                                <td>
+                                                    <div class="mb-2">
+                                                        <img src="{{ Storage::url($gallery->image_url) }}" alt="Company Logo" class="img-thumbnail" width="150">
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('galleries.show', [
