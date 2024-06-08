@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('users', UsersController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('services', ServicesController::class);
-    Route::resource('partners', ClientsController::class);
+    Route::resource('clients', ClientsController::class);
     Route::resource('client-reviews', ClientReviewsController::class);
     Route::resource('profiles', ProfilesController::class);
     Route::resource('settings', SettingsController::class);

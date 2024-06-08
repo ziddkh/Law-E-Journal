@@ -19,7 +19,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('partners.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="d-flex justify-content-start" style="gap: 5px">
-                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('partners.index') }}'">
+                    <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('clients.index') }}'">
                         <i class="fas fa-fw fa-arrow-left"></i>
                         Back
                     </button>

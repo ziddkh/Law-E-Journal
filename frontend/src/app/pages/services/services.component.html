@@ -1,0 +1,92 @@
+<section id="article-banner" class="h-[200px] w-full mb-10">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
+    <h1
+      class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">Layanan</h1>
+  </div>
+</section>
+
+<section>
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <!-- Section 1: Capture Attention & Convey Benefits with a Compelling Headline -->
+    <div class="text-left mb-8">
+      <h1 class="text-2xl font-bold mb-2">Layanan Hukum Ahli untuk Kebutuhan
+        Anda</h1>
+      <p class="text-base text-gray-600">
+        Kami memberikan solusi hukum terbaik untuk membantu Anda menghadapi tantangan hukum yang kompleks dengan percaya diri.</p>
+    </div>
+
+    <!-- Section 2: Explain How your Services Solve Problems and Create Great Outcomes -->
+    <div class="my-8">
+      <h2 class="text-2xl font-semibold mb-4">Bagaimana Layanan Kami Membantu
+        Anda?</h2>
+      <p class="text-base text-gray-700 mb-4">
+        Tim hukum kami yang berpengalaman menawarkan serangkaian layanan yang
+        dirancang untuk menyelesaikan masalah hukum Anda secara efisien dan
+        efektif. Kami berkomitmen untuk mencapai hasil terbaik bagi klien kami
+        melalui kerja keras, perhatian yang dipersonalisasi, dan pemahaman
+        mendalam tentang hukum.
+      </p>
+      <p class="text-base text-gray-700">
+        Baik Anda memerlukan bantuan terkait klaim cedera pribadi, masalah hukum
+        keluarga, nasihat hukum perusahaan, atau layanan hukum lainnya, kami
+        memiliki keahlian untuk memandu Anda melalui proses tersebut dan
+        mendapatkan hasil yang baik.
+      </p>
+    </div>
+
+    <!-- Section 3: Services Data -->
+    <div *ngIf="isLoading" class="text-center">
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="!isLoading">
+      <h2 class="text-2xl font-semibold mb-6 text-center">Layanan Kami</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <ng-container *ngFor="let service of services">
+          <div class="relative cursor-pointer">
+            <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+              <img src="{{ service.signed_image_url }}" [alt]="service.title + ' Image'" class="w-full h-full object-cover">
+            </div>
+            <div class="p-1 pt-2">
+              <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ service.name }}</h2>
+              <a [routerLink]="'detail/' + service.name" class="inline-flex items-center gap-2 text-neutral-600 text-sm">
+                <span>Lihat Selengkapnya</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div *ngIf="isLoading" class="text-center">
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="!isLoading">
+      <h2 class="text-2xl text-center font-semibold mb-6">Review Klien Kami</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <ng-container *ngFor="let clientReview of clientReviews">
+          <div class="relative cursor-pointer">
+            <div class="mx-auto overflow-hidden pointer-events-none size-14 rounded-full bg-slate-200">
+              <!-- <img src="{{ clientReview.signed_image_url }}" [alt]="clientReview.title + ' Image'" class="w-full h-full object-cover"> -->
+            </div>
+            <div class="p-1 pt-2 text-center">
+              <h2 class="text-base font-bold text-slate-900 capitalize">{{ clientReview.name }}</h2>
+              <p class="text-sm">{{ clientReview.position }}</p>
+              <p class="text-sm">"{{ clientReview.description }}"</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <p class="text-center text-sm text-slate-900 mb-4">
+        We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client’s legal problem.</p>
+        <a routerLink="/kontak-kami" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-slate-50">
+          <span>Contact Us</span>
+        </a>
+    </div>
+  </div>
+</section>

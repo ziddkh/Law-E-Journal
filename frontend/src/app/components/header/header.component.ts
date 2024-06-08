@@ -30,7 +30,7 @@ export class HeaderComponent {
   navigations: NavigationProps[] = [
     { name: "Beranda", url: "/", submenu: [] },
     { name: "Tentang Kami", url: "/tentang-kami", submenu: [] },
-    { name: "Layanan", url: "/tentang", submenu: [] },
+    { name: "Layanan", url: "/layanan", submenu: [] },
     {
       name: "Postingan",
       url: "/postingan",

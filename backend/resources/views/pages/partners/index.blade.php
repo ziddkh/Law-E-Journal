@@ -27,7 +27,7 @@
                         <h3 class="panel-title">Search Client</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ route('partners.index') }}" method="GET">
+                        <form action="{{ route('clients.index') }}" method="GET">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -54,7 +54,7 @@
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
                         <h3 class="panel-title">Clients</h3>
                         <div>
-                            <a href="{{ route('partners.create') }}" class='btn btn-primary'>
+                            <a href="{{ route('clients.create') }}" class='btn btn-primary'>
                                 <i class="fas fa-plus"></i>
                                 Create Client
                             </a>
@@ -72,28 +72,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($partners) <= 0)
+                                    @if(count($clients) <= 0)
                                         <tr>
                                             <td colspan="4">No data</td>
                                         </tr>
                                     @else 
-                                        @foreach($partners as $partner)
+                                        @foreach($clients as $client)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $partner->name }}</td>
-                                                <td>{{ $partner->url_formatted }}</td>
+                                                <td>{{ $client->name }}</td>
+                                                <td>{{ $client->url_formatted }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
-                                                        <a href="{{ route('partners.show', [
-                                                            'partner' => $partner
+                                                        <a href="{{ route('clients.show', [
+                                                            'client' => $client
                                                         ]) }}" class="btn btn-primary">
                                                             <i class="fas fa-fw fa-pencil"></i>
                                                             Edit
                                                         </a>
-                                                        <form id="delete-form-{{$partner->id}}" action="{{ route('partners.destroy', ['partner' => $partner->id]) }}" method="POST">
+                                                        <form id="delete-form-{{$client->id}}" action="{{ route('clients.destroy', ['client' => $client->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this partner?')">
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this client?')">
                                                                 <i class="fas fa-fw fa-trash"></i>
                                                                 Delete
                                                             </button>
@@ -107,7 +107,7 @@
                             </table>
                         </div>
     
-                        {!! $partners->appends($_GET)->links() !!}
+                        {!! $clients->appends($_GET)->links() !!}
                     </div>
                 </div>
             </div>

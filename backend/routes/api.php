@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\GalleriesController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
+use App\Http\Controllers\Api\ServicesController;
 use App\Models\ConsultationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,11 @@ Route::get('about', [CompanyInformationsController::class, 'show']);
 
 Route::prefix('galleries')->group(function() {
     Route::get('/', [GalleriesController::class, 'index']);
+});
+
+Route::prefix('services')->group(function() {
+    Route::get('/', [ServicesController::class, 'index']);
+    Route::get('detail/{name}', [ServicesController::class, 'show']);
 });
 
 Route::prefix('client-reviews')->group(function() {

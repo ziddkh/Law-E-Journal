@@ -18,10 +18,11 @@ export class HomeComponent implements OnInit {
 
   banners: Banner[] = []
   clientReviews: ClientReview[] = []
-  partners: Client[] = []
+  clients: Client[] = []
   posts: Post[] = []
   profiles: Profile[] = []
   services: Service[] = []
+  recommendedPosts: Post[] = []
 
   constructor(
     private homeService: HomeService,
@@ -38,10 +39,11 @@ export class HomeComponent implements OnInit {
       .then(response => {
         this.banners = response.data.banners
         this.clientReviews = response.data.client_reviews
-        this.partners = response.data.partners
+        this.clients = response.data.clients
         this.posts = response.data.posts
         this.profiles = response.data.profiles
         this.services = response.data.services
+        this.recommendedPosts = response.data.recommended_posts
       })
       .catch(error => {
         console.log(error)

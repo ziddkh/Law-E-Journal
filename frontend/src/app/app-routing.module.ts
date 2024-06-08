@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule)
   },
   {
+    path: 'layanan',
+    loadChildren: () => import('./pages/services/services.module').then(m => m.ServicesModule)
+  },
+  {
     path: 'galeri',
     loadChildren: () => import('./pages/gallery/gallery.module').then(m => m.GalleryModule)
   }

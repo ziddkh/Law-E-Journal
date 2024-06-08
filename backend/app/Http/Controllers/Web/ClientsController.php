@@ -13,12 +13,12 @@ class ClientsController extends Controller
      */
     public function index(Request $request)
     {
-        $partners = Client::search($request)
+        $clients = Client::search($request)
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
-        return view('pages.partners.index', [
-            'partners' => $partners,
+        return view('pages.clients.index', [
+            'clients' => $clients,
             'search_terms' => [
                 'name' => $request->name
             ]
@@ -30,7 +30,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('pages.partners.create');
+        return view('pages.clients.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class ClientsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:100',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image_url' => 'nullable|image|mimes:webp,jpeg,png,jpg,svg|max:2048',
             'url' => 'required'
         ]);
 
@@ -48,14 +48,14 @@ class ClientsController extends Controller
         $validated['url'] = str_replace('https://', '', $request->url);
 
         if ($request->hasFile('image_url')) {
-            $imagePath = $request->file('image_url')->store('partners', 'public');
+            $imagePath = $request->file('image_url')->store('clients', 'public');
             $validated['image_url'] = $imagePath;
         }
 
-        $partner = Client::create($validated);
+        $client = Client::create($validated);
 
-        return redirect()->route('partners.show', [
-            'partner' => $partner
+        return redirect()->route('clients.show', [
+            'client' => $client
         ])->with('success_message', 'User created successfully.');
     }
 
@@ -64,13 +64,13 @@ class ClientsController extends Controller
      */
     public function show(string $id)
     {
-        $partner = Client::where('id', $id)->first();
-        if(empty($partner)) {
+        $client = Client::where('id', $id)->first();
+        if(empty($client)) {
             return redirect()->back()->with('error_message', 'Client not found!');
         }
 
-        return view('pages.partners.show', [
-            'partner' => $partner
+        return view('pages.clients.show', [
+            'client' => $client
         ]);
     }
 
@@ -95,27 +95,27 @@ class ClientsController extends Controller
 
         // Prepend https:// if not already present
         $validated['url'] = str_replace('https://', '', $request->url);
-    
-        $partner = Client::where('id', $id)->first();
-        if (empty($partner)) {
+
+        $client = Partner::where('id', $id)->first();
+        if (empty($client)) {
             return redirect()->back()->with('error_message', 'Client not found!');
         }
-    
+
         if ($request->hasFile('image_url')) {
             // Delete the old image if it exists
-            if ($partner->image_url) {
-                \Storage::disk('public')->delete($partner->image_url);
+            if ($client->image_url) {
+                \Storage::disk('public')->delete($client->image_url);
             }
-    
+
             // Store the new image
-            $imagePath = $request->file('image_url')->store('partners', 'public');
+            $imagePath = $request->file('image_url')->store('clients', 'public');
             $validated['image_url'] = $imagePath;
         }
-    
-        $partner->update($validated);
-    
-        return redirect()->route('partners.show', [
-            'partner' => $partner
+
+        $client->update($validated);
+
+        return redirect()->route('clients.show', [
+            'client' => $client
         ])->with('success_message', 'Client updated successfully!');
     }
 
@@ -124,18 +124,18 @@ class ClientsController extends Controller
      */
     public function destroy(string $id)
     {
-        $partner = Client::where('id', $id)->first();
-        if(empty($partner)) {
+        $client = Client::where('id', $id)->first();
+        if(empty($client)) {
             return redirect()->back()->with('error_message', 'Client not found!');
         }
 
         // Delete the old image if it exists
-        if ($partner->image_url) {
-            \Storage::disk('public')->delete($partner->image_url);
+        if ($client->image_url) {
+            \Storage::disk('public')->delete($client->image_url);
         }
-        
-        $partner->delete();
-        return redirect()->route('partners.index')
+
+        $client->delete();
+        return redirect()->route('clients.index')
             ->with('success_message', 'Service deleted successfully.');
     }
 }

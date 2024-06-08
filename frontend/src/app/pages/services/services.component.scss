@@ -1,0 +1,17 @@
+#article-banner {
+  background-image: linear-gradient(to top, rgba(#000, .9), rgba(#000, .3)), url('https://source.unsplash.com/2000x1000');
+}
+
+/* Define custom color */
+.bg-custom-gold {
+  background-color: #a16207;
+}
+
+.bg-custom-gold:hover {
+  background-color: #8e5705;
+}
+
+/* Enhance the card hover effect */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
