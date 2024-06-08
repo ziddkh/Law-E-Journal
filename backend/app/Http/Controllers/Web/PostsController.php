@@ -24,7 +24,7 @@ class PostsController extends Controller
             }
         }
 
-        $posts = Post::search($request)->paginate(10);
+        $posts = Post::search($request)->orderBy('id', 'DESC')->paginate(10);
 
         return view('pages.posts.index', [
             'posts' => $posts,

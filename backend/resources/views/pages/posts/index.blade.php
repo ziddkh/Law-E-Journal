@@ -38,13 +38,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Start Date</label>
-                                        <input type="date" class="form-control" autocomplete="off" name="start_date" id="start_date" value="{{ $search_terms['start_date'] }}">
+                                        <input type="text" class="form-control datepicker" autocomplete="off" name="start_date" id="start_date" value="{{ $search_terms['start_date'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>End Date</label>
-                                        <input type="date" class="form-control" autocomplete="off" name="end_date" id="end_date" value="{{ $search_terms['end_date'] }}">
+                                        <input type="text" class="form-control datepicker" autocomplete="off" name="end_date" id="end_date" value="{{ $search_terms['end_date'] }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -171,3 +171,16 @@
         </div>
     </div>
 @endsection
+
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+@stop
