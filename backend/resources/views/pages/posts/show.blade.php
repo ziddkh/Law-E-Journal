@@ -74,7 +74,7 @@
 
                 <div class="form-group">
                     <label for="start_date">Start Date <sup style='color: red'>*</sup></label>
-                    <input type="date" class="form-control datepicker @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ old('start_date', $post->start_date) }}" required>
+                    <input type="text" class="form-control datepicker @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ old('start_date', $post->start_date) }}" autocomplete="off" placeholder="Select date" required>
                     @error('start_date')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <label for="end_date">End Date</label>
-                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date', $post->end_date) }}">
+                    <input type="text" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date', $post->end_date) }}" placeholder="Select date">
                     @error('end_date')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -184,6 +184,12 @@
                     }
                 },
                 multiple: true
+            });
+
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
             });
 
             for (var i = 0; i < existingTags.length; i++) {

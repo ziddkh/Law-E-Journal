@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('selectize/selectize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('selectize/selectize.css') }}">
+    <link rel="stylesheet" href="{{ asset('datepicker/datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('summernote/summernote-bs4.min.css') }}">
     @yield('styles')
 </head>
@@ -265,6 +266,7 @@
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 <script src="{{ asset('selectize/selectize.min.js') }}"></script>
+<script src="{{ asset('datepicker/datepicker.min.js') }}"></script>
 @yield('scripts')
 </body>
 </html>
