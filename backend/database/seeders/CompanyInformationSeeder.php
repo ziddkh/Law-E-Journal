@@ -9,7 +9,7 @@ class CompanyInformationSeeder extends Seeder
 {
     public function run(): void
     {
-        CompanyInformation::create([
+        CompanyInformation::firstOrCreate([
             'title' => 'Sekilas Tentang Kami',
             'created_at' => now(),
             'updated_at' => now()
