@@ -1,5 +1,25 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .note-toolbar {
+            margin: 0 !important;
+            padding: 0 0 5px 5px !important;
+            background-color: rgba(0,0,0,.03) !important;
+            border-bottom: 1px solid rgba(0,0,0,.125) !important;
+            display: block !important;
+        }
+
+        .note-toolbar .btn {
+            color: black !important;
+        }
+
+        .note-editor.note-frame .note-editing-area .note-editable {
+            width: auto !important;
+        }
+    </style>
+@stop
+
 @section('main-content')
     <div class="title-block">
         <h1 class="title">Create Service</h1>
@@ -61,3 +81,21 @@
     </div>
 @endsection
 
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#text-area").summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', [ 'codeview', 'help']],
+                ],
+            });
+        });
+    </script>
+@stop
