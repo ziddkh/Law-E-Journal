@@ -27,7 +27,7 @@
                         <h3 class="panel-title">Search Requests</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ route('settings.index') }}" method="GET">
+                        <form action="{{ route('consultation-requests.index') }}" method="GET">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
