@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ClientReviewsController;
 use App\Http\Controllers\Api\CompanyInformationsController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\GalleriesController;
@@ -44,4 +45,8 @@ Route::prefix('galleries')->group(function() {
 
 Route::prefix('services')->group(function() {
     Route::get('/', [ServicesController::class, 'index']);
+});
+
+Route::prefix('client-reviews')->group(function() {
+    Route::get('/', [ClientReviewsController::class, 'index']);
 });

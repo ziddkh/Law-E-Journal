@@ -117,7 +117,7 @@
                 <div class="form-group" style="position: relative">
                     <div class="form-check">
                         <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended" {{ $post->is_recommended ? 'checked' : '' }}>
-                        <label class="form-check-label" for="is-recommended">Is Recommended</label>
+                        <label class="form-check-label" for="is-recommended">Recommended Post</label>
                     </div>
                 </div>
 
