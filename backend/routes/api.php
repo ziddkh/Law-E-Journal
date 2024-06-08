@@ -45,6 +45,7 @@ Route::prefix('galleries')->group(function() {
 
 Route::prefix('services')->group(function() {
     Route::get('/', [ServicesController::class, 'index']);
+    Route::get('detail/{name}', [ServicesController::class, 'show']);
 });
 
 Route::prefix('client-reviews')->group(function() {

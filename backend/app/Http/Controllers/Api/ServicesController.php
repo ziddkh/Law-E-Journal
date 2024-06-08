@@ -13,4 +13,10 @@ class ServicesController extends Controller
         $services = Service::get();
         return response()->json($services, 200);
     }
+
+    public function show($name)
+    {
+        $service = Service::where('name', $name)->first();
+        return response()->json($service, 200);
+    }
 }
