@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Partner;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class PartnersController extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $partners = Partner::search($request)
+        $partners = Client::search($request)
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
@@ -52,7 +52,7 @@ class PartnersController extends Controller
             $validated['image_url'] = $imagePath;
         }
 
-        $partner = Partner::create($validated);
+        $partner = Client::create($validated);
 
         return redirect()->route('partners.show', [
             'partner' => $partner
@@ -64,9 +64,9 @@ class PartnersController extends Controller
      */
     public function show(string $id)
     {
-        $partner = Partner::where('id', $id)->first();
+        $partner = Client::where('id', $id)->first();
         if(empty($partner)) {
-            return redirect()->back()->with('error_message', 'Partner not found!');
+            return redirect()->back()->with('error_message', 'Client not found!');
         }
 
         return view('pages.partners.show', [
@@ -96,9 +96,9 @@ class PartnersController extends Controller
         // Prepend https:// if not already present
         $validated['url'] = str_replace('https://', '', $request->url);
     
-        $partner = Partner::where('id', $id)->first();
+        $partner = Client::where('id', $id)->first();
         if (empty($partner)) {
-            return redirect()->back()->with('error_message', 'Partner not found!');
+            return redirect()->back()->with('error_message', 'Client not found!');
         }
     
         if ($request->hasFile('image_url')) {
@@ -116,7 +116,7 @@ class PartnersController extends Controller
     
         return redirect()->route('partners.show', [
             'partner' => $partner
-        ])->with('success_message', 'Partner updated successfully!');
+        ])->with('success_message', 'Client updated successfully!');
     }
 
     /**
@@ -124,9 +124,9 @@ class PartnersController extends Controller
      */
     public function destroy(string $id)
     {
-        $partner = Partner::where('id', $id)->first();
+        $partner = Client::where('id', $id)->first();
         if(empty($partner)) {
-            return redirect()->back()->with('error_message', 'Partner not found!');
+            return redirect()->back()->with('error_message', 'Client not found!');
         }
 
         // Delete the old image if it exists

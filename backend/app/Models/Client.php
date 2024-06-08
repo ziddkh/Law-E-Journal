@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Partner extends Model
+class Client extends Model
 {
     use SoftDeletes, LogsActivity, Searchable;
 

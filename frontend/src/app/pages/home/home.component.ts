@@ -3,7 +3,7 @@ import { SettingService } from '../../services/setting/setting.service';
 import { HomeService } from '../../services/api/home/home.service';
 import { Banner } from '../../models/banner';
 import { ClientReview } from '../../models/client-review';
-import { Partner } from '../../models/partner';
+import { Client } from '../../models/client';
 import { Post } from '../../models/post';
 import { Profile } from '../../models/profile';
 import { Service } from '../../models/service';
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   banners: Banner[] = []
   clientReviews: ClientReview[] = []
-  partners: Partner[] = []
+  partners: Client[] = []
   posts: Post[] = []
   profiles: Profile[] = []
   services: Service[] = []

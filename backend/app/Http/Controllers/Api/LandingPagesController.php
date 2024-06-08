@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\ClientReview;
 use App\Models\CompanyInformation;
-use App\Models\Partner;
+use App\Models\Client;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Service;
@@ -42,7 +42,7 @@ class LandingPagesController extends Controller
         $services = Service::orderBy('id', 'DESC')->get();
 
         // Get all partners ordered by latest
-        $partners = Partner::orderBy('id', 'DESC')->get();
+        $partners = Client::orderBy('id', 'DESC')->get();
 
         // Get latest 10 client reviews
         $clientReviews = ClientReview::orderBy('id', 'DESC')

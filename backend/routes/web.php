@@ -7,7 +7,7 @@ use App\Http\Controllers\Web\CompanyInformationsController;
 use App\Http\Controllers\Web\ConsultationRequestController;
 use App\Http\Controllers\Web\GalleriesController;
 use App\Http\Controllers\Web\HomeController;
-use App\Http\Controllers\Web\PartnersController;
+use App\Http\Controllers\Web\ClientsController;
 use App\Http\Controllers\Web\PostsController;
 use App\Http\Controllers\Web\ProfilesController;
 use App\Http\Controllers\Web\ServicesController;
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('users', UsersController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('services', ServicesController::class);
-    Route::resource('partners', PartnersController::class);
+    Route::resource('partners', ClientsController::class);
     Route::resource('client-reviews', ClientReviewsController::class);
     Route::resource('profiles', ProfilesController::class);
     Route::resource('settings', SettingsController::class);

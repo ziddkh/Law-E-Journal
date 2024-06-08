@@ -1,4 +1,4 @@
-export interface Partner {
+export interface Client {
   name: string
   image_url: string
   ur: string

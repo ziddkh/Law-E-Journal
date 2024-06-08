@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="title-block">
-        <h1 class="title">Edit Partner</h1>
+        <h1 class="title">Edit Client</h1>
     </div>
 
     @if(Session::has('success_message'))
@@ -35,7 +35,7 @@
                     <label for="image_url">Image</label>
                     @if($partner->image_url)
                         <div class="mb-2">
-                            <img src="{{ Storage::url($partner->image_url) }}" alt="Partner Image" class="img-thumbnail" width="150">
+                            <img src="{{ Storage::url($partner->image_url) }}" alt="Client Image" class="img-thumbnail" width="150">
                         </div>
                     @endif
                     <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">

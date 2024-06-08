@@ -91,11 +91,11 @@
             </a>
         </li>
 
-        <!-- Nav Item - Partners -->
+        <!-- Nav Item - Clients -->
         <li class="nav-item {{ request()->routeIs('partners*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('partners.index') }}">
                 <i class="fas fa-fw fa-handshake"></i>
-                <span>{{ __('Partners') }}</span>
+                <span>{{ __('Clients') }}</span>
             </a>
         </li>
 

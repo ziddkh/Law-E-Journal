@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="title-block">
-        <h1 class="title">Create Partner</h1>
+        <h1 class="title">Create Client</h1>
     </div>
 
     @if(Session::has('success_message'))

@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Partner Management</h1>
+            <h1 class="page-header">Client Management</h1>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Search Partner</h3>
+                        <h3 class="panel-title">Search Client</h3>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('partners.index') }}" method="GET">
@@ -52,11 +52,11 @@
             <div class="panel panel-default">
                 <div class="card">
                     <div class="panel-heading" style="display: flex; align-items: center; justify-content: space-between;padding-bottom:10px">
-                        <h3 class="panel-title">Partners</h3>
+                        <h3 class="panel-title">Clients</h3>
                         <div>
                             <a href="{{ route('partners.create') }}" class='btn btn-primary'>
                                 <i class="fas fa-plus"></i>
-                                Create Partner
+                                Create Client
                             </a>
                         </div>
                     </div>
