@@ -1,0 +1,56 @@
+<section id="article-banner" class="h-[200px] w-full mb-10">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
+    <h1
+      class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">Layanan</h1>
+  </div>
+</section>
+
+<section>
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <!-- Section 1: Capture Attention & Convey Benefits with a Compelling Headline -->
+    <div class="text-center my-8">
+      <h1 class="text-4xl font-bold mb-4">Layanan Hukum Ahli untuk Kebutuhan
+        Anda</h1>
+      <p class="text-lg text-gray-600 text-nowrap">Kami memberikan solusi hukum
+        terbaik
+        untuk membantu Anda menghadapi tantangan hukum yang kompleks dengan
+        percaya diri.</p>
+    </div>
+
+    <!-- Section 2: Explain How your Services Solve Problems and Create Great Outcomes -->
+    <div class="my-8">
+      <h2 class="text-3xl font-semibold mb-4">Bagaimana Layanan Kami Membantu
+        Anda?</h2>
+      <p class="text-gray-700 mb-4">
+        Tim hukum kami yang berpengalaman menawarkan serangkaian layanan yang
+        dirancang untuk menyelesaikan masalah hukum Anda secara efisien dan
+        efektif. Kami berkomitmen untuk mencapai hasil terbaik bagi klien kami
+        melalui kerja keras, perhatian yang dipersonalisasi, dan pemahaman
+        mendalam tentang hukum.
+      </p>
+      <p class="text-gray-700">
+        Baik Anda memerlukan bantuan terkait klaim cedera pribadi, masalah hukum
+        keluarga, nasihat hukum perusahaan, atau layanan hukum lainnya, kami
+        memiliki keahlian untuk memandu Anda melalui proses tersebut dan
+        mendapatkan hasil yang baik.
+      </p>
+    </div>
+
+    <!-- Section 3: Services Data -->
+    <div *ngIf="isLoading" class="text-center">
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="!isLoading">
+      <h2 class="text-3xl font-semibold mb-4">Layanan Kami</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let service of services" class="relative group bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-xl">
+          <img [src]="service.signed_image_url" alt="{{ service.name }}" class="w-full h-48 object-cover">
+          <div class="p-4 text-center">
+            <h3 class="text-xl font-semibold mb-2">{{ service.name }}</h3>
+            <a href="#" class="inline-block mt-4 px-4 py-2 bg-custom-gold text-white rounded-full transition-transform transform hover:scale-105">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

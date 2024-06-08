@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'kontak-kami',
     loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule)
+  },
+  {
+    path: 'layanan',
+    loadChildren: () => import('./pages/services/services.module').then(m => m.ServicesModule)
   }
 ];
 

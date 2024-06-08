@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CompanyInformationsController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
+use App\Http\Controllers\Api\ServicesController;
 use App\Models\ConsultationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,8 @@ Route::prefix('consultation-requests')->group(function() {
 
 Route::prefix('company-informations')->group(function() {
     Route::get('/show', [CompanyInformationsController::class, 'show']);
+});
+
+Route::prefix('services')->group(function() {
+    Route::get('/', [ServicesController::class, 'index']);
 });
