@@ -56,8 +56,14 @@ class PostsController extends Controller
             ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
+
         return response()->json([
-            'post' => $post
+            'post' => $post,
+            'recommended_post' => $recommendedPosts
         ], JsonResponse::HTTP_OK);
     }
 }
