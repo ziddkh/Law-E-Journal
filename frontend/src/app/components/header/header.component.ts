@@ -1,5 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { SettingService } from '../../services/setting/setting.service';
 
 interface NavigationProps {
   name: string
@@ -46,10 +47,13 @@ export class HeaderComponent {
       }]
     },
     { name: "Tentang Kami", url: "/tentang-kami", submenu: [] },
-    { name: "Kontak", url: "/kontak", submenu: [] },
+    { name: "Kontak Kami", url: "/kontak-kami", submenu: [] },
   ]
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private renderer: Renderer2,
+    public settingService: SettingService
+  ) {}
 
   toggleSidebar() {
     this.isSidebarActive = !this.isSidebarActive;

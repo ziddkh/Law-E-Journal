@@ -10,6 +10,6 @@ export class SettingService {
   constructor() { }
 
   async getSettings(params: any = {}): Promise<any> {
-    return await axios.get(`${environment.api_url}/settings`, { params })
+    return await axios.get(`${environment.api_url}/contact-us`, { params })
   }
 }

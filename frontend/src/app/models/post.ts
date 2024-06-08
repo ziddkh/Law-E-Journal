@@ -9,4 +9,5 @@ export interface Post {
   image_url: string
   start_date_formatted: string
   end_date_formatted: string
+  signed_image_url: string
 }

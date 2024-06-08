@@ -1,30 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleComponent } from './article.component';
+import { AboutUsComponent } from './about-us.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticleComponent
-  },
-  {
-    path: ':slug',
-    component: ViewComponent,
+    component: AboutUsComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    ArticleComponent,
-    ViewComponent
+    AboutUsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ]
 })
-export class ArticleModule { }
+export class AboutUsModule { }

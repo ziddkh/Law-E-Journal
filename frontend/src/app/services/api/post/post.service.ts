@@ -13,9 +13,9 @@ export class PostService {
     return await axios.get(`${environment.api_url}/posts`, { params })
   }
 
-  async getPost(id: number): Promise<any> {
-    return await axios.get(`${environment.api_url}/posts`, {
-      params: {id}
+  async getPost(slug: string): Promise<any> {
+    return await axios.get(`${environment.api_url}/posts/show`, {
+      params: {slug}
     })
   }
 }

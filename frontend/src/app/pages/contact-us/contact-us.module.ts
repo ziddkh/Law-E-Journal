@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleComponent } from './article.component';
+import { ContactUsComponent } from './contact-us.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticleComponent
-  },
-  {
-    path: ':slug',
-    component: ViewComponent,
+    component: ContactUsComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    ArticleComponent,
-    ViewComponent
+    ContactUsComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +21,4 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ]
 })
-export class ArticleModule { }
+export class ContactUsModule { }

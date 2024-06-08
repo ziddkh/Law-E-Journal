@@ -11,10 +11,8 @@ class SettingsSeeder extends Seeder
     {
         $keys = $this->keys();
         foreach($keys as $key) {
-            Setting::create([
+            Setting::firstOrCreate([
                 'key' => $key,
-                'created_at' => now(),
-                'updated_at' => now()
             ]);
         }
     }
@@ -29,7 +27,9 @@ class SettingsSeeder extends Seeder
             'Instagram',
             'Twitter',
             'Youtube',
-            'Tik-Tok'
+            'Tik-Tok',
+            'Address',
+            'Google Map',
         ];
     }
 }

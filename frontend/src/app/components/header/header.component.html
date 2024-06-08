@@ -2,8 +2,15 @@
   <div class="max-w-5xl px-4 lg:px-0 mx-auto">
     <div class="flex justify-between items-center">
       <a href="#" class="inline-flex items-center gap-3">
-        <div class="w-10 h-10 bg-yellow-700 rounded-full"></div>
-        <span class="font-bold text-lg uppercase">SSP Advocaten</span>
+        <ng-container *ngIf="settingService.getCompanyLogo(); else defaultCompanyLogo">
+          <div class="max-h-10">
+            <img src="" alt="">
+          </div>
+        </ng-container>
+        <ng-template #defaultCompanyLogo>
+          <div class="w-10 h-10 bg-yellow-700 rounded-full"></div>
+        </ng-template>
+        <span class="font-bold text-lg uppercase">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
       </a>
       <nav class="navigation-circle hidden sm:block">
         <ul class="flex items-center gap-3">
@@ -25,7 +32,7 @@
                 <div
                   *hlMenuItems
                   @toggleAnimation
-                  class="z-30 absolute left-0 w-56 mt-2 origin-top-left bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                  class="z-30 absolute left-0 w-56 mt-2 origin-top-left bg-slate-50 border border-gray-200 divide-y divide-slate-200 rounded-md shadow-lg outline-none"
                 >
                   <div *ngFor="let subNav of nav.submenu" class="py-1">
                     <a
@@ -43,7 +50,7 @@
               </div>
             </ng-container>
             <ng-template #standAloneNav>
-              <a [routerLink]="nav.url" routerLinkActive="font-bold" class="text-sm block px-4 py-2 text-slate-500 hover:text-slate-900">{{ nav.name }}</a>
+              <a [routerLink]="nav.url" class="text-sm block px-4 py-2 text-slate-500 hover:text-slate-900">{{ nav.name }}</a>
             </ng-template>
           </li>
         </ul>

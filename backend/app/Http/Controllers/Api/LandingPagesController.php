@@ -42,9 +42,6 @@ class LandingPagesController extends Controller
         // Get all services ordered by latest
         $services = Service::orderBy('id', 'DESC')->get();
 
-        // Get all settings ordered by latest
-        $settings = Setting::orderBy('id', 'DESC')->get();
-
         // Get all partners ordered by latest
         $partners = Partner::orderBy('id', 'DESC')->get();
 
@@ -61,7 +58,6 @@ class LandingPagesController extends Controller
             'banners' => $banners,
             'profiles' => $profiles,
             'services' => $services,
-            'settings' => $settings,
             'partners' => $partners,
             'client_reviews' => $clientReviews,
             'company_information' => $companyInformation ?? NULL

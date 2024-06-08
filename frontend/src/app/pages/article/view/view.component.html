@@ -1,0 +1,45 @@
+<section *ngIf="!isLoading" id="article-banner" class="min-h-[200px] w-full mb-10 h-[200px]" [style.background-image]="'linear-gradient(to top, rgba(0, 0, 0, .9), rgba(0, 0, 0, .3)), url(' + post.signed_image_url + ')'">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto flex items-center h-full">
+    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">{{ post.title }}</h1>
+  </div>
+</section>
+
+<section class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
+  <div class="flex gap-6 flex-col sm:flex-row">
+    <div class="flex-1">
+      <div class="post-content" [innerHTML]="getSafeContent()"></div>
+    </div>
+    <div class="w-full sm:w-[256px] relative">
+      <aside class="sticky top-10 w-full">
+        <h3 class="text-lg sm:text-end font-bold mb-4 sm:mb-6 h-10 w-full">Rekomendasi</h3>
+        <div class="flex flex-col gap-4 w-full">
+          <ng-container *ngIf="isLoading; else showRecommendationPosts">
+            <ng-container *ngFor="let dummy of [1,2,3,4,5]">
+              <div class="w-full flex gap-2">
+                <span class="animate-pulse w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-slate-200">
+                </span>
+                <div class="flex-1">
+                  <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
+                  <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-template #showRecommendationPosts>
+            <ng-container *ngFor="let post of recomendedPosts">
+              <article (click)="viewPost(post.slug)" class="cursor-pointer w-full flex gap-2">
+                <div class="w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-slate-200">
+                  <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                  <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                </div>
+              </article>
+            </ng-container>
+          </ng-template>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

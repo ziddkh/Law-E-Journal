@@ -10,6 +10,6 @@ export class HomeService {
   constructor() { }
 
   async getHomeData(params: any = {}): Promise<any> {
-    return await axios.get(`${environment.api_url}`, { params })
+    return await axios.get(`${environment.api_url}/home-data`, { params })
   }
 }

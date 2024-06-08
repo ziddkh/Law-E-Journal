@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingPagesController::class, 'index']);
+Route::get('/home-data', [LandingPagesController::class, 'index']);
 
 Route::prefix('posts')->group(function() {
     Route::get('/', [PostsController::class, 'index']);

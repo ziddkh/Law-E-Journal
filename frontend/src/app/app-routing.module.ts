@@ -17,7 +17,15 @@ const routes: Routes = [
   {
     path: 'media',
     loadChildren: () => import('./pages/news/news.module').then(m => m.NewsModule)
-  },
+    },
+    {
+      path: 'tentang-kami',
+      loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsModule)
+    },
+    {
+      path: 'kontak-kami',
+      loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule)
+    }
 ];
 
 @NgModule({

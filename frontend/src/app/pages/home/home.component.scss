@@ -28,8 +28,7 @@
 }
 
 swiper-container {
-  width: 100vw;
-  height: 80vh;
+  @apply w-screen h-[640px] lg:h-[80vh];
 }
 
 .my-swiper-img-wrapper::after {
