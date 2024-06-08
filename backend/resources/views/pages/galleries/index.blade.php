@@ -67,7 +67,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
-                                        <th>Imager</th>
+                                        <th>Image</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
