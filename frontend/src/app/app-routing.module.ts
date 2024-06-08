@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'kontak-kami',
     loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule)
+  },
+  {
+    path: 'galeri',
+    loadChildren: () => import('./pages/gallery/gallery.module').then(m => m.GalleryModule)
   }
 ];
 

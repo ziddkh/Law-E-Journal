@@ -17,7 +17,7 @@ class GalleriesController extends Controller
      */
     public function index(Request $request)
     {
-        $galleries = Gallery::search($request)->orderBy('id', 'DESC')->get(10);
+        $galleries = Gallery::search($request)->orderBy('id', 'DESC')->paginate(10);
 
         return response()->json([
             'galleries' => $galleries
