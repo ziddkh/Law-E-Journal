@@ -40,7 +40,7 @@ class PartnersController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:100',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image_url' => 'nullable|image|mimes:webp,jpeg,png,jpg,svg|max:2048',
             'url' => 'required'
         ]);
 
@@ -95,25 +95,25 @@ class PartnersController extends Controller
 
         // Prepend https:// if not already present
         $validated['url'] = str_replace('https://', '', $request->url);
-    
+
         $partner = Partner::where('id', $id)->first();
         if (empty($partner)) {
             return redirect()->back()->with('error_message', 'Partner not found!');
         }
-    
+
         if ($request->hasFile('image_url')) {
             // Delete the old image if it exists
             if ($partner->image_url) {
                 \Storage::disk('public')->delete($partner->image_url);
             }
-    
+
             // Store the new image
             $imagePath = $request->file('image_url')->store('partners', 'public');
             $validated['image_url'] = $imagePath;
         }
-    
+
         $partner->update($validated);
-    
+
         return redirect()->route('partners.show', [
             'partner' => $partner
         ])->with('success_message', 'Partner updated successfully!');
@@ -133,7 +133,7 @@ class PartnersController extends Controller
         if ($partner->image_url) {
             \Storage::disk('public')->delete($partner->image_url);
         }
-        
+
         $partner->delete();
         return redirect()->route('partners.index')
             ->with('success_message', 'Service deleted successfully.');

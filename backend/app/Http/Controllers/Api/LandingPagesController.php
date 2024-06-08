@@ -46,7 +46,12 @@ class LandingPagesController extends Controller
 
         // Get latest 10 client reviews
         $clientReviews = ClientReview::orderBy('id', 'DESC')
-            ->take(10)
+            ->take(6)
+            ->get();
+
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(7)
             ->get();
 
         $companyInformation = CompanyInformation::orderBy('id', 'DESC')->first();
@@ -59,6 +64,7 @@ class LandingPagesController extends Controller
             'services' => $services,
             'partners' => $partners,
             'client_reviews' => $clientReviews,
+            'recommended_posts' => $recommendedPosts,
             'company_information' => $companyInformation ?? NULL
         ], JsonResponse::HTTP_OK);
     }
