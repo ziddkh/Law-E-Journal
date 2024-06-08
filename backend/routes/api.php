@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CompanyInformationsController;
 use App\Http\Controllers\Api\ContactUsController;
+use App\Http\Controllers\Api\GalleriesController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
 use App\Models\ConsultationRequest;
@@ -36,4 +37,8 @@ Route::prefix('consultation-requests')->group(function() {
 
 Route::prefix('company-informations')->group(function() {
     Route::get('/show', [CompanyInformationsController::class, 'show']);
+});
+
+Route::prefix('galleries')->group(function() {
+    Route::get('/', [GalleriesController::class, 'index']);
 });
