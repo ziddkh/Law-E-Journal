@@ -54,7 +54,8 @@ export class PostsComponent {
     }, 500)
   }
 
-  viewPost(slug: string) {
-    this.router.navigateByUrl(`/artikel/${slug}`)
+  viewPost(type: string, slug: string) {
+    let typeToLower = type.toLowerCase()
+    this.router.navigateByUrl(`/postingan/${typeToLower}/${slug}`)
   }
 }

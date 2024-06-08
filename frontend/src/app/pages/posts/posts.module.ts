@@ -16,10 +16,6 @@ const routes: Routes = [
     component: PostsComponent
   },
   {
-    path: ':type/:slug',
-    component: ViewComponent
-  },
-  {
     path: 'artikel',
     component: ArticleComponent
   },
@@ -30,7 +26,11 @@ const routes: Routes = [
   {
     path: 'berita',
     component: NewsComponent
-  }
+  },
+  {
+    path: ':type/:slug',
+    component: ViewComponent
+  },
 ]
 
 @NgModule({
@@ -38,7 +38,8 @@ const routes: Routes = [
     PostsComponent,
     ArticleComponent,
     MediaComponent,
-    NewsComponent
+    NewsComponent,
+    ViewComponent,
   ],
   imports: [
     CommonModule,

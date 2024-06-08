@@ -36,9 +36,7 @@ Route::prefix('consultation-requests')->group(function() {
     Route::post('/submit', [ConsultationRequest::class, 'submit']);
 });
 
-Route::prefix('company-informations')->group(function() {
-    Route::get('/show', [CompanyInformationsController::class, 'show']);
-});
+Route::get('about', [CompanyInformationsController::class, 'show']);
 
 Route::prefix('galleries')->group(function() {
     Route::get('/', [GalleriesController::class, 'index']);
