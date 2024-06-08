@@ -67,19 +67,21 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
+                                        <th>URL</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if(count($partners) <= 0)
                                         <tr>
-                                            <td colspan="3">No data</td>
+                                            <td colspan="4">No data</td>
                                         </tr>
                                     @else 
                                         @foreach($partners as $partner)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $partner->name }}</td>
+                                                <td>{{ $partner->url_formatted }}</td>
                                                 <td>
                                                     <div class="d-flex" style="gap:5px">
                                                         <a href="{{ route('partners.show', [
