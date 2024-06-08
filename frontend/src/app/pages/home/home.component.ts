@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   posts: Post[] = []
   profiles: Profile[] = []
   services: Service[] = []
+  recommendedPosts: Post[] = []
 
   constructor(
     private homeService: HomeService,
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
         this.posts = response.data.posts
         this.profiles = response.data.profiles
         this.services = response.data.services
+        this.recommendedPosts = response.data.recommended_posts
       })
       .catch(error => {
         console.log(error)
