@@ -74,6 +74,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Galleries -->
+        <li class="nav-item {{ request()->routeIs('galleries*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('galleries.index') }}">
+                <i class="fas fa-fw fa-images"></i>
+                <span>{{ __('Galleries') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Services -->
         <li class="nav-item {{ request()->routeIs('services*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('services.index') }}">
