@@ -80,8 +80,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="end_date">End Date <sup style='color: red'>*</sup></label>
-                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date') }}" required>
+                    <label for="end_date">End Date</label>
+                    <input type="date" class="form-control datepicker @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date') }}">
                     @error('end_date')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
