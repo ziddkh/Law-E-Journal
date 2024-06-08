@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\ClientReview;
+use App\Models\CompanyInformation;
 use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Profile;
@@ -52,6 +53,8 @@ class LandingPagesController extends Controller
             ->take(10)
             ->get();
 
+        $companyInformation = CompanyInformation::orderBy('id', 'DESC')->first();
+
         // Return the collected data as JSON response
         return response()->json([
             'posts' => $posts,
@@ -60,7 +63,8 @@ class LandingPagesController extends Controller
             'services' => $services,
             'settings' => $settings,
             'partners' => $partners,
-            'client_reviews' => $clientReviews
+            'client_reviews' => $clientReviews,
+            'company_information' => $companyInformation ?? NULL
         ], JsonResponse::HTTP_OK);
     }
 

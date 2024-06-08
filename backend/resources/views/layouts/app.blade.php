@@ -106,6 +106,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Company Informations -->
+        <li class="nav-item {{ request()->routeIs('company-informations*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('company-informations.index') }}">
+                <i class="fas fa-fw fa-info-circle"></i>
+                <span>{{ __('Company Informations') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Settings -->
         <li class="nav-item {{ request()->routeIs('settings*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('settings.index') }}">

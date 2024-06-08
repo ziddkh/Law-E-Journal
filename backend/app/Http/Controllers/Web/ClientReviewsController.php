@@ -54,7 +54,7 @@ class ClientReviewsController extends Controller
 
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Testimonials created successfully.');
+        ])->with('success_message', 'Testimonial created successfully.');
     }
 
     /**
@@ -64,7 +64,7 @@ class ClientReviewsController extends Controller
     {
         $clientReview = ClientReview::where('id', $id)->first();
         if(empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
         }
 
         return view('pages.client-reviews.show', [
@@ -94,7 +94,7 @@ class ClientReviewsController extends Controller
     
         $clientReview = ClientReview::where('id', $id)->first();
         if (empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
         }
     
         if ($request->hasFile('image_url')) {
@@ -112,7 +112,7 @@ class ClientReviewsController extends Controller
     
         return redirect()->route('client-reviews.show', [
             $clientReview->id
-        ])->with('success_message', 'Testimonials updated successfully!');
+        ])->with('success_message', 'Testimonial updated successfully!');
     }
     
     /**
@@ -122,7 +122,7 @@ class ClientReviewsController extends Controller
     {
         $clientReview = ClientReview::where('id', $id)->first();
         if(empty($clientReview)) {
-            return redirect()->back()->with('error_message', 'ClientReview not found!');
+            return redirect()->back()->with('error_message', 'Testimonial not found!');
         }
 
         // Delete the old image if it exists
@@ -132,6 +132,6 @@ class ClientReviewsController extends Controller
         
         $clientReview->delete();
         return redirect()->route('client-reviews.index')
-            ->with('success_message', 'Testimonials deleted successfully.');;
+            ->with('success_message', 'Testimonial deleted successfully.');;
     }
 }

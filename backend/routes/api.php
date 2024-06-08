@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CompanyInformationsController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
@@ -30,4 +31,8 @@ Route::prefix('contact-us')->group(function() {
 
 Route::prefix('consultation-requests')->group(function() {
     Route::post('/submit', [ConsultationRequest::class, 'submit']);
+});
+
+Route::prefix('company-informations')->group(function() {
+    Route::get('/show', [CompanyInformationsController::class, 'show']);
 });
