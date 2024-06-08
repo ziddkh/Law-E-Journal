@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/api/post/post.service';
-import { Post } from '../../models/post';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Post } from '../../../models/post';
+import { PostService } from '../../../services/api/post/post.service';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrl: './article.component.scss'
+  selector: 'app-news',
+  templateUrl: './news.component.html',
+  styleUrl: './news.component.scss'
 })
-export class ArticleComponent implements OnInit {
+export class NewsComponent {
   isLoading: boolean = false
 
   posts: Post[] = []
@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit {
 
   getPosts(params: any = {}) {
     this.isLoading = true
-    this.postService.getPosts({ type: 'Article', ...params })
+    this.postService.getPosts({ type: 'News', ...params })
       .then(response => {
         this.posts = response.data.posts.data
         this.recomendedPosts = response.data.recommended_posts

@@ -1,0 +1,79 @@
+<section id="article-banner" class="h-[200px] w-full mb-10">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
+    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">Artikel</h1>
+  </div>
+</section>
+
+<section id="article-content" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+  <div class="flex gap-6 flex-col sm:flex-row">
+    <div class="flex-1">
+      <div class="relative mb-6">
+        <input type="text" (input)="searchPosts()" class="w-full px-3 h-[40px] placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Cari Artikel" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <ng-container *ngIf="isLoading; else showPosts">
+          <ng-container *ngFor="let dummy of [1,2,3,4,5,6]">
+            <div class="col">
+              <div class="relative cursor-pointer">
+                <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                </span>
+                <div class="pt-2">
+                  <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
+                  <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        </ng-container>
+        <ng-template #showPosts>
+          <ng-container *ngFor="let post of posts">
+            <div class="col">
+              <article class="relative cursor-pointer" (click)="viewPost(post.slug)">
+                <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                  <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                </div>
+                <div class="p-1 pt-2">
+                  <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                  <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                </div>
+              </article>
+            </div>
+          </ng-container>
+        </ng-template>
+      </div>
+      <app-pagination></app-pagination>
+    </div>
+    <div class="w-full sm:w-[256px] relative">
+      <aside class="sticky top-10 w-full">
+        <h3 class="text-lg sm:text-end font-bold mb-4 sm:mb-6 h-10 w-full">Recommendation Post</h3>
+        <div class="flex flex-col gap-4 w-full">
+          <ng-container *ngIf="isLoading; else showRecommendationPosts">
+            <ng-container *ngFor="let dummy of [1,2,3,4,5]">
+              <div class="w-full flex gap-2">
+                <span class="animate-pulse w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-slate-200">
+                </span>
+                <div class="flex-1">
+                  <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
+                  <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-template #showRecommendationPosts>
+            <ng-container *ngFor="let post of recomendedPosts">
+              <article (click)="viewPost(post.slug)" class="cursor-pointer w-full flex gap-2">
+                <div class="w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-slate-200">
+                  <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                  <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                </div>
+              </article>
+            </ng-container>
+          </ng-template>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

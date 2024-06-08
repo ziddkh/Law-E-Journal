@@ -29,25 +29,15 @@ export class HeaderComponent {
 
   navigations: NavigationProps[] = [
     { name: "Beranda", url: "/", submenu: [] },
+    { name: "Tentang Kami", url: "/tentang-kami", submenu: [] },
+    { name: "Layanan", url: "/tentang", submenu: [] },
     {
       name: "Postingan",
-      url: "#",
-      submenu: [{
-        name: "Artikel",
-        url: '/artikel',
-        submenu: []
-      }, {
-        name: "Berita",
-        url: '/berita',
-        submenu: []
-      }, {
-        name: "Media",
-        url: '/media',
-        submenu: []
-      }]
+      url: "/postingan",
+      submenu: []
     },
-    { name: "Tentang Kami", url: "/tentang-kami", submenu: [] },
-    { name: "Kontak Kami", url: "/kontak-kami", submenu: [] },
+    { name: "Galeri", url: "/galeri", submenu: [] },
+    { name: "Kontak", url: "/kontak-kami", submenu: [] },
   ]
 
   constructor(

@@ -22,6 +22,7 @@ Route::get('/home-data', [LandingPagesController::class, 'index']);
 
 Route::prefix('posts')->group(function() {
     Route::get('/', [PostsController::class, 'index']);
+    Route::get('/get-by-type', [PostsController::class, 'getPostsByType']);
     Route::get('/show', [PostsController::class, 'show']);
 });
 

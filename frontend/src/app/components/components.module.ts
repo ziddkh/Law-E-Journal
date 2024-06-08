@@ -4,11 +4,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from "headlessui-angular";
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { MenuModule } from "headlessui-angular";
   exports: [
     HeaderComponent,
     FooterComponent,
+    PaginationComponent,
   ]
 })
 export class ComponentsModule { }
