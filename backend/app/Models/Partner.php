@@ -20,6 +20,7 @@ class Partner extends Model
 
     protected $appends = [
         'signed_image_url',
+        'url_formatted'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -37,5 +38,10 @@ class Partner extends Model
     public function getSignedImageUrlAttribute()
     {
         return asset("storage/$this->image_url");
+    }
+
+    public function getUrlFormattedAttribute()
+    {
+        return 'https://' . $this->url;
     }
 }

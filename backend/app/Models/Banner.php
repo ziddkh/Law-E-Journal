@@ -22,6 +22,7 @@ class Banner extends Model
 
     protected $appends = [
         'signed_image_url',
+        'cta_button_url_formatted'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -39,5 +40,10 @@ class Banner extends Model
     public function getSignedImageUrlAttribute()
     {
         return asset("storage/$this->image_url");
+    }
+
+    public function getCtaButtonUrlFormattedAttribute()
+    {
+        return 'https://' . $this->cta_button_url;
     }
 }

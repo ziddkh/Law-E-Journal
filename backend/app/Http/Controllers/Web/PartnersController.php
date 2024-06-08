@@ -44,6 +44,9 @@ class PartnersController extends Controller
             'url' => 'required'
         ]);
 
+        // Prepend https:// if not already present
+        $validated['url'] = str_replace('https://', '', $request->url);
+
         if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('partners', 'public');
             $validated['image_url'] = $imagePath;
@@ -89,6 +92,9 @@ class PartnersController extends Controller
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'url' => 'required'
         ]);
+
+        // Prepend https:// if not already present
+        $validated['url'] = str_replace('https://', '', $request->url);
     
         $partner = Partner::where('id', $id)->first();
         if (empty($partner)) {

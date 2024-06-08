@@ -39,8 +39,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="url">URL <sup style='color: red'>*</sup></label>
-                    <input type="url" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ old('url') }}" required>
+                    <label for="url">URL</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">https://</span>
+                        </div>
+                        <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ old('url') }}">
+                    </div>
                     @error('url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
