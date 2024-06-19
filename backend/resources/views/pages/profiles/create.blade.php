@@ -1,5 +1,25 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .note-toolbar {
+            margin: 0 !important;
+            padding: 0 0 5px 5px !important;
+            background-color: rgba(0,0,0,.03) !important;
+            border-bottom: 1px solid rgba(0,0,0,.125) !important;
+            display: block !important;
+        }
+
+        .note-toolbar .btn {
+            color: black !important;
+        }
+
+        .note-editor.note-frame .note-editing-area .note-editable {
+            width: auto !important;
+        }
+    </style>
+@stop
+
 @section('main-content')
     <div class="title-block">
         <h1 class="title">Create Profile</h1>
@@ -32,7 +52,12 @@
 
                 <div class="form-group">
                     <label for="position">Position <sup style='color: red'>*</sup></label>
-                    <input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" value="{{ old('position') }}" required>
+                    <select class="form-control" name="position" id="position">
+                        <option value="">Please Select</option>
+                        <option value="Founder" {{ old('position') == 'Founder' ? 'selected' : '' }}>Founder</option>
+                        <option value="Advisor" {{ old('position') == 'Advisor' ? 'selected' : '' }}>Advisor</option>
+                        <option value="Lawyer" {{ old('position') == 'Lawyer' ? 'selected' : '' }}>Lawyer</option>
+                    </select>
                     @error('position')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -68,4 +93,23 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#text-area").summernote({
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', [ 'codeview', 'help']],
+                ],
+            });
+        });
+    </script>
+@stop
 
