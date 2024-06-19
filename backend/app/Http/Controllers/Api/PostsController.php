@@ -23,11 +23,11 @@ class PostsController extends Controller
                 $query->whereIn('tag', $request->tags);
             });
         }
-        $posts = $posts->published()
-            ->orderBy('id', 'DESC')
-            ->paginate(10);
+        $posts = $posts->published();
 
-        $articlePosts = [];
+        $articlePosts = $posts->article()->orderBy('id', 'DESC')->take(9);
+        $mediaPosts = $posts->media()->orderBy('id', 'DESC')->take(9);
+        $newsPosts = $posts->news()->orderBy('id', 'DESC')->take(9);
 
         $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
         $recommendedPosts = Post::recommended()
@@ -36,7 +36,9 @@ class PostsController extends Controller
             ->get();
 
         return response()->json([
-            'posts' => $posts,
+            'article_posts' => $articlePosts,
+            'media_posts' => $mediaPosts,
+            'news_posts' => $newsPosts,
             'recommended_posts' => $recommendedPosts,
         ], JsonResponse::HTTP_OK);
     }

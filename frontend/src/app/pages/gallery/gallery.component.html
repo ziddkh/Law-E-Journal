@@ -3,23 +3,26 @@
     <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight text-slate-50">Galeri</h1>
   </div>
 </section>
-
-<section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-    <ng-container *ngIf="isLoading; else showGalleries">
-      <ng-container *ngFor="let dummy of [1,2,3,4]">
-        <div class="relative cursor-pointer">
-          <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
-          </span>
-          <div class="pt-2">
-            <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
-            <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+<ng-container *ngIf="isLoading; else showGalleries">
+  <section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <ng-container *ngFor="let dummy of [1,2,3,4]">
+          <div class="relative cursor-pointer">
+            <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+            </span>
+            <div class="pt-2">
+              <span class="animate-pulse h-5 w-full bg-slate-200 block mb-2"></span>
+              <span class="animate-pulse h-5 w-[140px] bg-slate-200 block"></span>
+            </div>
           </div>
-        </div>
-      </ng-container>
-    </ng-container>
-    <ng-template #showGalleries>
-      <lightgallery [settings]="lightGallerySettings" [onBeforeSlide]="lightGalleryOnBeforeSlide">
+        </ng-container>
+    </div>
+  </section>
+</ng-container>
+<ng-template #showGalleries>
+  <ng-container *ngIf="galleries.length > 0; else emptyGallery">
+  <section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <ng-container *ngFor="let gallery of galleries">
           <a [href]="gallery.signed_image_url" class="relative cursor-pointer">
             <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
@@ -32,7 +35,11 @@
             </div>
           </a>
         </ng-container>
-      </lightgallery>
-    </ng-template>
-  </div>
-</section>
+      </div>
+    </section>
+  </ng-container>
+  <ng-template class="justify-self-center" #emptyGallery>
+      <app-empty-page module="galeri"></app-empty-page>
+  </ng-template>
+</ng-template>
+

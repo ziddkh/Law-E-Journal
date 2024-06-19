@@ -8,6 +8,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { MediaComponent } from './media/media.component';
 import { ViewComponent } from './view/view.component';
 import { NewsComponent } from './news/news.component';
+import { EmptyPageModule } from '../../components/empty-page/empty-page.module';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ComponentsModule,
+    EmptyPageModule,
     RouterModule.forChild(routes),
   ]
 })

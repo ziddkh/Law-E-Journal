@@ -9,9 +9,14 @@
 <ng-template #showAbout>
   <section class="">
     <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-      <div class="block mb-10">
-        <p [innerHTML]="getSafeContent()"></p>
-      </div>
+      <ng-container *ngIf="!!companyInformation.description; else emptyCompanyInformation">
+        <div class="block mb-10">
+          <p [innerHTML]="getSafeContent()"></p>
+        </div>
+      </ng-container>
+      <ng-template #emptyCompanyInformation>
+        <app-empty-page module="Informasi"></app-empty-page>
+      </ng-template>
       <div id="founder" class="mb-10">
         <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founder and Managing Partner</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">

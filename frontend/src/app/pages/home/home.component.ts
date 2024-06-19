@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
         this.services = response.data.services
         this.recommendedPosts = response.data.recommended_posts
         this.companyInformation = response.data.company_information
+        console.log(this.banners)
       })
       .catch(error => {
         console.log(error)

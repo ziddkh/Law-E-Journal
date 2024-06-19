@@ -11,7 +11,9 @@ import { PostService } from '../../services/api/post/post.service';
 export class PostsComponent {
   isLoading: boolean = false
 
-  posts: Post[] = []
+  articlePosts: Post[] = []
+  mediaPosts: Post[] = []
+  newsPosts: Post[] = []
   recomendedPosts: Post[] = []
   recommendedPost!: Post
 
@@ -31,7 +33,9 @@ export class PostsComponent {
     this.isLoading = true
     this.postService.getPosts({ ...params })
       .then(response => {
-        this.posts = response.data.posts.data
+        this.articlePosts = response.data.article_posts
+        this.mediaPosts = response.data.media_posts
+        this.newsPosts = response.data.news_posts
         this.recomendedPosts = response.data.recommended_posts
         this.recommendedPost = response.data.recommended_posts[0]
         this.recomendedPosts.shift()

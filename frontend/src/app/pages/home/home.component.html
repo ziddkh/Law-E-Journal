@@ -1,6 +1,6 @@
 <ng-container *ngIf="!isLoading">
   <!-- Banners -->
-  <ng-container *ngIf="banners.length > 0 && recommendedPosts.length > 0 && !!companyInformation.short_description && services.length > 0 && clientReviews.length > 0 && settingService.getCompanyLogo() && clients.length > 0; else emptyAll">
+  <ng-container *ngIf="banners.length > 0 || recommendedPosts.length > 0 || !!companyInformation.short_description || services.length > 0 || clientReviews.length > 0 || settingService.getCompanyLogo() || clients.length > 0; else emptyAll">
     <ng-container *ngIf="banners.length > 0; else emptyBanner">
       <swiper-container id="hero" lazy="true" navigation="false" effect="fade" pagination="true" pagination-clickable="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
           <ng-container *ngFor="let banner of banners">
