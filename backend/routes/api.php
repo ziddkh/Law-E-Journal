@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\GalleriesController;
 use App\Http\Controllers\Api\LandingPagesController;
 use App\Http\Controllers\Api\PostsController;
+use App\Http\Controllers\Api\ProfilesController;
 use App\Http\Controllers\Api\ServicesController;
 use App\Models\ConsultationRequest;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,9 @@ Route::prefix('services')->group(function() {
 
 Route::prefix('client-reviews')->group(function() {
     Route::get('/', [ClientReviewsController::class, 'index']);
+});
+
+Route::prefix('profiles')->group(function() {
+    Route::get('/', [ClientReviewsController::class, 'index']);
+    Route::get('/{id}', [ProfilesController::class, 'show']);
 });
