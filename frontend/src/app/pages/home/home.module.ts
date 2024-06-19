@@ -2,6 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
+import { EmptyComponentModule } from '../../components/empty-component/empty-component.module';
+import { EmptyPageModule } from '../../components/empty-page/empty-page.module';
 
 const routes: Routes = [
   {
@@ -16,6 +18,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    EmptyComponentModule,
+    EmptyPageModule,
     RouterModule.forChild(routes)
   ],
   schemas: [

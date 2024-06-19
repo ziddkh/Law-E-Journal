@@ -21,6 +21,7 @@
     "@angular/router": "^18.0.0",
     "axios": "^1.7.2",
     "headlessui-angular": "^0.0.9",
+    "lightgallery": "^2.7.2",
     "ng-multiselect-dropdown": "^1.0.0",
     "rxjs": "~7.8.0",
     "swiper": "^11.1.4",

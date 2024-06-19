@@ -1,6 +1,6 @@
 <section id="contact-banner" class="h-[200px] w-full mb-10">
   <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
-    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight mb-4 text-slate-50">Kontak</h1>
+    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight text-slate-50">Kontak</h1>
   </div>
 </section>
 
@@ -56,21 +56,27 @@
         <!-- <iframe [src]="settingService.getGoogleMap()" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
       </ng-container>
       <div class="w-[400px]">
+        <ng-container *ngIf="successMessage">
+          <div class="mb-4">
+            <span class="rounded block bg-green-100 text-green-600 px-3 py-2 w-full text-sm">{{ successMessage }}</span>
+          </div>
+        </ng-container>
         <div class="mb-4">
-          <input type="text" id="full-name" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Name Lengkap *">
+          <input type="text" id="full-name" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Name Lengkap *" [(ngModel)]="form.name" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="mb-4">
-          <input type="email" id="email" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Email Pribadi *">
+          <input type="email" id="email" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Email Pribadi *" [(ngModel)]="form.email" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="mb-4">
-          <input type="text" id="phone-number" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Nomor Hp/WA *">
+          <input type="text" id="phone-number" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Nomor Hp/WA *" [(ngModel)]="form.phone_number" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="mb-4">
-          <textarea type="text" id="phone-number" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Pesan untuk kami" rows="3"></textarea>
+          <textarea type="text" id="phone-number" class="w-full px-3 py-2 placeholder:text-sm text-sm focus-within:outline-none border-slate-200 border text-slate-900 rounded" placeholder="Pesan untuk kami" rows="3" [(ngModel)]="form.message" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         <div>
-          <button class="w-fit ml-auto block px-5 py-2.5 text-sm leading-4 gap-2 bg-yellow-700 text-slate-50">
-            <span>Kirim Pesan</span>
+          <button (click)="sendMessage()" class="w-fit ml-auto block px-5 py-2.5 text-sm leading-4 gap-2 bg-yellow-700 text-slate-50" [disabled]="isSending">
+            <span *ngIf="!isSending">Kirim Pesan</span>
+            <span *ngIf="isSending">Processing...</span>
           </button>
         </div>
       </div>

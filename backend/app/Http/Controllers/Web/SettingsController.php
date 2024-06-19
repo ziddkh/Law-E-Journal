@@ -73,7 +73,7 @@ class SettingsController extends Controller
         if ($request->key == 'Company Logo') {
             $validated = $request->validate([
                 'key' => 'required|string|max:255',
-                'value' => 'nullable|file|mimes:jpeg,png,jpg|max:2048'
+                'value' => 'nullable|file|mimes:jpeg,png,jpg,svg|max:2048'
             ]);
         } else {
             $validated = $request->validate([
@@ -81,7 +81,7 @@ class SettingsController extends Controller
                 'value' => 'nullable|string|max:255',
             ]);
         }
-    
+
         $setting = Setting::where('id', $id)->first();
         if (empty($setting)) {
             return redirect()->back()->with('error_message', 'Setting not found!');
@@ -92,14 +92,14 @@ class SettingsController extends Controller
             if ($setting->value) {
                 \Storage::disk('public')->delete($setting->value);
             }
-    
+
             // Store the new image
             $imagePath = $request->file('value')->store('settings/company-logo', 'public');
             $validated['value'] = $imagePath;
         }
-    
+
         $setting->update($validated);
-    
+
         return redirect()->route('settings.show', [
             'setting' => $setting
         ])->with('success_message', 'Setting updated successfully!');

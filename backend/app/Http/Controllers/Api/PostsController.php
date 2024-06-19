@@ -27,6 +27,8 @@ class PostsController extends Controller
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
+        $articlePosts = [];
+
         $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
         $recommendedPosts = Post::recommended()
             ->orderBy('id', 'DESC')

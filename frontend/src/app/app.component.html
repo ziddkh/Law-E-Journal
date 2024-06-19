@@ -1,5 +1,11 @@
+<!-- <app-loader></app-loader> -->
 <app-header></app-header>
 
-<router-outlet></router-outlet>
+<div class="mt-[87.99px]">
+  <router-outlet></router-outlet>
+</div>
 
 <app-footer></app-footer>
+<ng-container *ngIf="settingService.getPhoneNumber()">
+  <app-floating-whatsapp [phomeNumber]="settingService.getPhoneNumber()"></app-floating-whatsapp>
+</ng-container>

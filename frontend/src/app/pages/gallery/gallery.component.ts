@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Gallery } from '../../models/gallery';
 import { GalleryService } from '../../services/api/gallery/gallery.service';
+import { BeforeSlideDetail } from 'lightgallery/lg-events';
 
 @Component({
   selector: 'app-gallery',
@@ -10,6 +11,16 @@ import { GalleryService } from '../../services/api/gallery/gallery.service';
 export class GalleryComponent implements OnInit {
   isLoading: boolean = true
   galleries: Gallery[] = []
+
+  lightGallerySettings = {
+    counter: false,
+    // plugins: [lgZoom]
+  }
+
+  lightGalleryOnBeforeSlide = (detail: BeforeSlideDetail): void => {
+    const { index, prevIndex } = detail
+    console.log(index, prevIndex)
+  }
 
   constructor(
     private galleryService: GalleryService

@@ -5,12 +5,18 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { MenuModule } from "headlessui-angular";
 import { PaginationComponent } from './pagination/pagination.component';
+import { FloatingWhatsappComponent } from './floating-whatsapp/floating-whatsapp.component';
+import { LoaderComponent } from './loader/loader.component';
+import { EmptyPageComponent } from './empty-page/empty-page.component';
+import { EmptyComponentComponent } from './empty-component/empty-component.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    FloatingWhatsappComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +27,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     HeaderComponent,
     FooterComponent,
     PaginationComponent,
+    FloatingWhatsappComponent,
+    LoaderComponent,
   ]
 })
 export class ComponentsModule { }

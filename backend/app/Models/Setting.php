@@ -17,6 +17,18 @@ class Setting extends Model
         'value'
     ];
 
+    protected $appends = [
+        'signed_image_url',
+    ];
+
+    public function getSignedImageUrlAttribute(): string | null
+    {
+        if ($this->key !== 'Company Logo') {
+            return null;
+        }
+        return !empty($this->value) ? asset("storage/$this->value") : null;
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll()->logOnlyDirty();

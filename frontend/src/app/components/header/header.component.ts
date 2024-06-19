@@ -43,7 +43,9 @@ export class HeaderComponent {
   constructor(
     private renderer: Renderer2,
     public settingService: SettingService
-  ) {}
+  ) {
+    this.isSidebarActive = false
+  }
 
   toggleSidebar() {
     this.isSidebarActive = !this.isSidebarActive;

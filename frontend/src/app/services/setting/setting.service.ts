@@ -10,7 +10,11 @@ export class SettingService {
 
   setSettings(settings: Setting[]) {
     settings.map((setting) => {
-      sessionStorage.setItem(`${environment.setting_key_identifier}.${setting.key.toLocaleLowerCase().replace(' ', '_')}`, setting.value)
+      if (setting.key !== 'Company Logo') {
+        sessionStorage.setItem(`${environment.setting_key_identifier}.${setting.key.toLocaleLowerCase().replace(' ', '_')}`, setting.value)
+      } else {
+        sessionStorage.setItem(`${environment.setting_key_identifier}.${setting.key.toLocaleLowerCase().replace(' ', '_')}`, setting.signed_image_url ?? 'null')
+      }
     })
   }
 

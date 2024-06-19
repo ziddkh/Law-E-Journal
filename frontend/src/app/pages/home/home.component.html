@@ -1,172 +1,250 @@
 <ng-container *ngIf="!isLoading">
-  <swiper-container id="hero" navigation="false" effect="fade" pagination="true" pagination-clickable="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
-      <swiper-slide *ngFor="let banner of banners">
-        <div class="relative h-full w-full">
-          <div class="my-swiper-img-wrapper w-full h-full">
-            <img [src]="banner.signed_image_url" [alt]="banner.title + ' Image'" class="w-full h-full object-cover">
-          </div>
-          <div></div>
-          <div class="absolute top-1/2 lg:left-1/2 -translate-y-1/2 lg:-translate-x-1/2 left-4 right-4 lg:w-[64rem] max-w-5xl lg:px-0">
-            <h1 class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-slate-50">{{ banner.title }}</h1>
-            <p class="text-base md:text-lg leading-6 tracking-normal mb-8 text-slate-50">{{ banner.description }}</p>
-            <div class="flex gap-3">
-              <div>
-                <a [href]="banner.cta_button_url" class="w-full px-5 py-2.5 text-sm inline-flex leading-4 gap-2 bg-yellow-700 text-slate-50">
-                  <span>{{ banner.cta_button_text }}</span>
-                </a>
+  <!-- Banners -->
+  <ng-container *ngIf="banners.length > 0 && recommendedPosts.length > 0 && !!companyInformation.short_description && services.length > 0 && clientReviews.length > 0 && settingService.getCompanyLogo() && clients.length > 0; else emptyAll">
+    <ng-container *ngIf="banners.length > 0; else emptyBanner">
+      <swiper-container id="hero" lazy="true" navigation="false" effect="fade" pagination="true" pagination-clickable="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+          <ng-container *ngFor="let banner of banners">
+            <swiper-slide>
+              <div class="relative h-full w-full">
+                <div class="my-swiper-img-wrapper w-full h-full">
+                  <img [src]="banner.signed_image_url" [alt]="banner.title + ' Image'" class="w-full h-full object-cover">
+                </div>
+                <div></div>
+                <div class="absolute top-1/2 lg:left-1/2 -translate-y-1/2 lg:-translate-x-1/2 left-4 right-4 lg:w-[64rem] max-w-5xl lg:px-0">
+                  <h1 class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-neutral-50">{{ banner.title }}</h1>
+                  <p class="text-base md:text-lg leading-6 tracking-normal mb-8 text-neutral-50">{{ banner.description }}</p>
+                  <ng-container *ngIf="banner.cta_button_text && banner.cta_button_url">
+                    <div class="flex gap-3">
+                      <div>
+                        <a [href]="banner.cta_button_url" class="w-full px-5 py-2.5 text-sm inline-flex leading-4 gap-2 bg-red-700 text-neutral-50">
+                          <span>{{ banner.cta_button_text }}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
               </div>
+            </swiper-slide>
+          </ng-container>
+      </swiper-container>
+    </ng-container>
+    <ng-template #emptyBanner>
+      <app-empty-component module="banner"></app-empty-component>
+    </ng-template>
+
+    <!-- Recommendation Posts -->
+    <ng-container *ngIf="recommendedPosts.length > 0; else emptyRecommendedPost">
+      <section class="relative py-10">
+        <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
+          <div class="overflow-hidden mb-6">
+            <swiper-container loop="true" slides-per-view="3" space-between="30">
+              <ng-container *ngFor="let post of recommendedPosts">
+                  <swiper-slide>
+                    <div class="relative cursor-pointer">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+                        <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-neutral-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <a [routerLink]="'postingan/' + post.type + '/' + post.slug" class="inline-flex items-center gap-2 text-neutral-600 text-sm">
+                          <span>Lihat Selengkapnya</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </swiper-slide>
+              </ng-container>
+            </swiper-container>
+          </div>
+          <div class="flex justify-end">
+            <div>
+              <a routerLink="/postingan" class="text-sm text-slate-600 inline-flex items-center gap-2">
+                <span>Lihat Selengkapnya</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                  <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
-      </swiper-slide>
-  </swiper-container>
+      </section>
+    </ng-container>
+    <ng-template #emptyRecommendedPost>
+      <app-empty-component module="rekomendasi artikel"></app-empty-component>
+    </ng-template>
 
-  <section class="relative py-10">
-    <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
-      <div class="flex justify-between mb-6">
-        <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Rekomendasi Postingan Untuk Anda</h2>
-        <div>
-          <a routerLink="/postingan" class="text-sm text-slate-600 inline-flex items-center gap-2">
-            <span>Lihat Selengkapnya</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="overflow-hidden">
-        <swiper-container loop="true" slides-per-view="3" space-between="30">
-          <ng-container *ngFor="let post of recommendedPosts">
-              <swiper-slide>
-                <div class="relative cursor-pointer">
-                  <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
-                    <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
-                  </div>
-                  <div class="p-1 pt-2">
-                    <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
-                    <a [routerLink]="'postingan/' + post.type + '/' + post.slug" class="inline-flex items-center gap-2 text-neutral-600 text-sm">
-                      <span>Lihat Selengkapnya</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-                      </svg>
-                    </a>
-                  </div>
+    <!-- About Us -->
+    <ng-container *ngIf="!!companyInformation.short_description; else emptyCompanyInformation">
+      <section class="relative py-10">
+        <div id="about-us" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+          <div class="py-10 relative">
+            <div class="flex">
+              <div class="flex-1">
+                <div class="bg-neutral-200 text-neutral-900 pr-8 py-8">
+                  <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{ companyInformation.title }}</h2>
+                  <p class="text-sm mb-5">{{ companyInformation.short_description }}</p>
+                  <a href="/tentang-kami" class="w-full px-5 py-2.5 text-sm leading-4 gap-2 bg-red-700 text-neutral-50">Selengkapnya</a>
                 </div>
-              </swiper-slide>
-          </ng-container>
-        </swiper-container>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Us -->
-  <section class="relative py-10">
-    <div id="about-us" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-      <div class="py-10 relative">
-        <div class="flex">
-          <div class="flex-1">
-            <div class="bg-slate-50 pr-8 py-8">
-              <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Sekilas Tentang Kami</h2>
-              <p class="text-sm mb-2">Torchic has a place inside its body where it keeps its flame. Give it a hug—it will be glowing with warmth.</p>
-              <p class="text-sm mb-5">It is so dense, while on a run it forgets why it started running in the first place. It apparently remembers sometimes if it demolishes something.</p>
-              <a href="#" class="w-full px-5 py-2.5 text-sm leading-4 gap-2 bg-black text-slate-50">Selengkapnya</a>
+              </div>
+              <div class="hidden sm:block flex-1"></div>
             </div>
           </div>
-          <div class="hidden sm:block flex-1"></div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </ng-container>
+    <ng-template #emptyCompanyInformation>
+      <app-empty-component module="informasi perusahaan"></app-empty-component>
+    </ng-template>
 
-  <!-- Our Clients -->
+    <!-- Our Clients -->
 
-  <!-- Services -->
-  <!-- Service Wrapper -->
-  <section class="relative pb-6">
-    <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
-      <div class="border-b border-violet-700/10 pb-6 mb-6 inline-flex justify-between">
-        <div class="flex-1">
-          <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Kenapa Memilih Jasa Kami</h2>
-          <p class="text-sm md:text-base leading-6 tracking-normal text-slate-600">{{ settingService.getCompanyName() ?? 'Company Name' }} menjunjung tinggi nilai-nilai dan prinsip yang dapat mendorong kami untuk selalu memberikan serta menjalin hubungan baik dengan Klien kami. Nilai-nilai inilah yang membedakan kami dengan yang lain:</p>
+    <!-- Services -->
+    <!-- Service Wrapper -->
+    <ng-container *ngIf="services.length > 0; else emptyService">
+      <section class="relative pb-6">
+        <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
+          <div class="border-b border-violet-700/10 pb-6 mb-6 inline-flex justify-between">
+            <div class="flex-1">
+              <h2 class="text-xl md:text-3xl text-neutral-900 leading-8 font-bold tracking-tight mb-3">Kenapa Memilih Jasa Kami</h2>
+              <p class="text-sm md:text-base leading-6 tracking-normal text-neutral-500">{{ settingService.getCompanyName() ?? 'Company Name' }} menjunjung tinggi nilai-nilai dan prinsip yang dapat mendorong kami untuk selalu memberikan serta menjalin hubungan baik dengan Klien kami. Nilai-nilai inilah yang membedakan kami dengan yang lain:</p>
+            </div>
+            <div>
+              <a routerLink="/layanan" class="text-sm text-neutral-600 inline-flex items-center gap-2">
+                <span>Lihat Selengkapnya</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                  <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="overflow-hidden">
+            <swiper-container loop="true" slides-per-view="3" space-between="30">
+              <ng-container *ngFor="let service of services">
+                  <swiper-slide>
+                    <div class="relative cursor-pointer">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+                        <img src="{{ service.signed_image_url }}" [alt]="service.name + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-neutral-900 capitalize line-clamp-2">{{ service.name }}</h2>
+                        <a [routerLink]="service.name" class="inline-flex items-center gap-2 text-neutral-500 text-sm">
+                          <span>Lihat Selengkapnya</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </swiper-slide>
+              </ng-container>
+            </swiper-container>
+          </div>
         </div>
-        <div>
-          <a routerLink="/layanan" class="text-sm text-slate-600 inline-flex items-center gap-2">
-            <span>Lihat Selengkapnya</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="overflow-hidden">
-        <swiper-container loop="true" slides-per-view="3" space-between="30">
-          <ng-container *ngFor="let service of services">
+      </section>
+    </ng-container>
+    <ng-template #emptyService>
+      <app-empty-component module="servis"></app-empty-component>
+    </ng-template>
+
+    <section *ngIf="clientReviews.length > 0; else emptyClientReview" class="relative py-10">
+      <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+        <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-10 text-neutral-900">Klien Kami</h2>
+        <div class="overflow-hidden">
+          <swiper-container loop="true" slides-per-view="3" space-between="24">
+            <ng-container *ngFor="let clientReview of clientReviews">
               <swiper-slide>
                 <div class="relative cursor-pointer">
-                  <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
-                    <img src="{{ service.signed_image_url }}" [alt]="service.name + ' Image'" class="w-full h-full object-cover">
+                  <div class="mx-auto overflow-hidden pointer-events-none size-14 rounded-full bg-slate-200">
+                    <ng-container *ngIf="clientReview.image_url; else noImage">
+                      <img [src]="clientReview.signed_image_url" [alt]="clientReview.name + ' Image'" class="w-full h-full object-cover">
+                    </ng-container>
+                    <ng-template #noImage>
+                      <img src="/placeholders/person.svg" [alt]="clientReview.name + ' Image'" class="w-full h-full object-cover">
+                    </ng-template>
                   </div>
-                  <div class="p-1 pt-2">
-                    <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ service.name }}</h2>
-                    <a [routerLink]="service.name" class="inline-flex items-center gap-2 text-neutral-600 text-sm">
-                      <span>Lihat Selengkapnya</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
-                        <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-                      </svg>
-                    </a>
+                  <div class="p-1 pt-2 text-center">
+                    <h2 class="text-base font-bold text-slate-900 capitalize">{{ clientReview.name }}</h2>
+                    <p class="text-sm">{{ clientReview.position }}</p>
+                    <p class="text-sm">"{{ clientReview.description }}"</p>
                   </div>
                 </div>
               </swiper-slide>
-          </ng-container>
-        </swiper-container>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Us -->
-  <!-- Background -->
-  <section class="relative overflow-hidden pb-10">
-    <div aria-hidden="true" class="bg-law bg-gradient-to-tr -z-10 pointer-events-none absolute inset-0 from-violet-500 to-violet-800"></div>
-    <!-- Contact Us Wrapper -->
-    <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-      <div class="block w-fit mb-3 mx-auto">
-        <div class="w-12 h-12 rounded-full bg-black"></div>
-      </div>
-      <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
-      <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-slate-700 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
-      <p class="text-center text-sm md:text-base leading-6 tracking-normal text-slate-600 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
-      <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-slate-50">
-        <span>Contact Us</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="relative py-10">
-    <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
-      <div class="flex justify-between mb-6">
-        <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">Partner Kami</h2>
-        <div>
-          <a routerLink="/" class="text-sm text-slate-600 inline-flex items-center gap-2">
-            <span>Lihat Selengkapnya</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-              <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-            </svg>
-          </a>
+            </ng-container>
+          </swiper-container>
         </div>
       </div>
-      <div class="overflow-hidden">
-        <swiper-container loop="true" slides-per-view="5" space-between="30">
-          <ng-container *ngFor="let client of clients">
-              <swiper-slide>
-                <a href="{{ client.url_formatted }}" target="_blank" class="relative cursor-pointer">
-                  <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-transparent">
-                    <img src="{{ client.signed_image_url }}" [alt]="client.name + ' Image'" class="w-full h-full object-contain">
-                  </div>
-                </a>
-              </swiper-slide>
-          </ng-container>
-        </swiper-container>
-      </div>
-    </div>
-  </section>
+    </section>
+    <ng-template #emptyClientReview>
+      <app-empty-component module="testimoni"></app-empty-component>
+    </ng-template>
+
+    <!-- Contact Us -->
+    <!-- Background -->
+    <ng-container *ngIf="settingService.getCompanyLogo(); else emptyCompanyLogo">
+      <section class="relative overflow-hidden py-10">
+        <div aria-hidden="true" class="bg-law bg-gradient-to-tr -z-10 pointer-events-none absolute inset-0 from-violet-500 to-violet-800"></div>
+        <!-- Contact Us Wrapper -->
+        <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+          <div class="block w-fit mb-3 mx-auto">
+            <ng-container *ngIf="settingService.getCompanyLogo(); else defaultCompanyLogo">
+              <div class="h-14 w-14 mx-auto mb-3">
+                <img src="{{ settingService.getCompanyLogo() }}" alt="" class="w-full h-full object-contain">
+              </div>
+            </ng-container>
+            <ng-template #defaultCompanyLogo>
+              <div class="w-14 h-14 bg-red-700 rounded-full"></div>
+            </ng-template>
+          </div>
+          <h2 class="text-neutral-900 text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-1">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
+          <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-neutral-900 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
+          <p class="text-center text-sm md:text-base leading-6 tracking-normal text-neutral-700 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
+          <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-red-700 text-slate-50">
+            <span>Contact Us</span>
+          </a>
+        </div>
+      </section>
+    </ng-container>
+    <ng-template #emptyCompanyLogo>
+      <app-empty-component module="logo perusahaan"></app-empty-component>
+    </ng-template>
+
+    <ng-container *ngIf="clients.length > 0; else emptyPartner">
+      <section class="relative py-10">
+        <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
+          <div class="flex justify-between mb-6">
+            <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3 text-neutral-900">Partner Kami</h2>
+            <div>
+              <a routerLink="/" class="text-sm text-neutral-500 inline-flex items-center gap-2">
+                <span>Lihat Selengkapnya</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                  <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="overflow-hidden">
+            <swiper-container loop="true" slides-per-view="5" space-between="30">
+              <ng-container *ngFor="let client of clients">
+                  <swiper-slide>
+                    <a href="{{ client.url_formatted }}" target="_blank" class="relative cursor-pointer">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-transparent">
+                        <img src="{{ client.signed_image_url }}" [alt]="client.name + ' Image'" class="w-full h-full object-contain">
+                      </div>
+                    </a>
+                  </swiper-slide>
+              </ng-container>
+            </swiper-container>
+          </div>
+        </div>
+      </section>
+    </ng-container>
+    <ng-template #emptyPartner>
+      <app-empty-component module="partner"></app-empty-component>
+    </ng-template>
+  </ng-container>
+  <ng-template #emptyAll>
+    <app-empty-page module="banner, artikel, servis, partner, logo perusahaan, dan testimoni"></app-empty-page>
+  </ng-template>
 </ng-container>

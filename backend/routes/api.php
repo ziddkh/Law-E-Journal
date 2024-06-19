@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ClientReviewsController;
 use App\Http\Controllers\Api\CompanyInformationsController;
+use App\Http\Controllers\Api\ConsultationRequestController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\GalleriesController;
 use App\Http\Controllers\Api\LandingPagesController;
@@ -34,7 +35,7 @@ Route::prefix('contact-us')->group(function() {
 });
 
 Route::prefix('consultation-requests')->group(function() {
-    Route::post('/submit', [ConsultationRequest::class, 'submit']);
+    Route::post('/submit', [ConsultationRequestController::class, 'submit']);
 });
 
 Route::get('about', [CompanyInformationsController::class, 'show']);
