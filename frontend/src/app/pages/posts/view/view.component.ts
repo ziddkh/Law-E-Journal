@@ -45,7 +45,7 @@ export class ViewComponent implements OnInit {
   }
 
   viewPost(slug: string) {
-    this.router.navigateByUrl(`/artikel/${slug}`)
+    this.router.navigateByUrl(`/postingan/artikel/${slug}`)
   }
 
   getSafeContent(): SafeHtml {

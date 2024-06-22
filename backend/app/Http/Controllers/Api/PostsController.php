@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PostsController extends Controller
 {
@@ -25,9 +26,9 @@ class PostsController extends Controller
         }
         $posts = $posts->published();
 
-        $articlePosts = $posts->article()->orderBy('id', 'DESC')->take(9);
-        $mediaPosts = $posts->media()->orderBy('id', 'DESC')->take(9);
-        $newsPosts = $posts->news()->orderBy('id', 'DESC')->take(9);
+        $articlePosts = (clone $posts)->article()->orderBy('id', 'DESC')->take(9)->get();
+        $mediaPosts = (clone $posts)->media()->orderBy('id', 'DESC')->take(9)->get();
+        $newsPosts = (clone $posts)->news()->orderBy('id', 'DESC')->take(9)->get();
 
         $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
         $recommendedPosts = Post::recommended()
@@ -39,6 +40,69 @@ class PostsController extends Controller
             'article_posts' => $articlePosts,
             'media_posts' => $mediaPosts,
             'news_posts' => $newsPosts,
+            'recommended_posts' => $recommendedPosts,
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function getArticle(Request $request)
+    {
+        $posts = Post::search($request);
+        if(!empty($request->tags)) {
+            $posts = $posts->whereHas('tags', function($query, $request) {
+                $query->whereIn('tag', $request->tags);
+            });
+        }
+        $posts = $posts->published()->article()->orderBy('id', 'DESC')->paginate(25);
+        $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take($takeRecommendedPosts)
+            ->get();
+
+        return response()->json([
+            'posts' => $posts,
+            'recommended_posts' => $recommendedPosts,
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function getNews(Request $request)
+    {
+        $posts = Post::search($request);
+        if(!empty($request->tags)) {
+            $posts = $posts->whereHas('tags', function($query, $request) {
+                $query->whereIn('tag', $request->tags);
+            });
+        }
+        $posts = $posts->published()->news()->orderBy('id', 'DESC')->paginate(25);
+        $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take($takeRecommendedPosts)
+            ->get();
+
+        return response()->json([
+            'posts' => $posts,
+            'recommended_posts' => $recommendedPosts,
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function getMedia(Request $request)
+    {
+        $posts = Post::search($request);
+        if(!empty($request->tags)) {
+            $posts = $posts->whereHas('tags', function($query, $request) {
+                $query->whereIn('tag', $request->tags);
+            });
+        }
+        $posts = $posts->published()->media()->orderBy('id', 'DESC')->paginate(25);
+        $takeRecommendedPosts = $request->filled('take') ? $request->take : 5;
+        $recommendedPosts = Post::recommended()
+            ->orderBy('id', 'DESC')
+            ->take($takeRecommendedPosts)
+            ->get();
+
+        return response()->json([
+            'posts' => $posts,
             'recommended_posts' => $recommendedPosts,
         ], JsonResponse::HTTP_OK);
     }

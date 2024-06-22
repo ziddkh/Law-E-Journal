@@ -28,7 +28,7 @@ export class NewsComponent {
 
   getPosts(params: any = {}) {
     this.isLoading = true
-    this.postService.getPosts({ type: 'News', ...params })
+    this.postService.getNews()
       .then(response => {
         this.posts = response.data.posts.data
         this.recomendedPosts = response.data.recommended_posts
@@ -52,6 +52,6 @@ export class NewsComponent {
   }
 
   viewPost(slug: string) {
-    this.router.navigateByUrl(`/artikel/${slug}`)
+    this.router.navigateByUrl(`/postingan/artikel/${slug}`)
   }
 }

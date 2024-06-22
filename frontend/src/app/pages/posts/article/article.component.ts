@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit {
 
   getPosts(params: any = {}) {
     this.isLoading = true
-    this.postService.getPosts({ type: 'Article', ...params })
+    this.postService.getArticles(params)
       .then(response => {
         this.posts = response.data.posts.data
         this.recomendedPosts = response.data.recommended_posts
@@ -52,6 +52,6 @@ export class ArticleComponent implements OnInit {
   }
 
   viewPost(slug: string) {
-    this.router.navigateByUrl(`/artikel/${slug}`)
+    this.router.navigateByUrl(`/postingan/artikel/${slug}`)
   }
 }

@@ -4,9 +4,201 @@
   </div>
 </section>
 
-<!-- <ng-container *ngIf="recomendedPosts.length > 0 || articlePosts.length > 0 || mediaPosts.length > 0 || newsPosts.length > 0; else emptyPosts"> -->
-
-<!-- </ng-container> -->
-<ng-template #emptyPosts>
-  <app-empty-page module="postingan"></app-empty-page>
+<ng-container *ngIf="isLoading; else notLoading">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <div class="flex gap-6 flex-col sm:flex-row">
+      <div class="flex-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+          <div class="sm:col-span-full">
+            <div class="relative cursor-pointer">
+              <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+              </span>
+              <div class="pt-2">
+                <span class="animate-pulse h-5 w-full bg-neutral-300 block mb-2"></span>
+                <span class="animate-pulse h-5 w-[140px] bg-neutral-300 block"></span>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngFor="let dummy of [1,2,3,4,5,6]">
+            <div class="col">
+              <div class="relative cursor-pointer">
+                <span class="block animate-pulse rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+                </span>
+                <div class="pt-2">
+                  <span class="animate-pulse h-5 w-full bg-neutral-300 block mb-2"></span>
+                  <span class="animate-pulse h-5 w-[140px] bg-neutral-300 block"></span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="w-full sm:w-[256px] relative">
+        <aside class="sticky top-10 w-full">
+          <div class="flex flex-col gap-4 w-full">
+            <ng-container *ngFor="let dummy of [1,2,3,4,5,6,7,8]">
+              <div class="w-full flex gap-2">
+                <span class="animate-pulse w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-neutral-300">
+                </span>
+                <div class="flex-1">
+                  <span class="animate-pulse h-5 w-full bg-neutral-300 block mb-2"></span>
+                  <span class="animate-pulse h-5 w-[140px] bg-neutral-300 block"></span>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #notLoading>
+  <ng-container *ngIf="recomendedPosts.length > 0 || articlePosts.length > 0 || mediaPosts.length > 0 || newsPosts.length > 0; else emptyPosts">
+    <section id="article-content" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+      <div class="flex gap-6 flex-col sm:flex-row">
+        <div class="flex-1">
+          <ng-container *ngIf="!!recommendedPost || recomendedPosts.length > 0">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+              <ng-container *ngIf="!!recommendedPost">
+                <div class="sm:col-span-full">
+                  <article class="relative cursor-pointer" (click)="viewPost(recommendedPost.type, recommendedPost.slug)">
+                    <div class="relative rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                      <img loading="lazy" src="{{ recommendedPost.signed_image_url }}" [alt]="recommendedPost.title + ' Image'" class="w-full h-full object-cover">
+                      <span class="absolute block inset-0 bg-gradient-to-t from-black/90 to-black/30"></span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 py-6 px-5">
+                      <h2 class="text-lg sm:text-3xl mr-2 font-bold text-white capitalize">{{ recommendedPost.title }}</h2>
+                    </div>
+                    <span class="absolute top-0 left-0 ml-5 mt-5 px-2 py-1 text-sm bg-white rounded-sm">Featured</span>
+                  </article>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="recomendedPosts.length > 0">
+                <ng-container *ngFor="let post of recomendedPosts">
+                  <div class="col">
+                    <article class="relative cursor-pointer" (click)="viewPost(post.type, post.slug)">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                        <img loading="lazy" src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                      </div>
+                    </article>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="articlePosts.length > 0">
+            <div id="article-post" class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base sm:text-2xl font-bold">Artikel Terbaru</h2>
+                <a routerLink="/postingan/artikel" class="text-sm text-slate-600 inline-flex items-center gap-2">
+                  <span>Lihat Selengkapnya</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <ng-container *ngFor="let post of articlePosts">
+                  <div class="col">
+                    <article class="relative cursor-pointer" (click)="viewPost(post.type, post.slug)">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                        <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                      </div>
+                    </article>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="newsPosts.length > 0">
+            <div id="news-post" class="mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base sm:text-2xl font-bold">Berita Terbaru</h2>
+                <a routerLink="/postingan/berita" class="text-sm text-slate-600 inline-flex items-center gap-2">
+                  <span>Lihat Selengkapnya</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <ng-container *ngFor="let post of newsPosts">
+                  <div class="col">
+                    <article class="relative cursor-pointer" (click)="viewPost(post.type, post.slug)">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                        <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                      </div>
+                    </article>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="mediaPosts.length > 0">
+            <div id="media-post">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base sm:text-2xl font-bold">Media Terbaru</h2>
+                <a routerLink="/postingan/media" class="text-sm text-slate-600 inline-flex items-center gap-2">
+                  <span>Lihat Selengkapnya</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <ng-container *ngFor="let post of mediaPosts">
+                  <div class="col">
+                    <article class="relative cursor-pointer" (click)="viewPost(post.type, post.slug)">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-slate-200">
+                        <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-1 pt-2">
+                        <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                      </div>
+                    </article>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <ng-container *ngIf="recomendedPosts.length > 0">
+          <div class="w-full sm:w-[256px] relative">
+            <aside class="sticky top-10 w-full">
+              <h3 class="text-lg font-bold mb-4 sm:mb-6 h-10 w-full">Recommendation Post</h3>
+              <div class="flex flex-col gap-4 w-full">
+                <ng-container *ngFor="let post of recomendedPosts">
+                  <article (click)="viewPost(post.type, post.slug)" class="cursor-pointer w-full flex gap-2">
+                    <div class="w-[64px] h-[64px] rounded-t overflow-hidden pointer-events-none bg-slate-200">
+                      <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1">
+                      <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                      <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                    </div>
+                  </article>
+                </ng-container>
+              </div>
+            </aside>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    </ng-container>
+    <ng-template #emptyPosts>
+      <app-empty-page module="postingan"></app-empty-page>
+    </ng-template>
 </ng-template>

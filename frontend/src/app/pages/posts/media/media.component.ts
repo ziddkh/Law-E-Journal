@@ -28,7 +28,7 @@ export class MediaComponent {
 
   getPosts(params: any = {}) {
     this.isLoading = true
-    this.postService.getPosts({ type: 'Media', ...params })
+    this.postService.getMedia()
       .then(response => {
         this.posts = response.data.posts.data
         this.recomendedPosts = response.data.recommended_posts
@@ -52,6 +52,6 @@ export class MediaComponent {
   }
 
   viewPost(slug: string) {
-    this.router.navigateByUrl(`/artikel/${slug}`)
+    this.router.navigateByUrl(`/postingan/artikel/${slug}`)
   }
 }
