@@ -17,6 +17,13 @@ class Profile extends Model
         'position',
         'description',
         'image_url',
+        'email',
+        'phone',
+        'instagram',
+        'facebook',
+        'twitter',
+        'tik_tok',
+        'youtube',
     ];
 
     protected $appends = [
