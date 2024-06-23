@@ -61,13 +61,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image_url">Image</label>
+                    <label for="image_url">Image <sup style='color: red'>*</sup></label>
                     @if($banner->image_url)
                         <div class="mb-2">
                             <img src="{{ Storage::url($banner->image_url) }}" alt="Banner Image" class="img-thumbnail" width="150">
                         </div>
                     @endif
-                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" required>
                     @error('image_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror

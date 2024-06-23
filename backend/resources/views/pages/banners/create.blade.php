@@ -60,8 +60,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image_url">Image</label>
-                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
+                    <label for="image_url">Image <sup style='color: red'>*</sup></label>
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" required>
                     @error('image_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
