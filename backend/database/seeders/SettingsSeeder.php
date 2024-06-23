@@ -29,6 +29,9 @@ class SettingsSeeder extends Seeder
             'Youtube',
             'Tik-Tok',
             'Address',
+            'Address 2',
+            'Address 3',
+            'Address 4',
             'Google Map',
         ];
     }
