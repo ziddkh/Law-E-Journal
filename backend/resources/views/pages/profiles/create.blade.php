@@ -80,6 +80,62 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}">
+                    @error('phone')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Instagram</label>
+                    <input type="instagram" class="form-control @error('instagram') is-invalid @enderror" id="instagram" name="instagram" value="{{ old('instagram') }}">
+                    @error('instagram')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input type="facebook" class="form-control @error('facebook') is-invalid @enderror" id="facebook" name="facebook" value="{{ old('facebook') }}">
+                    @error('facebook')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="twitter">Twitter</label>
+                    <input type="twitter" class="form-control @error('twitter') is-invalid @enderror" id="twitter" name="twitter" value="{{ old('twitter') }}">
+                    @error('twitter')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="tik_tok">Tik - Tok</label>
+                    <input type="tik_tok" class="form-control @error('tik_tok') is-invalid @enderror" id="tik_tok" name="tik_tok" value="{{ old('tik_tok') }}">
+                    @error('tik_tok')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="youtube">Youtube</label>
+                    <input type="youtube" class="form-control @error('youtube') is-invalid @enderror" id="youtube" name="youtube" value="{{ old('youtube') }}">
+                    @error('youtube')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <div class="d-flex justify-content-start" style="gap: 5px">
                     <button type="button" class="btn btn-secondary" onclick="window.location='{{ route('profiles.index') }}'">
                         <i class="fas fa-fw fa-arrow-left"></i>

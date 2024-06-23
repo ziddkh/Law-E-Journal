@@ -97,7 +97,14 @@ class ProfilesController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'required|string',
             'description' => 'required|string',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'email' => 'nullable',
+            'phone' => 'nullable',
+            'instagram' => 'nullable',
+            'facebook' => 'nullable',
+            'twitter' => 'nullable',
+            'tik_tok' => 'nullable',
+            'youtube' => 'nullable',
         ]);
     
         $profile = Profile::where('id', $id)->first();
