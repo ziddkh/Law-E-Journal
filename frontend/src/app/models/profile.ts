@@ -5,7 +5,7 @@ export interface Profile {
   description: string
   image_url: string
   signed_image_url: string
-  phone?: string
+  phone: string
   email: string
   instagram: string
   facebook: string

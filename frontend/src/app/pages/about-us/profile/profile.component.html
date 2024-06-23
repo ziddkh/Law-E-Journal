@@ -10,7 +10,13 @@
 
           <div class="flex mt-3 gap-2">
             <p class="">Nomor Telepon:</p>
-            <p>{{ profile.phone ?? '-' }}</p>
+            <ng-container *ngIf="profile.phone; else emptyProfilePhone">
+              <p>{{ profile.phone }}</p>
+            </ng-container>
+            <ng-template #emptyProfilePhone>
+              <p>-</p>
+            </ng-template>
+            <p>{{ profile.phone }}</p>
           </div>
 
           <ng-container *ngIf="profile.facebook || profile.email || profile.instagram || profile.twitter || profile.youtube || profile.tik_tok">
