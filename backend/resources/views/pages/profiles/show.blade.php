@@ -58,6 +58,7 @@
                         <option value="Founder" {{ old('position', $profile->position) == 'Founder' ? 'selected' : '' }}>Founder</option>
                         <option value="Advisor" {{ old('position', $profile->position) == 'Advisor' ? 'selected' : '' }}>Advisor</option>
                         <option value="Lawyer" {{ old('position', $profile->position) == 'Lawyer' ? 'selected' : '' }}>Lawyer</option>
+                        <option value="Partner" {{ old('position', $profile->position) == 'Partner' ? 'selected' : '' }}>Partner</option>
                     </select>
                     @error('position')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
