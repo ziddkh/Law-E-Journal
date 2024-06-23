@@ -25,7 +25,7 @@
 
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $banner->title) }}" required>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $banner->title) }}">
                     @error('title')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group" style="position: relative">
-                    <label for="description">Description <sup style='color: red'>*</sup></label>
+                    <label for="description">Description</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="text-area">{{ old('description', $banner->description) }}</textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
