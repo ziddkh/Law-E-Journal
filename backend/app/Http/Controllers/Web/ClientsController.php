@@ -41,7 +41,7 @@ class ClientsController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'image_url' => 'nullable|image|mimes:webp,jpeg,png,jpg,svg|max:2048',
-            'url' => 'required'
+            'url' => 'nullable'
         ]);
 
         // Prepend https:// if not already present
@@ -90,13 +90,13 @@ class ClientsController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'url' => 'required'
+            'url' => 'nullable'
         ]);
 
         // Prepend https:// if not already present
         $validated['url'] = str_replace('https://', '', $request->url);
 
-        $client = Partner::where('id', $id)->first();
+        $client = Client::where('id', $id)->first();
         if (empty($client)) {
             return redirect()->back()->with('error_message', 'Client not found!');
         }
