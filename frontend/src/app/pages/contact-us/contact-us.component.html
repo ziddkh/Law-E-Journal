@@ -50,12 +50,12 @@
 <section>
   <div class="max-w-5xl px-4 lg:px-0 mx-auto">
     <h3 class="text-center text-3xl font-bold mb-6">Kontak Kami</h3>
-    <div class="flex justify-center gap-6">
+    <div class="flex justify-center flex-col sm:flex-row gap-6">
       <ng-container *ngIf="settingService.getGoogleMap()">
         <iframe class="flex-1" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31732.62116869429!2d106.80603909999999!3d-6.187233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1717794977820!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <!-- <iframe [src]="settingService.getGoogleMap()" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
       </ng-container>
-      <div class="w-[400px]">
+      <div class="w-full sm:w-[400px]">
         <ng-container *ngIf="successMessage">
           <div class="mb-4">
             <span class="rounded block bg-green-100 text-green-600 px-3 py-2 w-full text-sm">{{ successMessage }}</span>
