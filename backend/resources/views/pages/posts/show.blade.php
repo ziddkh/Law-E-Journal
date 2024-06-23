@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tags">Tags<sup style='color: red'>*</sup></label>
+                    <label for="tags">Tags</label>
                     <select name="tags[]" class="selectize" id="tags" multiple>
                         <option value="">Please Select</option>
                         @foreach($tags as $tag)

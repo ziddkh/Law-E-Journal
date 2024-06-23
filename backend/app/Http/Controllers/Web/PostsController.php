@@ -58,7 +58,7 @@ class PostsController extends Controller
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'tags' => 'required|array|min:1',
+            'tags' => 'nullable|array|min:1',
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
             'status' => 'required|in:Draft,Published',
@@ -92,11 +92,13 @@ class PostsController extends Controller
             $post->save();
 
             $tags = $request->tags;
-            foreach($tags as $tag) {
-                PostTag::create([
-                    'post_id' => $post->id,
-                    'tag' => strtolower($tag)
-                ]);
+            if(!empty($tags)) {
+                foreach($tags as $tag) {
+                    PostTag::create([
+                        'post_id' => $post->id,
+                        'tag' => strtolower($tag)
+                    ]);
+                }
             }
             DB::commit();
         } catch(Exception $e) {
@@ -148,7 +150,7 @@ class PostsController extends Controller
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'tags' => 'required|array|min:1',
+            'tags' => 'nullable|array|min:1',
             'tags.*' => 'string|max:255',
             'content' => 'required|string',
             'status' => 'required|in:Draft,Published,Archived',
@@ -196,12 +198,14 @@ class PostsController extends Controller
             $post->save();
     
             $tags = $request->tags;
-            PostTag::where('post_id', $post->id)->delete();
-            foreach($tags as $tag) {
-                PostTag::create([
-                    'post_id' => $post->id,
-                    'tag' => strtolower($tag)
-                ]);
+            if(!empty($tags)) {
+                PostTag::where('post_id', $post->id)->delete();
+                foreach($tags as $tag) {
+                    PostTag::create([
+                        'post_id' => $post->id,
+                        'tag' => strtolower($tag)
+                    ]);
+                }
             }
             DB::commit();
         } catch(Exception $e) {
