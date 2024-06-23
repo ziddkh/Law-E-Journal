@@ -4,10 +4,10 @@
   </div>
 </section>
 
-<ng-container *ngIf="isLoading; else showAbout">
+<ng-container *ngIf="isLoadingAbout; else showAbout">
 </ng-container>
 <ng-template #showAbout>
-  <section class="">
+  <section>
     <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
       <ng-container *ngIf="!!companyInformation.description; else emptyCompanyInformation">
         <div class="block mb-10">
@@ -17,62 +17,76 @@
       <ng-template #emptyCompanyInformation>
         <app-empty-page module="Informasi"></app-empty-page>
       </ng-template>
-      <div id="founder" class="mb-10">
-        <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founder and Managing Partner</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div class="person-card flex-1 relative">
-            <div class="aspect-square">
-              <img src="https://images.unsplash.com/photo-1658249682543-0a25a6a7ffbd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person" class="w-full h-full object-cover object-top">
-            </div>
-            <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
-              <h3 class="text-base sm:text-lg font-bold text-white">Employee Full Name</h3>
-              <h5 class="text-sm sm:text-base block text-white">Employee Position</h5>
-            </div>
-          </div>
-          <div class="person-card flex-1 relative">
-            <div class="aspect-square">
-              <img src="https://images.unsplash.com/photo-1658249682543-0a25a6a7ffbd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person" class="w-full h-full object-cover object-top">
-            </div>
-            <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
-              <h3 class="text-base sm:text-lg font-bold text-white">Employee Full Name</h3>
-              <h5 class="text-sm sm:text-base block text-white">Employee Position</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="advisor" class="mb-10">
-        <h2 class="text-3xl font-bold text-slate-900 mb-6">Advisors</h2>
-        <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
-          <ng-container *ngFor="let dummy of [1,2,3,4,5,6]">
-            <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-              <div class="person-card relative aspect-square">
-                <img src="https://images.unsplash.com/photo-1658249682543-0a25a6a7ffbd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person" class="w-full h-full object-cover object-top">
-                <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
-                  <h3 class="text-base sm:text-lg font-bold text-white">Employee Full Name</h3>
-                  <h5 class="text-sm sm:text-base block text-white">Employee Position</h5>
-                </div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-      <div id="advisor" class="mb-10">
-        <h2 class="text-3xl font-bold text-slate-900 mb-6">Lawyers</h2>
-        <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
-          <ng-container *ngFor="let dummy of [1,2,3,4,5,6,7,8,9,0]">
-            <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-              <div class="person-card relative aspect-square">
-                <img src="https://images.unsplash.com/photo-1658249682543-0a25a6a7ffbd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person" class="grayscale w-full h-full object-cover object-top">
-                <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
-                  <h3 class="text-base sm:text-lg font-bold text-white">Employee Full Name</h3>
-                  <h5 class="text-sm sm:text-base block text-white">Employee Position</h5>
-                </div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
+    </div>
+  </section>
+</ng-template>
 
+<ng-container *ngIf="isLoadingProfile; else showProfile">
+  <div id="showLoading">
+    <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <ng-container *ngFor="let dummy of [1,2]">
+          <div class="px-4 w-full h-fit">
+            <div class="relative aspect-square">
+              <div class="w-full h-full bg-neutral-300"></div>
+              <div class="z-[5] absolute bg-black/10 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+                <span class="block w-3/4 h-[24px] bg-neutral-400/80 mb-2"></span>
+                <span class="block w-1/2 h-[20px] bg-neutral-400/80"></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #showProfile>
+  <section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+    <div id="founder" *ngIf="founders.length > 0" class="mb-10">
+      <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founder and Managing Partner</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="person-card flex-1 relative" *ngFor="let founder of founders">
+          <div class="aspect-square">
+            <img [src]="founder.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+            <h3 class="text-base sm:text-lg font-bold text-white">{{ founder.name }}</h3>
+            <h5 class="text-sm sm:text-base block text-white">{{ founder.position }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="advisor" *ngIf="advisors.length > 0" class="mb-10">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Advisors</h2>
+      <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
+        <ng-container *ngFor="let advisor of advisors">
+          <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
+            <div class="person-card relative aspect-square">
+              <img [src]="advisor.signed_image_url" class="w-full h-full object-cover object-top">
+              <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+                <h3 class="text-base sm:text-lg font-bold text-white">{{ advisor.name }}</h3>
+                <h5 class="text-sm sm:text-base block text-white">{{ advisor.position }}</h5>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div id="lawyers" *ngIf="lawyers.length > 0" class="mb-10">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Lawyers</h2>
+      <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
+        <ng-container *ngFor="let lawyer of lawyers">
+          <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
+            <div class="person-card relative aspect-square">
+              <img [src]="lawyer.signed_image_url" alt="Person" class="grayscale w-full h-full object-cover object-top">
+              <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+                <h3 class="text-base sm:text-lg font-bold text-white">{{ lawyer.name }}</h3>
+                <h5 class="text-sm sm:text-base block text-white">{{ lawyer.position }}</h5>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </section>
 </ng-template>

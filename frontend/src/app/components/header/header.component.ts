@@ -1,6 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SettingService } from '../../services/setting/setting.service';
+import { Router } from '@angular/router';
 
 interface NavigationProps {
   name: string
@@ -42,7 +43,8 @@ export class HeaderComponent {
 
   constructor(
     private renderer: Renderer2,
-    public settingService: SettingService
+    public settingService: SettingService,
+    private router: Router
   ) {
     this.isSidebarActive = false
   }
@@ -55,5 +57,10 @@ export class HeaderComponent {
     } else {
       this.renderer.removeStyle(document.body, 'overflow');
     }
+  }
+
+  navigateTo(url: string) {
+    this.isSidebarActive = false
+    this.router.navigateByUrl(url)
   }
 }

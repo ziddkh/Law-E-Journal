@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyInformationService } from '../../services/api/company-information/company-information.service';
 import { CompanyInformation } from '../../models/company-information';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ProfileService } from '../../services/api/profile/profile.service';
+import { Profile } from '../../models/profile';
 
 @Component({
   selector: 'app-about-us',
@@ -9,19 +11,26 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrl: './about-us.component.scss'
 })
 export class AboutUsComponent implements OnInit {
-  isLoading: boolean = true
+  isLoadingAbout: boolean = true
+  isLoadingProfile: boolean = true
   companyInformation!: CompanyInformation
+  founders: Profile[] = []
+  advisors: Profile[] = []
+  lawyers: Profile[] = []
 
   constructor(
     private companyInformationService: CompanyInformationService,
+    private profileService: ProfileService,
     private saniziter: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
     this.getAbout()
+    this.getProfiles()
   }
 
   getAbout() {
+    this.isLoadingAbout = true
     this.companyInformationService.getCompanyInformation()
       .then(response => {
         this.companyInformation = response.data.company_information
@@ -30,7 +39,24 @@ export class AboutUsComponent implements OnInit {
         console.log(error)
       })
       .finally(() => {
-        this.isLoading = false
+        this.isLoadingAbout = false
+      })
+  }
+
+  getProfiles() {
+    this.isLoadingProfile = true
+    this.profileService.getProfiles()
+      .then(response => {
+        this.founders = response.data.founders
+        console.log(this.founders)
+        this.advisors = response.data.advisors
+        this.lawyers = response.data.lawyers
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => {
+        this.isLoadingProfile = false
       })
   }
 

@@ -17,7 +17,7 @@ class ProfilesController extends Controller
      */
     public function index(Request $request)
     {
-        $positions = ['Lawyer', 'Advisor', 'Founders'];
+        $positions = ['Lawyer', 'Advisor', 'Founder'];
         $profiles = [];
 
         foreach ($positions as $position) {
