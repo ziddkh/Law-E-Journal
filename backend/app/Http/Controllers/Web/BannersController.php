@@ -43,7 +43,7 @@ class BannersController extends Controller
             'description' => 'nullable|string',
             'cta_button_text' => 'nullable|string|max:255',
             'cta_button_url' => 'nullable|string|max:255',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:16384'
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:16384'
         ]);
 
         // Prepend https:// if not already present
@@ -94,7 +94,7 @@ class BannersController extends Controller
             'description' => 'nullable|string',
             'cta_button_text' => 'nullable|string|max:255',
             'cta_button_url' => 'nullable|string|max:255',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:16384'
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:16384'
         ]);
 
         $validated['cta_button_url'] = str_replace('https://', '', $request->cta_button_url);
