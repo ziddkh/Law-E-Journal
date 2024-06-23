@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group" style="position: relative">
-                    <label for="description">Description</label>
+                    <label for="description">Description <sup style='color: red'>*</sup></label>
                     <textarea name="description" class="form-control" id="text-area">{{ old('description') }}</textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
