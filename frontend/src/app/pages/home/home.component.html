@@ -6,7 +6,7 @@
           <ng-container *ngFor="let banner of banners">
             <swiper-slide>
               <div class="relative h-full w-full">
-                <div class="my-swiper-img-wrapper w-full h-full">
+                <div class="w-full h-full" [class.my-swiper-img-wrapper]="banner.title">
                   <img [src]="banner.signed_image_url" [alt]="banner.title + ' Image'" class="w-full h-full object-cover">
                 </div>
                 <div></div>

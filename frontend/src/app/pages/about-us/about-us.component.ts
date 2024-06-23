@@ -4,6 +4,7 @@ import { CompanyInformation } from '../../models/company-information';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProfileService } from '../../services/api/profile/profile.service';
 import { Profile } from '../../models/profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -17,11 +18,13 @@ export class AboutUsComponent implements OnInit {
   founders: Profile[] = []
   advisors: Profile[] = []
   lawyers: Profile[] = []
+  partners: Profile[] = []
 
   constructor(
     private companyInformationService: CompanyInformationService,
     private profileService: ProfileService,
     private saniziter: DomSanitizer,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +54,7 @@ export class AboutUsComponent implements OnInit {
         console.log(this.founders)
         this.advisors = response.data.advisors
         this.lawyers = response.data.lawyers
+        this.partners = response.data.partners
       })
       .catch(error => {
         console.log(error)
@@ -58,6 +62,10 @@ export class AboutUsComponent implements OnInit {
       .finally(() => {
         this.isLoadingProfile = false
       })
+  }
+
+  viewProfile(id: number) {
+    this.router.navigateByUrl(`/tentang-kami/${id}/view`)
   }
 
   getSafeContent(): SafeHtml {

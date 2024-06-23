@@ -4,17 +4,23 @@ import { AboutUsComponent } from './about-us.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { EmptyPageModule } from '../../components/empty-page/empty-page.module';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AboutUsComponent,
+  },
+  {
+    path: ':id/view',
+    component: ProfileComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    AboutUsComponent
+    AboutUsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
