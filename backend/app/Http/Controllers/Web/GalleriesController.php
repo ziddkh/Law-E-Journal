@@ -39,9 +39,9 @@ class GalleriesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'name' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         if ($request->hasFile('image_url')) {
@@ -85,9 +85,9 @@ class GalleriesController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'name' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
     
         $gallery = Gallery::where('id', $id)->first();

@@ -23,15 +23,15 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="name">Name <sup style='color: red'>*</sup></label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
                     @error('name')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group" style="position: relative">
-                    <label for="description">Description <sup style='color: red'>*</sup></label>
+                    <label for="description">Description</label>
                     <textarea name="description" class="form-control" id="text-area">{{ old('description') }}</textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -39,8 +39,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image_url">Image</label>
-                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
+                    <label for="image_url">Image <sup style='color: red'>*</sup></label>
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" required>
                     @error('image_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror
