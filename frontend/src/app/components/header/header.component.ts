@@ -62,5 +62,6 @@ export class HeaderComponent {
   navigateTo(url: string) {
     this.isSidebarActive = false
     this.router.navigateByUrl(url)
+    this.renderer.removeStyle(document.body, 'overflow');
   }
 }
