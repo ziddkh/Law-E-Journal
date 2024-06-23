@@ -33,6 +33,9 @@ class SettingsSeeder extends Seeder
             'Address 3',
             'Address 4',
             'Google Map',
+            'Google Map 2',
+            'Google Map 3',
+            'Google Map 4',
         ];
     }
 }
