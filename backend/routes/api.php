@@ -58,6 +58,6 @@ Route::prefix('client-reviews')->group(function() {
 });
 
 Route::prefix('profiles')->group(function() {
-    Route::get('/', [ClientReviewsController::class, 'index']);
+    Route::get('/', [ProfilesController::class, 'index']);
     Route::get('/{id}', [ProfilesController::class, 'show']);
 });

@@ -57,13 +57,13 @@
                   </div>
                   <div class="p-1 pt-2">
                     <h2 class="text-sm font-bold text-slate-900 capitalize line-clamp-2">{{ post.title }}</h2>
-                    <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p>
+                    <!-- <p class="text-sm text-neutral-600 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, omnis!</p> -->
                   </div>
                 </article>
               </div>
             </ng-container>
           </div>
-          <app-pagination></app-pagination>
+          <app-pagination [currentPage]="currentPage" [totalPages]="totalPage" (pageChange)="onPageChange($event)"></app-pagination>
         </div>
         <ng-container *ngIf="recomendedPosts.length > 0">
           <div class="w-full sm:w-[256px] relative">

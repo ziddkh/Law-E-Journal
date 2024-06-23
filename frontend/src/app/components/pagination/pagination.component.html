@@ -1,3 +1,33 @@
+<div *ngIf="totalPages > 1" class="flex items-center gap-2 justify-center mt-10">
+  <button class="h-10 w-10 inline-flex items-center justify-center bg-neutral-100" (click)="changePage(1)" [disabled]="currentPage === 1">
+    <span class="sr-only">First Page</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+      <path fill-rule="evenodd" d="M4.72 9.47a.75.75 0 0 0 0 1.06l4.25 4.25a.75.75 0 1 0 1.06-1.06L6.31 10l3.72-3.72a.75.75 0 1 0-1.06-1.06L4.72 9.47Zm9.25-4.25L9.72 9.47a.75.75 0 0 0 0 1.06l4.25 4.25a.75.75 0 1 0 1.06-1.06L11.31 10l3.72-3.72a.75.75 0 0 0-1.06-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <button class="h-10 w-10 inline-flex items-center justify-center bg-neutral-100" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    <span class="sr-only">Previous</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+      <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <button class="text-sm h-10 w-10 inline-flex items-center justify-center" *ngFor="let page of pages" (click)="changePage(page)" [class.bg-red-700]="page === currentPage" [class.bg-neutral-100]="page !== currentPage" [class.text-neutral-900]="page !== currentPage" [class.text-white]="page === currentPage" [disabled]="page === -1 || page === currentPage">
+    {{ page === -1 ? '...' : page }}
+  </button>
+  <button class="h-10 w-10 inline-flex items-center justify-center bg-neutral-100" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+      <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <button class="h-10 w-10 inline-flex items-center justify-center bg-neutral-100" (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">
+    <span class="sr-only">Last Page</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+      <path fill-rule="evenodd" d="M15.28 9.47a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L13.69 10 9.97 6.28a.75.75 0 0 1 1.06-1.06l4.25 4.25ZM6.03 5.22l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L8.69 10 4.97 6.28a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+</div>
+
+
 <!-- <nav class="relative z-0 inline-flex rounded-md -space-x-px">
   <a href="javascript:;"
       class="relative inline-flex items-center px-2 py-2 border border-slate-400 bg-slate-50 text-sm font-medium text-slate-500 hover:bg-slate-50">

@@ -78,7 +78,7 @@
           <hr class="border-neutral-400 my-6">
           <ul class="flex flex-wrap">
             <li *ngFor="let nav of navigations" class="pr-2 w-1/2">
-              <a [routerLink]="nav.url" routerLinkActive="font-semibold text-red-700 hover:text-red-700" [routerLinkActiveOptions]="{exact: true}" class="transition py-3 text-start block text-neutral-900 hover:text-neutral-500">{{ nav.name }}</a>
+              <a (click)="navigateTo(nav.url)" routerLinkActive="font-semibold text-red-700 hover:text-red-700" [routerLinkActiveOptions]="{exact: true}" class="transition py-3 text-start block text-neutral-900 hover:text-neutral-500">{{ nav.name }}</a>
             </li>
           </ul>
           <ng-container *ngIf="settingService.getInstagram() || settingService.getTwitter() || settingService.getYoutube() || settingService.getTikTok()">
