@@ -14,7 +14,7 @@ class SettingsController extends Controller
     public function index(Request $request)
     {
         $settings = Setting::search($request)
-            ->orderBy('id', 'DESC')
+            ->orderBy('key', 'ASC')
             ->paginate(10);
 
         return view('pages.settings.index', [
