@@ -24,7 +24,7 @@
                 @method('PUT')
 
                 <div class="form-group">
-                    <label for="title">Title <sup style='color: red'>*</sup></label>
+                    <label for="title">Title</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $banner->title) }}" required>
                     @error('title')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
