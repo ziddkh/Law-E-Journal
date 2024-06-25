@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SettingService } from '../../services/setting/setting.service';
 import { ConsultationRequestService } from '../../services/api/consultation-request/consultation-request.service';
 import { ConsultationRequest } from '../../models/consultation-request';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact-us',
@@ -20,7 +21,8 @@ export class ContactUsComponent {
 
   constructor(
     public settingService: SettingService,
-    private consultationRequestService: ConsultationRequestService
+    private consultationRequestService: ConsultationRequestService,
+    private sanitizer: DomSanitizer,
   ) {}
 
   sendMessage() {
@@ -49,5 +51,12 @@ export class ContactUsComponent {
     setTimeout(() => {
       this.successMessage = ''
     }, duration)
+  }
+
+  googleMapUrl(url: string | null) {
+    if (url) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    return
   }
 }

@@ -73,7 +73,7 @@
           <ng-container *ngFor="let clientReview of clientReviews">
             <swiper-slide>
               <div class="relative cursor-pointer">
-                <div class="mx-auto overflow-hidden pointer-events-none size-14 rounded-full bg-gray-300">
+                <div class="mx-auto overflow-hidden pointer-events-none size-20 rounded-full bg-gray-300">
                   <ng-container *ngIf="clientReview.image_url; else noImage">
                     <img [src]="clientReview.signed_image_url" [alt]="clientReview.name + ' Image'" class="w-full h-full object-cover">
                   </ng-container>

@@ -51,7 +51,6 @@ export class AboutUsComponent implements OnInit {
     this.profileService.getProfiles()
       .then(response => {
         this.founders = response.data.founders
-        console.log(this.founders)
         this.advisors = response.data.advisors
         this.lawyers = response.data.lawyers
         this.partners = response.data.partners

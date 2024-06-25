@@ -46,8 +46,32 @@ export class SettingService {
     return sessionStorage.getItem(`${environment.setting_key_identifier}.address`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.address`) : null
   }
 
+  getAddress2() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.address_2`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.address_2`) : null
+  }
+
+  getAddress3() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.address_3`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.address_3`) : null
+  }
+
+  getAddress4() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.address_4`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.address_4`) : null
+  }
+
   getGoogleMap() {
     return sessionStorage.getItem(`${environment.setting_key_identifier}.google_map`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.google_map`) : null
+  }
+
+  getGoogleMap2() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 2`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 2`) : null
+  }
+
+  getGoogleMap3() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 3`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 3`) : null
+  }
+
+  getGoogleMap4() {
+    return sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 4`) !== 'null' ? sessionStorage.getItem(`${environment.setting_key_identifier}.google_map 4`) : null
   }
 
   getCompanyName() {

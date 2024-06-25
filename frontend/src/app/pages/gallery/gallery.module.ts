@@ -4,6 +4,7 @@ import { GalleryComponent } from './gallery.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LightgalleryModule } from 'lightgallery/angular';
 import { EmptyPageModule } from '../../components/empty-page/empty-page.module';
+import { ImageDialogModule } from '../../components/image-dialog/image-dialog.module';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     LightgalleryModule,
     EmptyPageModule,
+    ImageDialogModule,
     RouterModule.forChild(routes)
   ]
 })

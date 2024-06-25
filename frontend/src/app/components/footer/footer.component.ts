@@ -36,7 +36,7 @@ export class FooterComponent {
         },
         {
           name: 'Galeri',
-          url: '/layanan',
+          url: '/galeri',
         },
         {
           name: 'Kontak',

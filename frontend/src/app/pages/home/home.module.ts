@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponentModule } from '../../components/empty-component/empty-component.module';
 import { EmptyPageModule } from '../../components/empty-page/empty-page.module';
 import { DialogModule } from '@angular/cdk/dialog'
+import { ImageDialogModule } from '../../components/image-dialog/image-dialog.module';
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +22,7 @@ const routes: Routes = [
     EmptyComponentModule,
     EmptyPageModule,
     DialogModule,
+    ImageDialogModule,
     RouterModule.forChild(routes)
   ],
   schemas: [

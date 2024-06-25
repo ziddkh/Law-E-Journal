@@ -43,7 +43,7 @@
 <ng-template #showProfile>
   <section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
     <div id="founder" *ngIf="founders.length > 0" class="mb-10">
-      <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founder and Managing Partner</h2>
+      <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founders</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <ng-container *ngFor="let founder of founders">
           <div (click)="viewProfile(founder.id)" class="cursor-pointer person-card flex-1 relative">
