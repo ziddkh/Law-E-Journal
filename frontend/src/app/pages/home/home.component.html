@@ -11,12 +11,12 @@
                 </div>
                 <div></div>
                 <div class="absolute top-1/2 lg:left-1/2 -translate-y-1/2 lg:-translate-x-1/2 left-4 right-4 lg:w-[64rem] max-w-5xl lg:px-0">
-                  <h1 class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-neutral-50">{{ banner.title }}</h1>
-                  <p class="text-base md:text-lg leading-6 tracking-normal mb-8 text-neutral-50">{{ banner.description }}</p>
+                  <h1 class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-white">{{ banner.title }}</h1>
+                  <p class="text-base md:text-lg leading-6 tracking-normal mb-8 text-white">{{ banner.description }}</p>
                   <ng-container *ngIf="banner.cta_button_text && banner.cta_button_url">
                     <div class="flex gap-3">
                       <div>
-                        <a [href]="banner.cta_button_url" class="w-full px-5 py-2.5 text-sm inline-flex leading-4 gap-2 bg-red-700 text-neutral-50">
+                        <a [href]="banner.cta_button_url" class="w-full px-5 py-2.5 text-sm inline-flex leading-4 gap-2 bg-red-600 text-white">
                           <span>{{ banner.cta_button_text }}</span>
                         </a>
                       </div>
@@ -32,6 +32,29 @@
       <app-empty-component module="banner"></app-empty-component>
     </ng-template>
 
+    <!-- About Us -->
+    <ng-container *ngIf="!!companyInformation.short_description; else emptyCompanyInformation">
+      <section class="relative py-10">
+        <div id="about-us" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
+          <div class="py-10 relative">
+            <div class="flex">
+              <div class="flex-1">
+                <div class="bg-gray-200 text-gray-900 px-8 py-8 shadow-lg">
+                  <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{ companyInformation.title }}</h2>
+                  <p class="text-sm mb-5">{{ companyInformation.short_description }}</p>
+                  <a href="/tentang-kami" class="w-full px-5 py-2.5 text-sm leading-4 gap-2 bg-red-600 text-white">Selengkapnya</a>
+                </div>
+              </div>
+              <div class="hidden sm:block flex-1"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ng-container>
+    <ng-template #emptyCompanyInformation>
+      <app-empty-component module="informasi perusahaan"></app-empty-component>
+    </ng-template>
+
     <!-- Recommendation Posts -->
     <ng-container *ngIf="recommendedPosts.length > 0; else emptyRecommendedPost">
       <section class="relative py-10">
@@ -41,12 +64,12 @@
               <ng-container *ngFor="let post of recommendedPosts">
                   <swiper-slide>
                     <div class="relative cursor-pointer">
-                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-gray-400/50">
                         <img src="{{ post.signed_image_url }}" [alt]="post.title + ' Image'" class="w-full h-full object-cover">
                       </div>
                       <div class="p-1 pt-2">
-                        <h2 class="text-sm font-bold text-neutral-900 capitalize line-clamp-2">{{ post.title }}</h2>
-                        <a [routerLink]="'postingan/' + post.type + '/' + post.slug" class="inline-flex items-center gap-2 text-neutral-600 text-sm">
+                        <h2 class="text-sm font-bold text-gray-900 capitalize line-clamp-2">{{ post.title }}</h2>
+                        <a [routerLink]="'postingan/' + post.type + '/' + post.slug" class="inline-flex items-center gap-2 text-gray-700 text-sm">
                           <span>Lihat Selengkapnya</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
                             <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
@@ -75,29 +98,6 @@
       <app-empty-component module="rekomendasi artikel"></app-empty-component>
     </ng-template>
 
-    <!-- About Us -->
-    <ng-container *ngIf="!!companyInformation.short_description; else emptyCompanyInformation">
-      <section class="relative py-10">
-        <div id="about-us" class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-          <div class="py-10 relative">
-            <div class="flex">
-              <div class="flex-1">
-                <div class="bg-neutral-200 text-neutral-900 pr-8 py-8">
-                  <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{ companyInformation.title }}</h2>
-                  <p class="text-sm mb-5">{{ companyInformation.short_description }}</p>
-                  <a href="/tentang-kami" class="w-full px-5 py-2.5 text-sm leading-4 gap-2 bg-red-700 text-neutral-50">Selengkapnya</a>
-                </div>
-              </div>
-              <div class="hidden sm:block flex-1"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </ng-container>
-    <ng-template #emptyCompanyInformation>
-      <app-empty-component module="informasi perusahaan"></app-empty-component>
-    </ng-template>
-
     <!-- Our Clients -->
 
     <!-- Services -->
@@ -107,11 +107,11 @@
         <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
           <div class="border-b border-violet-700/10 pb-6 mb-6 inline-flex justify-between">
             <div class="flex-1">
-              <h2 class="text-xl md:text-3xl text-neutral-900 leading-8 font-bold tracking-tight mb-3">Kenapa Memilih Jasa Kami</h2>
-              <p class="text-sm md:text-base leading-6 tracking-normal text-neutral-500">{{ settingService.getCompanyName() ?? 'Company Name' }} menjunjung tinggi nilai-nilai dan prinsip yang dapat mendorong kami untuk selalu memberikan serta menjalin hubungan baik dengan Klien kami. Nilai-nilai inilah yang membedakan kami dengan yang lain:</p>
+              <h2 class="text-xl md:text-3xl text-gray-900 leading-8 font-bold tracking-tight mb-3">Kenapa Memilih Jasa Kami</h2>
+              <p class="text-sm md:text-base leading-6 tracking-normal text-white0">{{ settingService.getCompanyName() ?? 'Company Name' }} menjunjung tinggi nilai-nilai dan prinsip yang dapat mendorong kami untuk selalu memberikan serta menjalin hubungan baik dengan Klien kami. Nilai-nilai inilah yang membedakan kami dengan yang lain:</p>
             </div>
             <div>
-              <a routerLink="/layanan" class="text-sm text-neutral-600 inline-flex items-center gap-2">
+              <a routerLink="/layanan" class="text-sm text-gray-700 inline-flex items-center gap-2">
                 <span>Lihat Selengkapnya</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                   <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -124,12 +124,12 @@
               <ng-container *ngFor="let service of services">
                   <swiper-slide>
                     <div class="relative cursor-pointer">
-                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-neutral-300">
+                      <div class="rounded-t overflow-hidden pointer-events-none aspect-video bg-gray-400/50">
                         <img src="{{ service.signed_image_url }}" [alt]="service.name + ' Image'" class="w-full h-full object-cover">
                       </div>
                       <div class="p-1 pt-2">
-                        <h2 class="text-sm font-bold text-neutral-900 capitalize line-clamp-2">{{ service.name }}</h2>
-                        <a [routerLink]="service.name" class="inline-flex items-center gap-2 text-neutral-500 text-sm">
+                        <h2 class="text-sm font-bold text-gray-900 capitalize line-clamp-2">{{ service.name }}</h2>
+                        <a [routerLink]="service.name" class="inline-flex items-center gap-2 text-white0 text-sm">
                           <span>Lihat Selengkapnya</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
                             <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
@@ -150,7 +150,7 @@
 
     <section *ngIf="clientReviews.length > 0; else emptyClientReview" class="relative py-10">
       <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-        <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-10 text-neutral-900">Klien Kami</h2>
+        <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-10 text-gray-900">Klien Kami</h2>
         <div class="overflow-hidden">
           <swiper-container loop="true" slides-per-view="3" space-between="24">
             <ng-container *ngFor="let clientReview of clientReviews">
@@ -194,13 +194,13 @@
               </div>
             </ng-container>
             <ng-template #defaultCompanyLogo>
-              <div class="w-14 h-14 bg-red-700 rounded-full"></div>
+              <div class="w-14 h-14 bg-red-600 rounded-full"></div>
             </ng-template>
           </div>
-          <h2 class="text-neutral-900 text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-1">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
-          <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-neutral-900 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
-          <p class="text-center text-sm md:text-base leading-6 tracking-normal text-neutral-700 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
-          <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-red-700 text-slate-50">
+          <h2 class="text-gray-900 text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-1">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
+          <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-gray-900 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
+          <p class="text-center text-sm md:text-base leading-6 tracking-normal text-gray-900 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
+          <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-red-600 text-slate-50">
             <span>Contact Us</span>
           </a>
         </div>
@@ -214,9 +214,9 @@
       <section class="relative py-10">
         <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
           <div class="flex justify-between mb-6">
-            <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3 text-neutral-900">Klien Kami</h2>
+            <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3 text-gray-900">Klien Kami</h2>
             <div>
-              <a routerLink="/" class="text-sm text-neutral-500 inline-flex items-center gap-2">
+              <a routerLink="/" class="text-sm text-white0 inline-flex items-center gap-2">
                 <span>Lihat Selengkapnya</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                   <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />

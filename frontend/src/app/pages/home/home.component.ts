@@ -8,6 +8,7 @@ import { Post } from '../../models/post';
 import { Profile } from '../../models/profile';
 import { Service } from '../../models/service';
 import { CompanyInformation } from '../../models/company-information';
+import { Gallery } from '../../models/gallery';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   services: Service[] = []
   recommendedPosts: Post[] = []
   companyInformation!: CompanyInformation
+  galleris: Gallery[] = []
 
   constructor(
     private homeService: HomeService,
@@ -47,7 +49,7 @@ export class HomeComponent implements OnInit {
         this.services = response.data.services
         this.recommendedPosts = response.data.recommended_posts
         this.companyInformation = response.data.company_information
-        console.log(this.banners)
+        this.galleris = response.data.galleries
       })
       .catch(error => {
         console.log(error)

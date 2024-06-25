@@ -9,21 +9,21 @@
             </div>
           </ng-container>
           <ng-template #defaultCompanyLogo>
-            <div class="w-10 h-10 bg-red-700 rounded-full"></div>
+            <div class="w-10 h-10 bg-red-600 rounded-full"></div>
           </ng-template>
-          <span class="font-bold text-base uppercase text-neutral-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+          <span class="font-bold text-base uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
         </div>
-        <p class="max-w-[15rem] text-sm text-neutral-900 leading-5 tracking-normal font-semibold">Our Commitment to Excellence Has Been Recognized</p>
+        <p class="max-w-[15rem] text-sm text-gray-900 leading-5 tracking-normal font-semibold">Our Commitment to Excellence Has Been Recognized</p>
       </div>
       <nav class="flex-1">
         <ul class="grid grid-cols-2 md:flex md:justify-around gap-4 md:gap-4">
           <ng-container *ngFor="let navigation of navigations">
             <li>
-              <span class="block mb-2 text-base font-bold text-neutral-900">{{ navigation.name }}</span>
+              <span class="block mb-2 text-base font-bold text-gray-900">{{ navigation.name }}</span>
               <ul class="flex flex-col gap-2">
                 <ng-container *ngFor="let item of navigation.items">
                   <li class="text-sm">
-                      <a [routerLink]="item.url" class="text-sm hover:underline text-neutral-700 underline-offset-2">{{ item.name }}</a>
+                      <a [routerLink]="item.url" class="text-sm hover:underline text-gray-600 underline-offset-2">{{ item.name }}</a>
                   </li>
                 </ng-container>
               </ul>

@@ -1,4 +1,4 @@
-<header class="py-6 bg-neutral-200 z-30 shadow-sm fixed top-0 inset-x-0">
+<header class="py-6 bg-gray-300 z-30 shadow-sm fixed top-0 inset-x-0">
   <div class="max-w-5xl px-4 lg:px-0 mx-auto">
     <div class="flex justify-between items-center">
       <a href="#" class="inline-flex items-center gap-3">
@@ -8,9 +8,9 @@
           </div>
         </ng-container>
         <ng-template #defaultCompanyLogo>
-          <div class="w-10 h-10 bg-red-700 rounded-full"></div>
+          <div class="w-10 h-10 bg-red-600 rounded-full"></div>
         </ng-template>
-        <span class="font-bold text-lg uppercase text-neutral-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+        <span class="font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
       </a>
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-3">
@@ -50,12 +50,12 @@
               </div>
             </ng-container>
             <ng-template #standAloneNav>
-              <a [routerLink]="nav.url" routerLinkActive="font-semibold text-red-700 hover:text-red-700" [routerLinkActiveOptions]="{exact: true}" class="text-sm block px-4 py-2 text-neutral-900 hover:text-neutral-500">{{ nav.name }}</a>
+              <a [routerLink]="nav.url" routerLinkActive="font-semibold text-red-600 hover:text-red-600" [routerLinkActiveOptions]="{exact: true}" class="text-sm block px-4 py-2 text-gray-900 hover:text-gray-600">{{ nav.name }}</a>
             </ng-template>
           </li>
         </ul>
       </nav>
-      <nav id="mobile-nav" class="shadow-lg fixed sm:hidden top-0 right-0 bottom-0 sm:w-[400px] translate-x-[100%] transition duration-150 ease-in-out bg-neutral-200 z-30" [class.active]="isSidebarActive">
+      <nav id="mobile-nav" class="shadow-lg fixed sm:hidden top-0 right-0 bottom-0 sm:w-[400px] translate-x-[100%] transition duration-150 ease-in-out bg-gray-300 z-30" [class.active]="isSidebarActive">
         <div class="px-6 pt-6 flex justify-between items-center">
           <div class="inline-flex items-center gap-3">
             <ng-container *ngIf="settingService.getCompanyLogo(); else defaultCompanyLogo">
@@ -64,9 +64,9 @@
               </div>
             </ng-container>
             <ng-template #defaultCompanyLogo>
-              <div class="w-10 h-10 bg-red-700 rounded-full"></div>
+              <div class="w-10 h-10 bg-red-600 rounded-full"></div>
             </ng-template>
-            <span class="font-bold text-lg uppercase text-neutral-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+            <span class="font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
           </div>
           <button (click)="toggleSidebar()" class="inline-flex sm:hidden items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -75,18 +75,18 @@
           </button>
         </div>
         <div class="px-6">
-          <hr class="border-neutral-400 my-6">
+          <hr class="border-gray-400/50 my-6">
           <ul class="flex flex-wrap">
             <li *ngFor="let nav of navigations" class="pr-2 w-1/2">
-              <a (click)="navigateTo(nav.url)" routerLinkActive="font-semibold text-red-700 hover:text-red-700" [routerLinkActiveOptions]="{exact: true}" class="transition py-3 text-start block text-neutral-900 hover:text-neutral-500">{{ nav.name }}</a>
+              <a (click)="navigateTo(nav.url)" routerLinkActive="font-semibold text-red-600 hover:text-red-600" [routerLinkActiveOptions]="{exact: true}" class="transition py-3 text-start block text-gray-900 hover:text-gray-600">{{ nav.name }}</a>
             </li>
           </ul>
           <ng-container *ngIf="settingService.getInstagram() || settingService.getTwitter() || settingService.getYoutube() || settingService.getTikTok()">
-            <hr class="border-neutral-400 my-6">
+            <hr class="border-neutral-400/50 my-6">
             <ul class="flex flex-wrap">
               <ng-container *ngIf="settingService.getInstagram()">
                 <li class="pr-2 w-1/2">
-                  <a [href]="settingService.getInstagram()" class="py-3 text-start text-neutral-900 inline-flex gap-1 items-center">
+                  <a [href]="settingService.getInstagram()" class="py-3 text-start text-gray-900 inline-flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
@@ -99,7 +99,7 @@
               </ng-container>
               <ng-container *ngIf="settingService.getTwitter()">
                 <li class="pr-2 w-1/2">
-                  <a [href]="settingService.getTwitter()" class="py-3 text-start text-neutral-900 inline-flex gap-1 items-center">
+                  <a [href]="settingService.getTwitter()" class="py-3 text-start text-gray-900 inline-flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
@@ -111,7 +111,7 @@
               </ng-container>
               <ng-container *ngIf="settingService.getYoutube()">
                 <li class="pr-2 w-1/2">
-                  <a [href]="settingService.getYoutube()" class="py-3 text-start text-neutral-900 inline-flex gap-1 items-center">
+                  <a [href]="settingService.getYoutube()" class="py-3 text-start text-gray-900 inline-flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
@@ -123,7 +123,7 @@
               </ng-container>
               <ng-container *ngIf="settingService.getTikTok()">
                 <li class="pr-2 w-1/2">
-                  <a [href]="settingService.getTikTok()" class="py-3 text-start text-neutral-900 inline-flex gap-1 items-center">
+                  <a [href]="settingService.getTikTok()" class="py-3 text-start text-gray-900 inline-flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
                       <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
                     </svg>
@@ -143,6 +143,6 @@
     </div>
   </div>
 </header>
-<div *ngIf="isSidebarActive" class="absolute sm:hidden inset-0 bg-neutral-900/50 z-20"></div>
+<div *ngIf="isSidebarActive" class="absolute sm:hidden inset-0 bg-gray-900/50 z-20"></div>
 
 

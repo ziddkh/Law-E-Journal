@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\ClientReview;
 use App\Models\CompanyInformation;
 use App\Models\Client;
+use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Service;
@@ -56,6 +57,8 @@ class LandingPagesController extends Controller
 
         $companyInformation = CompanyInformation::orderBy('id', 'DESC')->first();
 
+        $galleries = Gallery::latest('id')->take(10)->get();
+
         // Return the collected data as JSON response
         return response()->json([
             'posts' => $posts,
@@ -65,6 +68,7 @@ class LandingPagesController extends Controller
             'clients' => $clients,
             'client_reviews' => $clientReviews,
             'recommended_posts' => $recommendedPosts,
+            'galleries' => $galleries,
             'company_information' => $companyInformation ?? NULL
         ], JsonResponse::HTTP_OK);
     }
