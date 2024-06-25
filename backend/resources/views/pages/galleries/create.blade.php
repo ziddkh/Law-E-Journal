@@ -38,6 +38,13 @@
                     @enderror
                 </div>
 
+                <div class="form-group" style="position: relative">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended">
+                        <label class="form-check-label" for="is-recommended">Recommended Gallery</label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="image_url">Image <sup style='color: red'>*</sup></label>
                     <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" required>

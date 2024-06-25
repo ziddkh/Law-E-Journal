@@ -16,6 +16,7 @@ class Gallery extends Model
         'name',
         'description',
         'image_url',
+        'is_recommended'
     ];
 
     protected $appends = [
@@ -32,6 +33,11 @@ class Gallery extends Model
         return [
             'name' => 'LIKE'
         ];
+    }
+
+    public function scopeRecommended($query)
+    {
+        return $query->where('is_recommended', 1);
     }
 
     public function getSignedImageUrlAttribute()

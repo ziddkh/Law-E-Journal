@@ -39,6 +39,13 @@
                     @enderror
                 </div>
 
+                <div class="form-group" style="position: relative">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_recommended" class="form-check-input" id="is-recommended" {{ $gallery->is_recommended ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is-recommended">Recommended Post</label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="image_url">Image <sup style='color: red'>*</sup></label>
                     @if($gallery->image_url)
@@ -46,7 +53,7 @@
                             <img src="{{ Storage::url($gallery->image_url) }}" alt="Gallery Image" class="img-thumbnail" width="150">
                         </div>
                     @endif
-                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" required>
+                    <input type="file" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url">
                     @error('image_url')
                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                     @enderror

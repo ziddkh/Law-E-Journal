@@ -19,8 +19,15 @@ class GalleriesController extends Controller
     {
         $galleries = Gallery::search($request)->orderBy('id', 'DESC')->paginate(10);
 
+        $takeRecommendedGalleries = $request->filled('take') ? $request->take : 5;
+        $recommendedGalleries = Gallery::recommended()
+            ->orderBy('id', 'DESC')
+            ->take($takeRecommendedGalleries)
+            ->get();
+
         return response()->json([
-            'galleries' => $galleries
+            'galleries' => $galleries,
+            'recommended_galleries' => $recommendedGalleries
         ], JsonResponse::HTTP_OK);
     }
 }

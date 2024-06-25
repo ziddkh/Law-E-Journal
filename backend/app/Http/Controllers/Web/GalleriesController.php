@@ -49,7 +49,12 @@ class GalleriesController extends Controller
             $validated['image_url'] = $imagePath;
         }
 
-        $gallery = Gallery::create($validated);
+        $gallery = new Gallery;
+        $gallery->name = $request->name;
+        $gallery->description = $request->description;
+        $gallery->image_url = $imagePath;
+        $gallery->is_recommended = !empty($request->is_recommended) ? 1 : 0;
+        $gallery->save();
 
         return redirect()->route('galleries.show', [
             'gallery' => $gallery
@@ -87,7 +92,7 @@ class GalleriesController extends Controller
         $validated = $request->validate([
             'name' => 'nullable|string|max:255',
             'description' => 'required|string',
-            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
     
         $gallery = Gallery::where('id', $id)->first();
@@ -95,6 +100,7 @@ class GalleriesController extends Controller
             return redirect()->back()->with('error_message', 'Gallery not found!');
         }
     
+        $imagePath = $gallery->image_url;
         if ($request->hasFile('image_url')) {
             // Delete the old image if it exists
             if ($gallery->image_url) {
@@ -105,8 +111,12 @@ class GalleriesController extends Controller
             $imagePath = $request->file('image_url')->store('galleries', 'public');
             $validated['image_url'] = $imagePath;
         }
-    
-        $gallery->update($validated);
+
+        $gallery->name = $request->name;
+        $gallery->description = $request->description;
+        $gallery->image_url = $imagePath;
+        $gallery->is_recommended = !empty($request->is_recommended) ? 1 : 0;
+        $gallery->save();
     
         return redirect()->route('galleries.show', [
             'gallery' => $gallery

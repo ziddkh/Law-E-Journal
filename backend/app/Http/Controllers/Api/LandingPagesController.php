@@ -59,6 +59,11 @@ class LandingPagesController extends Controller
 
         $galleries = Gallery::latest('id')->take(10)->get();
 
+        $recommendedGalleries = Gallery::recommended()
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
+
         // Return the collected data as JSON response
         return response()->json([
             'posts' => $posts,
@@ -68,6 +73,7 @@ class LandingPagesController extends Controller
             'clients' => $clients,
             'client_reviews' => $clientReviews,
             'recommended_posts' => $recommendedPosts,
+            'recommended_galleries' => $recommendedGalleries,
             'galleries' => $galleries,
             'company_information' => $companyInformation ?? NULL
         ], JsonResponse::HTTP_OK);
