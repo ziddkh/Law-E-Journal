@@ -36,6 +36,6 @@ class Service extends Model
 
     public function getSignedImageUrlAttribute()
     {
-        return asset("storage/$this->image_url");
+        return !empty($this->image_url) ? asset("storage/$this->image_url") : asset("img/dummy-image.jpg");
     }
 }
