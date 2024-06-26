@@ -55,22 +55,22 @@ export class ViewComponent implements OnInit {
   }
 
   getFacebookShareLink(): string {
-    const description = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/${this.post.type.toLowerCase()}/${this.post.slug}`;
+    const description = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/postingan/${this.post.type.toLowerCase()}/${this.post.slug}`;
     return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.baseUrl)}&quote=${encodeURIComponent(description)}`;
   }
 
   getTelegramShareLink(): string {
-    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/${this.post.type.toLowerCase()}/${this.post.slug}`;
+    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/postingan/${this.post.type.toLowerCase()}/${this.post.slug}`;
     return `https://t.me/share/url?url=${encodeURIComponent(this.baseUrl)}&text=${encodeURIComponent(message)}`;
   }
 
   getTwitterShareLink(): string {
-    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/${this.post.type.toLowerCase()}/${this.post.slug}`;
+    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/postingan/${this.post.type.toLowerCase()}/${this.post.slug}`;
     return `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
   }
 
   getWhatsAppShareLink(): string {
-    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/${this.post.type.toLowerCase()}/${this.post.slug}`;
+    const message = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/postingan/${this.post.type.toLowerCase()}/${this.post.slug}`;
     return `https://api.whatsapp.com/send/?text=${encodeURIComponent(message)}`;
   }
 }
