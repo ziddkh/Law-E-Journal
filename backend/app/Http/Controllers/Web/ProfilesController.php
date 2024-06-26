@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
@@ -58,7 +59,26 @@ class ProfilesController extends Controller
             $validated['image_url'] = $imagePath;
         }
 
-        $profile = Profile::create($validated);
+        $profile = new Profile();
+        $profile->name = $request->name;
+        $profile->position = $request->position;
+        $profile->description = $request->description;
+        $profile->image_url = $imagePath;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->instagram = $request->instagram;
+        $profile->facebook = $request->facebook;
+        $profile->twitter = $request->twitter;
+        $profile->tik_tok = $request->tik_tok;
+        $profile->youtube = $request->youtube;
+        if (empty($request->slug)) {
+            // If slug is not provided or empty, generate it from the title
+            $profile->slug = $this->generateSlugFromName($request->name);
+        } else {
+            // Otherwise, use the provided slug
+            $profile->slug = $request->slug;
+        }
+        $profile->save();
 
         return redirect()->route('profiles.show', [
             $profile->id
@@ -112,6 +132,7 @@ class ProfilesController extends Controller
             return redirect()->back()->with('error_message', 'Profile not found!');
         }
     
+        $imagePath = $profile->image_url;
         if ($request->hasFile('image_url')) {
             // Delete the old image if it exists
             if ($profile->image_url) {
@@ -123,7 +144,25 @@ class ProfilesController extends Controller
             $validated['image_url'] = $imagePath;
         }
     
-        $profile->update($validated);
+        $profile->name = $request->name;
+        $profile->position = $request->position;
+        $profile->description = $request->description;
+        $profile->image_url = $imagePath;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->instagram = $request->instagram;
+        $profile->facebook = $request->facebook;
+        $profile->twitter = $request->twitter;
+        $profile->tik_tok = $request->tik_tok;
+        $profile->youtube = $request->youtube;
+        if (empty($request->slug)) {
+            // If slug is not provided or empty, generate it from the name
+            $profile->slug = $this->generateSlugFromName($request->name);
+        } else {
+            // Otherwise, use the provided slug
+            $profile->slug = $request->slug;
+        }
+        $profile->save();
     
         return redirect()->route('profiles.show', [
             $profile->id
@@ -148,5 +187,18 @@ class ProfilesController extends Controller
         $profile->delete();
         return redirect()->route('profiles.index')
             ->with('success_message', 'Profile deleted successfully.');;
+    }
+
+    function generateSlugFromName($title) {
+        // Replace spaces with hyphens
+        $slug = str_replace(' ', '-', $title);
+        
+        // Convert to lowercase
+        $slug = strtolower($slug);
+        
+        // Remove special characters except hyphens
+        $slug = preg_replace('/[^a-z0-9-]/', '', $slug);
+        
+        return $slug . '-' . Carbon::now()->format('YmdHis');
     }
 }

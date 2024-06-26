@@ -28,14 +28,14 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Display the specified profile by ID.
+     * Display the specified profile by Slug.
      *
-     * @param int $id
+     * @param string $slug
      * @return JsonResponse
      */
-    public function show($id)
+    public function show($slug)
     {
-        $profile = Profile::where('id', $id)->first();
+        $profile = Profile::where('slug', $slug)->first();
 
         if (empty($profile)) {
             return response()->json([

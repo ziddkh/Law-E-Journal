@@ -74,6 +74,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="slug">Slug <sup style='color: black;margin-left:5px'>(Leave it empty to autogenerate)</sup></label>
+                    <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug', $profile->slug) }}">
+                    @error('slug')
+                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="image_url">Image</label>
                     @if($profile->image_url)
                         <div class="mb-2">

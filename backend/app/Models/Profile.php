@@ -24,6 +24,7 @@ class Profile extends Model
         'twitter',
         'tik_tok',
         'youtube',
+        'slug'
     ];
 
     protected $appends = [
