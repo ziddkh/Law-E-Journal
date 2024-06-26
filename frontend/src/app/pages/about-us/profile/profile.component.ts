@@ -13,7 +13,7 @@ export class ProfileComponent {
   isLoading: boolean = false
 
   profile!: Profile
-  activeId: number
+  activeSlug: string = ''
 
   constructor(
     private profileService: ProfileService,
@@ -21,7 +21,7 @@ export class ProfileComponent {
     private saniziter: DomSanitizer,
     private router: Router,
   ) {
-    this.activeId = this.activatedRoute.snapshot.params['id']
+    this.activeSlug = this.activatedRoute.snapshot.params['slug']
   }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class ProfileComponent {
 
   getProfile() {
     this.isLoading = true
-    this.profileService.getProfile(this.activeId)
+    this.profileService.getProfile(this.activeSlug)
       .then(response => {
         this.profile = response.data.profile
       })

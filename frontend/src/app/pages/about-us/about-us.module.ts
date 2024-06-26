@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AboutUsComponent,
   },
   {
-    path: ':id/view',
+    path: ':slug/view',
     component: ProfileComponent,
   }
 ]
