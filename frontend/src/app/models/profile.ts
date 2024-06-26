@@ -12,4 +12,5 @@ export interface Profile {
   twitter: string
   tik_tok: string
   youtube: string
+  slug: string
 }

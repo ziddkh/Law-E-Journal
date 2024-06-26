@@ -13,7 +13,7 @@ export class ProfileService {
     return await axios.get(`${environment.api_url}/profiles`)
   }
 
-  async getProfile(id: number): Promise<any> {
-    return await axios.get(`${environment.api_url}/profiles/${id}`)
+  async getProfile(slug: string): Promise<any> {
+    return await axios.get(`${environment.api_url}/profiles/${slug}`)
   }
 }

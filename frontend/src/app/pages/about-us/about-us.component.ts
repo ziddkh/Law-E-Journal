@@ -63,8 +63,8 @@ export class AboutUsComponent implements OnInit {
       })
   }
 
-  viewProfile(id: number) {
-    this.router.navigateByUrl(`/tentang-kami/${id}/view`)
+  viewProfile(slug: string) {
+    this.router.navigateByUrl(`/tentang-kami/${slug}/view`)
   }
 
   getSafeContent(): SafeHtml {
