@@ -46,7 +46,7 @@
       <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founders</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <ng-container *ngFor="let founder of founders">
-          <div (click)="viewProfile(founder.id)" class="cursor-pointer person-card flex-1 relative">
+          <div (click)="viewProfile(founder.slug)" class="cursor-pointer person-card flex-1 relative">
             <div class="aspect-square">
               <img [src]="founder.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
             </div>
@@ -63,7 +63,7 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let partner of partners">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(partner.id)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(partner.slug)" class="cursor-pointer person-card relative aspect-square">
               <img [src]="partner.signed_image_url" class="w-full h-full object-cover object-top">
               <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ partner.name }}</h3>
@@ -79,7 +79,7 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let advisor of advisors">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(advisor.id)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(advisor.slug)" class="cursor-pointer person-card relative aspect-square">
               <img [src]="advisor.signed_image_url" class="w-full h-full object-cover object-top">
               <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ advisor.name }}</h3>
@@ -95,7 +95,7 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let lawyer of lawyers">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(lawyer.id)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(lawyer.slug)" class="cursor-pointer person-card relative aspect-square">
               <img [src]="lawyer.signed_image_url" alt="Person" class="grayscale w-full h-full object-cover object-top">
               <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ lawyer.name }}</h3>
