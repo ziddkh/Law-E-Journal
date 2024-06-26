@@ -81,31 +81,33 @@
       </div>
     </div>
 
-    <div class="mt-20">
-      <h3 class="text-center text-3xl font-bold mb-6">Alamat Lainnya</h3>
-      <div class="grid sm:grid-cols-3 gap-10 sm:gap-8 grid-cols-1">
-        <div *ngIf="settingService.getAddress2() && settingService.getGoogleMap2()">
-            <iframe [src]="googleMapUrl(settingService.getGoogleMap2())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
-            <div class="text-center">
-              <span class="font-bold text-sm sm:text-base block">Alamat:</span>
-              <span>{{ settingService.getAddress2() }}</span>
-            </div>
-        </div>
-        <div *ngIf="settingService.getAddress3() && settingService.getGoogleMap3()">
-            <iframe [src]="googleMapUrl(settingService.getGoogleMap3())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
-            <div class="text-center">
-              <span class="font-bold text-sm sm:text-base block">Alamat:</span>
-              <span>{{ settingService.getAddress3() }}</span>
-            </div>
-        </div>
-        <div *ngIf="settingService.getAddress4() && settingService.getGoogleMap4()">
-            <iframe [src]="googleMapUrl(settingService.getGoogleMap4())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
-            <div class="text-center">
-              <span class="font-bold text-sm sm:text-base block">Alamat:</span>
-              <span>{{ settingService.getAddress4() }}</span>
-            </div>
+    <ng-container *ngIf="(settingService.getAddress2() && settingService.getGoogleMap2()) || settingService.getAddress3() && settingService.getGoogleMap3() || settingService.getAddress4() && settingService.getGoogleMap4()">
+      <div class="mt-20">
+        <h3 class="text-center text-3xl font-bold mb-6">Alamat Lainnya</h3>
+        <div class="grid sm:grid-cols-3 gap-10 sm:gap-8 grid-cols-1">
+          <div *ngIf="settingService.getAddress2() && settingService.getGoogleMap2()">
+              <iframe [src]="googleMapUrl(settingService.getGoogleMap2())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
+              <div class="text-center">
+                <span class="font-bold text-sm sm:text-base block">Alamat:</span>
+                <span>{{ settingService.getAddress2() }}</span>
+              </div>
+          </div>
+          <div *ngIf="settingService.getAddress3() && settingService.getGoogleMap3()">
+              <iframe [src]="googleMapUrl(settingService.getGoogleMap3())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
+              <div class="text-center">
+                <span class="font-bold text-sm sm:text-base block">Alamat:</span>
+                <span>{{ settingService.getAddress3() }}</span>
+              </div>
+          </div>
+          <div *ngIf="settingService.getAddress4() && settingService.getGoogleMap4()">
+              <iframe [src]="googleMapUrl(settingService.getGoogleMap4())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full aspect-square mb-3"></iframe>
+              <div class="text-center">
+                <span class="font-bold text-sm sm:text-base block">Alamat:</span>
+                <span>{{ settingService.getAddress4() }}</span>
+              </div>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </section>
