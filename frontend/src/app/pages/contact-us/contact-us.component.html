@@ -51,7 +51,7 @@
   <div class="max-w-5xl px-4 lg:px-0 mx-auto">
     <h3 class="text-center text-3xl font-bold mb-6">Kontak Kami</h3>
     <div class="flex justify-center flex-col sm:flex-row gap-6">
-      <ng-container *ngIf="settingService.getGoogleMap()">
+      <ng-container *ngIf="googleMapUrl(settingService.getGoogleMap())">
         <iframe [src]="googleMapUrl(settingService.getGoogleMap())" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </ng-container>
       <div class="w-full sm:w-[400px]">

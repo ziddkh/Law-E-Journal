@@ -9,29 +9,14 @@
   <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
     <!-- Section 1: Capture Attention & Convey Benefits with a Compelling Headline -->
     <div class="text-left mb-8">
-      <h1 class="text-2xl font-bold mb-2">Layanan Hukum Ahli untuk Kebutuhan
-        Anda</h1>
-      <p class="text-base text-gray-900">
-        Kami memberikan solusi hukum terbaik untuk membantu Anda menghadapi tantangan hukum yang kompleks dengan percaya diri.</p>
-    </div>
+      <h1 class="text-2xl font-bold mb-2">{{ serviceHeader.title ?? "Judul Layanan" }}</h1>
+      </div>
 
     <!-- Section 2: Explain How your Services Solve Problems and Create Great Outcomes -->
     <div class="my-8">
-      <h2 class="text-2xl font-semibold mb-4">Bagaimana Layanan Kami Membantu
-        Anda?</h2>
-      <p class="text-base text-gray-900 mb-4">
-        Tim hukum kami yang berpengalaman menawarkan serangkaian layanan yang
-        dirancang untuk menyelesaikan masalah hukum Anda secara efisien dan
-        efektif. Kami berkomitmen untuk mencapai hasil terbaik bagi klien kami
-        melalui kerja keras, perhatian yang dipersonalisasi, dan pemahaman
-        mendalam tentang hukum.
-      </p>
-      <p class="text-base text-gray-900">
-        Baik Anda memerlukan bantuan terkait klaim cedera pribadi, masalah hukum
-        keluarga, nasihat hukum perusahaan, atau layanan hukum lainnya, kami
-        memiliki keahlian untuk memandu Anda melalui proses tersebut dan
-        mendapatkan hasil yang baik.
-      </p>
+      <ng-container *ngIf="!!serviceHeader.description">
+        <div [innerHTML]="getSafeContent()"></div>
+      </ng-container>
     </div>
 
     <!-- Section 3: Services Data -->

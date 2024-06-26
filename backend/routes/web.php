@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ClientsController;
 use App\Http\Controllers\Web\PostsController;
 use App\Http\Controllers\Web\ProfilesController;
+use App\Http\Controllers\Web\ServiceHeaderController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\SettingsController;
 use App\Http\Controllers\Web\UsersController;
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('services', ServicesController::class);
     Route::resource('clients', ClientsController::class);
     Route::resource('client-reviews', ClientReviewsController::class);
+    Route::resource('service-header', ServiceHeaderController::class);
     Route::resource('profiles', ProfilesController::class);
     Route::resource('settings', SettingsController::class);
     Route::resource('banners', BannersController::class);

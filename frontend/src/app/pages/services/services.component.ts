@@ -3,6 +3,7 @@ import { ServicePageService } from '../../services/api/service/service-page.serv
 import { Router } from '@angular/router';
 import { ClientReviewService } from '../../services/api/client-review/client-review.service';
 import { ClientReview } from '../../models/client-review';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-services',
@@ -12,11 +13,13 @@ import { ClientReview } from '../../models/client-review';
 export class ServicesComponent {
   isLoading: boolean = false;
   services: any;
+  serviceHeader: any;
   clientReviews: ClientReview[] = []
   constructor(
     private router: Router,
     private servicePageService: ServicePageService,
     private clientReviewService: ClientReviewService,
+    private saniziter: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +33,8 @@ export class ServicesComponent {
     this.isLoading = true
     this.servicePageService.getServices().then((result) => {
       this.isLoading = false;
-      this.services = result.data;
+      this.services = result.data.services;
+      this.serviceHeader = result.data.service_header;
     })
   }
 
@@ -46,5 +50,9 @@ export class ServicesComponent {
       .finally(() => {
         this.isLoading = false
       })
+  }
+
+  getSafeContent(): SafeHtml {
+    return this.saniziter.bypassSecurityTrustHtml(this.serviceHeader.description)
   }
 }

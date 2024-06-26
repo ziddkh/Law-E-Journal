@@ -57,6 +57,6 @@ export class ContactUsComponent {
     if (url) {
       return this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
-    return
+    return false
   }
 }

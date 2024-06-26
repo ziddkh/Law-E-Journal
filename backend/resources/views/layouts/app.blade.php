@@ -84,11 +84,18 @@
         </li>
 
         <!-- Nav Item - Services -->
-        <li class="nav-item {{ request()->routeIs('services*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('services.index') }}">
+        <li class="nav-item {{ request()->routeIs('services*') || request()->routeIs('service-header*') ? 'active' : '' }}">
+            <a href="#" class="nav-link" data-toggle="collapse" data-target="#collapseService" aria-expanded="true" aria-controls="collapseService">
                 <i class="fas fa-fw fa-tools"></i>
                 <span>{{ __('Services') }}</span>
             </a>
+            <div id="collapseService" class="collapse {{ request()->routeIs('services*') || request()->routeIs('service-header*') ? 'show' : '' }}" aria-labelledby="collapseService" data-parent="#accordionSidebar" style="">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">List:</h6>
+                    <a class="collapse-item {{ request()->routeIs('service-header*') ? 'active' : '' }}" href="{{ route('service-header.index') }}">Service Header</a>
+                    <a class="collapse-item {{ request()->routeIs('services*') ? 'active' : '' }}" href="{{ route('services.index') }}">Services</a>
+                </div>
+            </div>
         </li>
 
         <!-- Nav Item - Clients -->
