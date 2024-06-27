@@ -54,7 +54,7 @@ export class ContactUsComponent {
   }
 
   googleMapUrl(url: string | null) {
-    if (url) {
+    if (url && url.startsWith('https://www.google.com/maps/embed')) {
       return this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
     return false

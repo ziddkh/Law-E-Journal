@@ -221,8 +221,10 @@
             </ng-template>
           </div>
           <h2 class="text-gray-900 text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-1">{{ settingService.getCompanyName() ?? 'Company Name' }}</h2>
-          <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-gray-900 mb-3">Our Commitment to Excellence Has Been Recognized</h3>
-          <p class="text-center text-sm md:text-base leading-6 tracking-normal text-gray-900 mb-6">We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client&#39;s legal problem.</p>
+          <h3 class="text-center text-lg md:text-2xl leading-8 font-semibold tracking-tight text-gray-900 mb-3">Komitmen, Keunggulan, dan Integritas dalam Hukum.</h3>
+          <p class="text-center text-sm md:text-base leading-6 tracking-normal text-gray-900 mb-6">
+            Firma hukum kami berdedikasi memberikan layanan hukum terbaik dengan integritas tinggi. Dengan tim ahli yang berpengalaman, kami siap membantu Anda menyelesaikan berbagai masalah hukum dengan solusi efektif dan strategis. Prioritas kami adalah kepuasan dan keberhasilan klien, melalui pendekatan profesional dan personal yang terpercaya.
+          </p>
           <a href="#" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-red-600 text-slate-50">
             <span>Contact Us</span>
           </a>
@@ -238,17 +240,9 @@
         <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
           <div class="flex justify-between mb-6">
             <h2 class="text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3 text-gray-900">Klien Kami</h2>
-            <div>
-              <a routerLink="/" class="text-sm text-white0 inline-flex items-center gap-2">
-                <span>Lihat Selengkapnya</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </a>
-            </div>
           </div>
           <div class="overflow-hidden">
-            <swiper-container loop="true" slides-per-view="5" space-between="30">
+            <swiper-container slides-per-view="3" space-between="30" centered-slides="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
               <ng-container *ngFor="let client of clients">
                   <swiper-slide>
                     <a href="{{ client.url_formatted }}" target="_blank" class="relative cursor-pointer">
@@ -257,7 +251,7 @@
                       </div>
                     </a>
                   </swiper-slide>
-              </ng-container>
+                </ng-container>
             </swiper-container>
           </div>
         </div>

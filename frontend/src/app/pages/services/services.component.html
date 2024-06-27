@@ -54,7 +54,7 @@
     <div *ngIf="clientReviews.length > 0">
       <h2 class="text-2xl text-center font-semibold mb-6">Review Klien Kami</h2>
       <div class="overflow-hidden">
-        <swiper-container loop="true" slides-per-view="3" space-between="24">
+        <swiper-container slides-per-view="3" space-between="24" centered-slides="true" loop="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
           <ng-container *ngFor="let clientReview of clientReviews">
             <swiper-slide>
               <div class="relative cursor-pointer">
@@ -80,9 +80,9 @@
 
     <div class="mt-4">
       <p class="text-center text-base text-gray-900 mb-4">
-        We uphold the value of integrity, honesty, and professional ethics in our legal service. We also give each client a combination of deep business and legal practice knowledge to solve all of our client’s legal problem.</p>
+        Hubungi kami sekarang untuk konsultasi hukum yang profesional dan solusi tepat. Tim ahli kami siap membantu Anda mengatasi tantangan hukum dengan layanan yang cepat dan terpercaya. Mari bicarakan kebutuhan hukum Anda!</p>
         <a routerLink="/kontak-kami" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-white">
-          <span>Contact Us</span>
+          <span>Kontak Kami</span>
         </a>
     </div>
   </div>

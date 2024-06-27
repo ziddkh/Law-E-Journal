@@ -46,13 +46,17 @@
       <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founders</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <ng-container *ngFor="let founder of founders">
-          <div (click)="viewProfile(founder.slug)" class="cursor-pointer person-card flex-1 relative">
+          <div (click)="viewProfile(founder.slug)" class="group cursor-pointer person-card flex-1 relative overflow-hidden">
             <div class="aspect-square">
               <img [src]="founder.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
             </div>
-            <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+            <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!founder.email || !!founder.phone}">
               <h3 class="text-base sm:text-lg font-bold text-white">{{ founder.name }}</h3>
-              <h5 class="text-sm sm:text-base block text-white">{{ founder.position }}</h5>
+              <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ founder.position }}</h5>
+              <div class="text-white/80 h-[48px] hidden sm:block">
+                <p *ngIf="founder.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ founder.email }}</p>
+                <p *ngIf="founder.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ founder.phone }}</p>
+              </div>
             </div>
           </div>
         </ng-container>
@@ -63,11 +67,15 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let partner of partners">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(partner.slug)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(partner.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
               <img [src]="partner.signed_image_url" class="w-full h-full object-cover object-top">
-              <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!partner.email || !!partner.phone}">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ partner.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white">{{ partner.position }}</h5>
+                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ partner.position }}</h5>
+                <div class="text-white/80 h-[48px] hidden sm:block">
+                  <p *ngIf="partner.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ partner.email }}</p>
+                  <p *ngIf="partner.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ partner.phone }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -79,11 +87,15 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let advisor of advisors">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(advisor.slug)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(advisor.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
               <img [src]="advisor.signed_image_url" class="w-full h-full object-cover object-top">
-              <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!advisor.email || !!advisor.phone}">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ advisor.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white">{{ advisor.position }}</h5>
+                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ advisor.position }}</h5>
+                <div class="text-white/80 h-[48px] hidden sm:block">
+                  <p *ngIf="advisor.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ advisor.email }}</p>
+                  <p *ngIf="advisor.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ advisor.phone }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -95,11 +107,15 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let lawyer of lawyers">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(lawyer.slug)" class="cursor-pointer person-card relative aspect-square">
+            <div (click)="viewProfile(lawyer.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
               <img [src]="lawyer.signed_image_url" alt="Person" class="grayscale w-full h-full object-cover object-top">
-              <div class="z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!lawyer.email || !!lawyer.phone}">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ lawyer.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white">{{ lawyer.position }}</h5>
+                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ lawyer.position }}</h5>
+                <div class="text-white/80 h-[48px] hidden sm:block">
+                  <p *ngIf="lawyer.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ lawyer.email }}</p>
+                  <p *ngIf="lawyer.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ lawyer.phone }}</p>
+                </div>
               </div>
             </div>
           </div>
