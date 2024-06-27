@@ -108,7 +108,7 @@
         <ng-container *ngFor="let lawyer of lawyers">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
             <div (click)="viewProfile(lawyer.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
-              <img [src]="lawyer.signed_image_url" alt="Person" class="grayscale w-full h-full object-cover object-top">
+              <img [src]="lawyer.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
               <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!lawyer.email || !!lawyer.phone}">
                 <h3 class="text-base sm:text-lg font-bold text-white">{{ lawyer.name }}</h3>
                 <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ lawyer.position }}</h5>
