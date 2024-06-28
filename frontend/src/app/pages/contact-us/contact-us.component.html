@@ -30,7 +30,8 @@
           </svg>
         </div>
         <h2 class="font-bold text-base uppercase text-slate-900 mb-2">Nomor Telepon</h2>
-        <a [href]="'https://wa.me/' + settingService.getPhoneNumber()" class="text-sm text-slate-600 underline">{{ settingService.getPhoneNumber() ?? 'Your phone number here' }}</a>
+        <p *ngIf="!settingService.getPhoneNumber()" class="text-sm text-slate-600 underline">Your phone number here</p>
+        <a *ngIf="settingService.getPhoneNumber()" [href]="'https://wa.me/' + settingService.getPhoneNumber()" class="text-sm text-slate-600 underline">{{ settingService.getPhoneNumber() }}</a>
       </div>
       <div class="text-center mx-auto sm:mx-0 flex-1 sm:pl-4">
         <div class="w-14 h-14 rounded-full mb-4 border-[1.5px] border-yellow-700 stroke-yellow-700 inline-flex items-center justify-center mx-auto">
@@ -41,7 +42,8 @@
           </svg>
         </div>
         <h2 class="font-bold text-base uppercase text-slate-900 mb-2">Email</h2>
-        <a [href]="'mailto:' + settingService.getEmail()" class="text-sm text-slate-600 underline">{{ settingService.getEmail() ?? 'Your email here' }}</a>
+        <p *ngIf="!settingService.getEmail()" class="text-sm text-slate-600 underline">Your email here</p>
+        <a *ngIf="settingService.getEmail()" [href]="'mailto:' + settingService.getEmail()" class="text-sm text-slate-600 underline">{{ settingService.getEmail() }}</a>
       </div>
     </div>
   </div>
