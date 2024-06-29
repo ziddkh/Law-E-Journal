@@ -4,6 +4,20 @@
 
 @import '@angular/cdk/overlay-prebuilt.css';
 
+@font-face {
+  font-family: 'Playfair';
+  src: url('./fonts/Playfair_Display/static/PlayfairDisplay-Medium.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Playfair Bold';
+  src: url('./fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --swiper-theme-color: rgb(255, 255, 255);
   --swiper-pagination-color: rgb(255, 255, 255);
@@ -12,6 +26,15 @@
 
 body {
   background: #d1d5db;
+  font-family: 'Playfair';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Playfair Bold' !important;
 }
 
 *:focus-within {

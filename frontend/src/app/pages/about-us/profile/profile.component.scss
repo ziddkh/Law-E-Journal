@@ -4,3 +4,227 @@
   background-size: cover;
 
 }
+
+/*-- Attorneys Details --*/
+.attor-details-item {
+  margin-bottom: 30px;
+}
+
+.attor-details-item img {
+  width: 100%;
+}
+
+.attor-details-item .attor-details-left {
+  padding: 0 50px 40px 50px;
+  box-shadow: 0px 0px 20px 0px #00000036;
+}
+
+.attor-details-item .attor-details-left .attor-social {
+  text-align: center;
+  margin-top: -28px;
+}
+
+.attor-details-item .attor-details-left .attor-social ul {
+  margin: 0;
+  padding: 0;
+  background-color: #282828;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 0px #ddd;
+  margin-bottom: 25px;
+}
+
+.attor-details-item .attor-details-left .attor-social ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.attor-details-item .attor-details-left .attor-social ul li a {
+  display: block;
+  color: #b69d74;
+  font-size: 18px;
+}
+
+.attor-details-item .attor-details-left .attor-social ul li a:hover {
+  color: #ffffff;
+}
+
+.attor-details-item .attor-details-left .attor-social-details {
+  margin-bottom: 30px;
+}
+
+.attor-details-item .attor-details-left .attor-social-details h3 {
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul {
+  margin: 0;
+  padding: 0;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul li {
+  list-style-type: none;
+  display: flex;
+  color: #333333;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul li:last-child {
+  margin-bottom: 0;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul li a {
+  display: inline-block;
+  color: #333333;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul li a:hover {
+  color: #b69d74;
+}
+
+.attor-details-item .attor-details-left .attor-social-details ul li i {
+  display: inline-block;
+  color: #b69d74;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.attor-details-item .attor-details-left .attor-work h3 {
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.attor-details-item .attor-details-left .attor-work ul {
+  margin: 0;
+  padding: 0;
+}
+
+.attor-details-item .attor-details-left .attor-work ul li {
+  list-style-type: none;
+  display: block;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.attor-details-item .attor-details-left .attor-work ul li:last-child {
+  margin-bottom: 0;
+}
+
+.attor-details-item .attor-details-left .attor-work .attor-work-left {
+  display: inline-block;
+}
+
+.attor-details-item .attor-details-left .attor-work .attor-work-left ul li {
+  position: relative;
+}
+
+.attor-details-item .attor-details-left .attor-work .attor-work-left ul li:before {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 1px;
+  top: 13px;
+  right: -88px;
+  background-color: #cccccc;
+}
+
+.attor-details-item .attor-details-left .attor-work .attor-work-right {
+  display: inline-block;
+  margin-left: 115px;
+}
+
+.attor-details-item .attor-prev ul {
+  margin: 0;
+  padding: 0;
+}
+
+.attor-details-item .attor-prev ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.attor-details-item .attor-prev ul li:last-child {
+  float: right;
+}
+
+.attor-details-item .attor-prev ul li a {
+  display: block;
+  color: #3f3f3f;
+  border: 1px solid #b69d74;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.attor-details-item .attor-prev ul li a:hover {
+  color: #ffffff;
+  background-color: #b69d74;
+}
+
+.attor-details-item .attor-details-right .attor-details-name {
+  margin-bottom: 40px;
+}
+
+.attor-details-item .attor-details-right .attor-details-name h2 {
+  font-weight: 600;
+  font-size: 38px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 15px;
+}
+
+.attor-details-item .attor-details-right .attor-details-name span {
+  display: block;
+  color: #999897;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.attor-details-item .attor-details-right .attor-details-name p {
+  margin-bottom: 0;
+  color: #838383;
+}
+
+.attor-details-item .attor-details-right .attor-details-things {
+  margin-bottom: 30px;
+}
+
+.attor-details-item .attor-details-right .attor-details-things h3 {
+  color: #b69d74;
+  font-weight: 600;
+  font-size: 22px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+
+.attor-details-item .attor-details-right .attor-details-things p {
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.attor-details-item .attor-details-right .attor-details-things ul {
+  margin: 0;
+  padding: 0;
+}
+
+.attor-details-item .attor-details-right .attor-details-things ul li {
+  list-style-type: none;
+  display: block;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.attor-details-item .attor-details-right .attor-details-things ul li:last-child {
+  margin-bottom: 0;
+}
+
+/*-- End Attorneys Details --*/

@@ -1,14 +1,19 @@
 <div class="relative">
   <div class="w-full aspect-video bg-gray-300 rounded overflow-hidden">
-    <img [src]="data.signed_image_url" [alt]="data.name + ' Image'" class="w-full h-full object-cover">
+    <img [src]="data.signed_image_url" [alt]="data.name + ' Image'"
+      class="w-full h-full object-cover">
   </div>
-  <div class="modal-content sm:max-h-[200px] bg-white p-5 px-8 rounded-b">
+  <div class="modal-content sm:max-h-[300px] bg-white p-5 px-8 rounded-b">
     <h4 class="font-bold text-base sm:text-2xl mb-3">{{ data.name }}</h4>
     <p class="text-sm sm:text-base">{{ data.description }}</p>
   </div>
-  <button class="absolute top-3 right-3 inline-flex items-center justify-center rounded-full text-white" (click)="closeModal()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  <button
+    class="absolute top-3 right-3 inline-flex items-center justify-center rounded-full text-white"
+    (click)="closeModal()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+      stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M6 18 18 6M6 6l12 12" />
     </svg>
   </button>
 </div>

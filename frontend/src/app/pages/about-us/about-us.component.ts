@@ -19,13 +19,14 @@ export class AboutUsComponent implements OnInit {
   advisors: Profile[] = []
   lawyers: Profile[] = []
   partners: Profile[] = []
+  isHovered: boolean = false;
 
   constructor(
     private companyInformationService: CompanyInformationService,
     private profileService: ProfileService,
     private saniziter: DomSanitizer,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAbout()

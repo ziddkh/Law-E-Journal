@@ -1,6 +1,8 @@
-<section id="article-banner" class="h-[200px] w-full mb-10">
+<section id="article-banner" class="h-[300px] w-full mb-10">
   <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
-    <h1 class="uppercase text-3xl md:text-5xl leading-8 font-bold tracking-tight text-slate-50">Tentang Kami</h1>
+    <h1
+      class="text-3xl md:text-5xl leading-8 font-bold tracking-tight text-slate-50">Tentang
+      Kami</h1>
   </div>
 </section>
 
@@ -9,7 +11,8 @@
 <ng-template #showAbout>
   <section>
     <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-      <ng-container *ngIf="!!companyInformation.description; else emptyCompanyInformation">
+      <ng-container
+        *ngIf="!!companyInformation.description; else emptyCompanyInformation">
         <div class="block mb-10">
           <p [innerHTML]="getSafeContent()"></p>
         </div>
@@ -29,7 +32,8 @@
           <div class="px-4 w-full h-fit">
             <div class="relative aspect-square">
               <div class="w-full h-full bg-gray-400/50"></div>
-              <div class="z-[5] absolute bg-black/10 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
+              <div
+                class="z-[5] absolute bg-black/10 bottom-0 left-0 w-full px-6 sm:px-10 py-4 sm:py-6">
                 <span class="block w-3/4 h-[24px] bg-gray-400/50 mb-2"></span>
                 <span class="block w-1/2 h-[20px] bg-gray-400"></span>
               </div>
@@ -43,20 +47,89 @@
 <ng-template #showProfile>
   <section class="relative max-w-5xl px-4 lg:px-0 mx-auto">
     <div id="founder" *ngIf="founders.length > 0" class="mb-10">
-      <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Founders</h2>
+      <h2
+        class="text-3xl font-bold text-slate-900 text-center mb-6">Founders</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <ng-container *ngFor="let founder of founders">
-          <div (click)="viewProfile(founder.slug)" class="group cursor-pointer person-card flex-1 relative overflow-hidden">
-            <div class="aspect-square">
-              <img [src]="founder.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
+          <div class="team-item px-6">
+            <div class="image-container"
+              style="--aspect-ratio: calc(1338 / 1571);">
+              <img [src]="founder.signed_image_url" alt="{{ founder.name }}"
+                class="dynamic-image">
             </div>
-            <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!founder.email || !!founder.phone}">
-              <h3 class="text-base sm:text-lg font-bold text-white">{{ founder.name }}</h3>
-              <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ founder.position }}</h5>
-              <div class="text-white/80 h-[48px] hidden sm:block">
-                <p *ngIf="founder.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ founder.email }}</p>
-                <p *ngIf="founder.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ founder.phone }}</p>
-              </div>
+            <div class="team-inner">
+              <ul>
+                <li *ngIf="founder.phone">
+                  <a [href]="'https://wa.me/' + founder.phone"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="#b69d74" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path
+                        stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                        d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                  </a>
+                </li>
+                <li *ngIf="founder.instagram">
+                  <a href="https://www.instagram.com/{{founder.instagram}}"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="#b69d74" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path
+                        stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                        d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path
+                        d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path
+                        d="M16.5 7.5l0 .01" /></svg>
+                  </a>
+                </li>
+                <li *ngIf="founder.twitter">
+                  <a href="https://www.x.com/{{founder.twitter}}"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="#b69d74" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path
+                        stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                        d="M4 4l11.733 16h4.267l-11.733 -16z" /><path
+                        d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                  </a>
+                </li>
+                <li *ngIf="founder.tik_tok">
+                  <a href="https://www.tiktok.com/{{founder.tik_tok}}"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="#b69d74" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok"><path
+                        stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                        d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" /></svg>
+                  </a>
+                </li>
+                <li *ngIf="founder.youtube">
+                  <a href="https://www.youtube.com/{{founder.youtube}}"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="#b69d74"
+                      stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path
+                        stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                        d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path
+                        d="M10 9l5 3l-5 3z" /></svg>
+                  </a>
+                </li>
+              </ul>
+              <h3>
+                <a (click)="viewProfile(founder.slug)" class="cursor-pointer">{{
+                  founder.name }}</a>
+              </h3>
+              <span>{{ founder.position }}</span>
             </div>
           </div>
         </ng-container>
@@ -67,15 +140,86 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let partner of partners">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(partner.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
-              <img [src]="partner.signed_image_url" class="w-full h-full object-cover object-top">
-              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!partner.email || !!partner.phone}">
-                <h3 class="text-base sm:text-lg font-bold text-white">{{ partner.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ partner.position }}</h5>
-                <div class="text-white/80 h-[48px] hidden sm:block">
-                  <p *ngIf="partner.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ partner.email }}</p>
-                  <p *ngIf="partner.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ partner.phone }}</p>
-                </div>
+            <div class="team-item">
+              <div class="image-container"
+                style="--aspect-ratio: calc(1000 / 1000);">
+                <img [src]="partner.signed_image_url" alt="{{ partner.name }}"
+                  class="dynamic-image">
+              </div>
+              <div class="team-inner">
+                <ul>
+                  <li *ngIf="partner.phone">
+                    <a [href]="'https://wa.me/' + partner.phone"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="partner.instagram">
+                    <a href="https://www.instagram.com/{{partner.instagram}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path
+                          d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path
+                          d="M16.5 7.5l0 .01" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="partner.twitter">
+                    <a href="https://www.x.com/{{partner.twitter}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4l11.733 16h4.267l-11.733 -16z" /><path
+                          d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="partner.tik_tok">
+                    <a href="https://www.tiktok.com/{{partner.tik_tok}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="partner.youtube">
+                    <a href="https://www.youtube.com/{{partner.youtube}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="#b69d74"
+                        stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path
+                          d="M10 9l5 3l-5 3z" /></svg>
+                    </a>
+                  </li>
+                </ul>
+                <h3>
+                  <a (click)="viewProfile(partner.slug)"
+                    class="cursor-pointer">{{
+                    partner.name }}</a>
+                </h3>
+                <span>{{ partner.position }}</span>
               </div>
             </div>
           </div>
@@ -87,15 +231,86 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let advisor of advisors">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(advisor.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
-              <img [src]="advisor.signed_image_url" class="w-full h-full object-cover object-top">
-              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!advisor.email || !!advisor.phone}">
-                <h3 class="text-base sm:text-lg font-bold text-white">{{ advisor.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ advisor.position }}</h5>
-                <div class="text-white/80 h-[48px] hidden sm:block">
-                  <p *ngIf="advisor.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ advisor.email }}</p>
-                  <p *ngIf="advisor.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ advisor.phone }}</p>
-                </div>
+            <div class="team-item">
+              <div class="image-container"
+                style="--aspect-ratio: calc(1000 / 1000);">
+                <img [src]="advisor.signed_image_url" alt="{{ advisor.name }}"
+                  class="dynamic-image">
+              </div>
+              <div class="team-inner">
+                <ul>
+                  <li *ngIf="advisor.phone">
+                    <a [href]="'https://wa.me/' + advisor.phone"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="advisor.instagram">
+                    <a href="https://www.instagram.com/{{advisor.instagram}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path
+                          d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path
+                          d="M16.5 7.5l0 .01" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="advisor.twitter">
+                    <a href="https://www.x.com/{{advisor.twitter}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4l11.733 16h4.267l-11.733 -16z" /><path
+                          d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="advisor.tik_tok">
+                    <a href="https://www.tiktok.com/{{advisor.tik_tok}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="advisor.youtube">
+                    <a href="https://www.youtube.com/{{advisor.youtube}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="#b69d74"
+                        stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path
+                          d="M10 9l5 3l-5 3z" /></svg>
+                    </a>
+                  </li>
+                </ul>
+                <h3>
+                  <a (click)="viewProfile(advisor.slug)"
+                    class="cursor-pointer">{{
+                    advisor.name }}</a>
+                </h3>
+                <span>{{ advisor.position }}</span>
               </div>
             </div>
           </div>
@@ -107,15 +322,86 @@
       <div class="row flex flex-wrap justify-center gap-y-6 -mx-4">
         <ng-container *ngFor="let lawyer of lawyers">
           <div class="px-4 w-full sm:w-1/2 md:w-1/3 h-fit">
-            <div (click)="viewProfile(lawyer.slug)" class="group cursor-pointer person-card relative aspect-square overflow-hidden">
-              <img [src]="lawyer.signed_image_url" alt="Person" class="w-full h-full object-cover object-top">
-              <div class="sm:translate-y-[72px] sm:transition z-[5] absolute bg-black/30 bottom-0 left-0 w-full px-6 sm:px-10 pt-4 sm:pb-6" [ngClass]="{'sm:group-hover:translate-y-0': !!lawyer.email || !!lawyer.phone}">
-                <h3 class="text-base sm:text-lg font-bold text-white">{{ lawyer.name }}</h3>
-                <h5 class="text-sm sm:text-base block text-white mb-4 sm:mb-6">{{ lawyer.position }}</h5>
-                <div class="text-white/80 h-[48px] hidden sm:block">
-                  <p *ngIf="lawyer.email" class="sm:group-hover:opacity-100 opacity-0 delay-75 transition duration-300 ease-in-out">{{ lawyer.email }}</p>
-                  <p *ngIf="lawyer.phone" class="sm:group-hover:opacity-100 opacity-0 delay-150 transition duration-300 ease-in-out">Telp: {{ lawyer.phone }}</p>
-                </div>
+            <div class="team-item">
+              <div class="image-container"
+                style="--aspect-ratio: calc(1000 / 1000);">
+                <img [src]="lawyer.signed_image_url" alt="{{ lawyer.name }}"
+                  class="dynamic-image">
+              </div>
+              <div class="team-inner">
+                <ul>
+                  <li *ngIf="lawyer.phone">
+                    <a [href]="'https://wa.me/' + lawyer.phone"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="lawyer.instagram">
+                    <a href="https://www.instagram.com/{{lawyer.instagram}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path
+                          d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path
+                          d="M16.5 7.5l0 .01" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="lawyer.twitter">
+                    <a href="https://www.x.com/{{lawyer.twitter}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M4 4l11.733 16h4.267l-11.733 -16z" /><path
+                          d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="lawyer.tik_tok">
+                    <a href="https://www.tiktok.com/{{lawyer.tik_tok}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b69d74" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tiktok"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" /></svg>
+                    </a>
+                  </li>
+                  <li *ngIf="lawyer.youtube">
+                    <a href="https://www.youtube.com/{{lawyer.youtube}}"
+                      target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="#b69d74"
+                        stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path
+                          stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+                          d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path
+                          d="M10 9l5 3l-5 3z" /></svg>
+                    </a>
+                  </li>
+                </ul>
+                <h3>
+                  <a (click)="viewProfile(lawyer.slug)"
+                    class="cursor-pointer">{{
+                    lawyer.name }}</a>
+                </h3>
+                <span>{{ lawyer.position }}</span>
               </div>
             </div>
           </div>
