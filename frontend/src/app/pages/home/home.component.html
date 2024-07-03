@@ -329,6 +329,12 @@
             keberhasilan klien, melalui pendekatan profesional dan personal
             yang terpercaya.
           </p>
+          <p *ngIf="settingService.getAddress()" class="text-sm text-center leading-6 text-gray-900 mb-6">
+            <span class="block">Alamat:</span>
+            <span class="block w-[320px] mx-auto ">{{ settingService.getAddress() }}</span>
+            <span class="block" *ngIf="settingService.getPhoneNumber()">Tel: {{ settingService.getPhoneNumber() }}</span>
+            <span class="block" *ngIf="settingService.getEmail()">Email: {{ settingService.getEmail() }}</span>
+          </p>
           <a href="/kontak-kami"
             class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-red-600 text-slate-50">
             <span>Kontak kami</span>
