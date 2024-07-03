@@ -212,3 +212,7 @@ swiper-container#hero {
   right: -72px;
   bottom: -56px;
 }
+
+section:nth-child(odd) {
+  @apply bg-gray-400/20;
+}
