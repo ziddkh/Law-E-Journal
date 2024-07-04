@@ -1,10 +1,10 @@
 <ng-container *ngIf="!isLoading">
-  <section id="article-banner" class="min-h-[300px] w-full mb-10 h-[300px]"
+<section id="article-banner" class="h-[240px] sm:h-[300px] w-full mb-10"
     [style.background-image]="'linear-gradient(to top, rgba(0, 0, 0, .9), rgba(0, 0, 0, .3)), url(' + post.signed_image_url + ')'">
     <div
       class="relative max-w-5xl px-4 lg:px-0 mx-auto flex items-center h-full">
       <h1
-        class="text-3xl md:text-5xl leading-8 font-bold tracking-tight text-slate-50">{{
+        class="text-3xl md:text-5xl leading-10 font-bold tracking-tight text-slate-50">{{
         post.title }}</h1>
     </div>
   </section>

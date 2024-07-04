@@ -126,7 +126,7 @@
             </p>
           </div>
           <div class="overflow-hidden">
-            <swiper-container loop="true" slides-per-view="3" space-between="30">
+            <swiper-container  [slidesPerView]="slidesPerView" space-between="30">
               <ng-container *ngFor="let service of services">
                 <swiper-slide>
                   <!-- <div (click)="detailLayanan(service.name)"
@@ -178,7 +178,7 @@
         <h2 class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-10 text-gray-900">Klien
           Kami</h2>
         <div class="overflow-hidden">
-          <swiper-container loop="true" slides-per-view="3" space-between="24">
+          <swiper-container  slides-per-view="3" space-between="24">
             <ng-container *ngFor="let clientReview of clientReviews">
               <swiper-slide>
                 <div class="relative cursor-pointer">
@@ -216,7 +216,7 @@
           <h2 class="text-xl md:text-3xl text-gray-900 leading-8 font-bold tracking-tight mb-5">
             Rekomendasi Artikel</h2>
           <div class="overflow-hidden mb-6">
-            <swiper-container loop="true" slides-per-view="3" space-between="30">
+            <swiper-container slides-per-view="3" space-between="30">
               <ng-container *ngFor="let post of recommendedPosts">
                 <swiper-slide>
                   <div class="relative cursor-pointer">
@@ -319,7 +319,7 @@
               Kami</h2>
           </div>
           <div class="overflow-hidden">
-            <swiper-container slides-per-view="3" space-between="30" centered-slides="true" loop="true"
+            <swiper-container slides-per-view="3" space-between="30" centered-slides="true"
               autoplay-delay="2500" autoplay-disable-on-interaction="false">
               <ng-container *ngFor="let client of clients">
                 <swiper-slide>

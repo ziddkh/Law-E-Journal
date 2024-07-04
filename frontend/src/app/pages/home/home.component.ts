@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   companyInformation!: CompanyInformation
   galleries: Gallery[] = []
 
+  slidesPerView = 3;
+
   constructor(
     private homeService: HomeService,
     public settingService: SettingService,
@@ -46,6 +48,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHomeData()
+  }
+
+  ngAfterViewInit() {
+    this.slidesPerView = window.innerWidth <= 640 ? 1 : window.innerWidth <= 960 ? 2 : 3;
+
+    window.addEventListener('resize', () => {
+      this.slidesPerView = window.innerWidth <= 640 ? 1 : window.innerWidth <= 960 ? 2 : 3;
+    });
   }
 
   openDialog(gallery: Gallery): void {

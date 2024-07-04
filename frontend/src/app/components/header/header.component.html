@@ -10,7 +10,7 @@
         <ng-template #defaultCompanyLogo>
           <div class="w-10 h-10 bg-red-600 rounded-full"></div>
         </ng-template>
-        <span class="font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+        <span class="company-name font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
       </a>
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-3">
@@ -66,7 +66,7 @@
             <ng-template #defaultCompanyLogo>
               <div class="w-10 h-10 bg-red-600 rounded-full"></div>
             </ng-template>
-            <span class="font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
+            <span class="company-name font-bold text-lg uppercase text-gray-900">{{ settingService.getCompanyName() ?? 'Company Name' }}</span>
           </div>
           <button (click)="toggleSidebar()" class="inline-flex sm:hidden items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
