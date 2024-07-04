@@ -29,12 +29,18 @@ export class DetailComponent {
 
   getDetail() {
     this.servicePageService.getService(this.slug).then((result) => {
-      this.isLoading = false;
+      this.isLoading = true;
       this.serviceDetail = result.data;
+    }).finally(() => {
+      this.isLoading = false
     })
   }
 
   getSafeContent(): SafeHtml {
-    return this.saniziter.bypassSecurityTrustHtml(this.serviceDetail.description)
+    if (this.serviceDetail?.description) {
+      return this.saniziter.bypassSecurityTrustHtml(this.serviceDetail?.description);
+    } else {
+      return '';
+    }
   }
 }

@@ -51,8 +51,12 @@ export class ViewComponent implements OnInit {
   }
 
   getSafeContent(): SafeHtml {
-    return this.saniziter.bypassSecurityTrustHtml(this.post.content)
+  if (this.post?.content) {
+    return this.saniziter.bypassSecurityTrustHtml(this.post.content);
+  } else {
+    return '';
   }
+}
 
   getFacebookShareLink(): string {
     const description = `Terdapat Artikel Menarik dari SSP Advocaten ${this.post.title} Silahkan kunjungi link berikut ${this.baseUrl}/postingan/${this.post.type.toLowerCase()}/${this.post.slug}`;
