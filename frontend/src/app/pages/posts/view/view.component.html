@@ -17,7 +17,7 @@
       <ng-container *ngIf="!isLoading">
         <div class="post-content" [innerHTML]="getSafeContent()"></div>
         <div class="mt-5">
-          <h3 class="font-semibold uppercase mb-2">Bagikan Postingan</h3>
+          <h3 id="title" class="font-semibold uppercase mb-2">Bagikan Postingan</h3>
           <div class="flex gap-2 items-center">
 
             <a target="_blank" [href]="getFacebookShareLink()">
