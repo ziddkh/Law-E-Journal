@@ -1,100 +1,97 @@
-<section id="article-banner" class="h-[300px] w-full mb-10">
+<section id="article-banner" class="h-[300px] w-full">
   <div class="relative max-w-5xl px-4 lg:px-0 mx-auto h-full flex items-center">
-    <h1
-      class="text-3xl md:text-5xl leading-8 font-bold tracking-tight text-white">Layanan</h1>
+    <h1 class="text-3xl md:text-5xl leading-8 font-bold tracking-tight text-white">Layanan</h1>
   </div>
 </section>
 
-<section>
-  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
-    <!-- Section 1: Capture Attention & Convey Benefits with a Compelling Headline -->
-    <div class="text-left mb-8">
-      <h1 class="text-2xl font-bold mb-2">{{ serviceHeader.title ??
-        "Judul Layanan" }}</h1>
-    </div>
+<section class="relative max-w-5xl px-4 lg:px-0 mx-auto py-20">
+  <!-- Section 1: Capture Attention & Convey Benefits with a Compelling Headline -->
+  <div class="text-left">
+    <h1 class="text-xl sm:text-3xl font-bold mb-2">{{ serviceHeader.title ??
+      "Judul Layanan" }}</h1>
+  </div>
 
-    <!-- Section 2: Explain How your Services Solve Problems and Create Great Outcomes -->
-    <div class="my-8">
-      <ng-container *ngIf="!!serviceHeader.description">
-        <div [innerHTML]="getSafeContent()"></div>
-      </ng-container>
-    </div>
+  <!-- Section 2: Explain How your Services Solve Problems and Create Great Outcomes -->
+  <ng-container *ngIf="!!serviceHeader.description">
+    <div [innerHTML]="getSafeContent()"></div>
+  </ng-container>
+</section>
 
-    <!-- Section 3: Services Data -->
-    <div *ngIf="isLoading" class="text-center">
-      <p>Loading...</p>
-    </div>
-    <div *ngIf="!isLoading">
-      <ng-container *ngIf="services.length > 0">
-        <h2 class="text-2xl font-semibold mb-6 text-center">Layanan Kami</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+<!-- Section 3: Services Data -->
+<div *ngIf="isLoading" class="text-center">
+  <p>Loading...</p>
+</div>
+<div *ngIf="!isLoading">
+  <ng-container *ngIf="services.length > 0">
+    <section class="bg-gray-400/20">
+      <div class="relative max-w-5xl px-4 lg:px-0 mx-auto py-10">
+        <h2 class="text-xl sm:text-3xl font-semibold mb-6 text-center">Layanan Kami</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <ng-container *ngFor="let service of services">
             <div class="relative cursor-pointer">
-              <div
-                class="practice-item min-h-[260px] flex items-center justify-center flex-col"
+              <div class="practice-item min-h-[260px] flex items-center justify-center flex-col"
                 style="--img-background: url({{ service.signed_image_url }})">
                 <h4>{{ service.name }}</h4>
-                <p
-                  class="text-slate-300 text-sm px-4 text-pretty line-clamp-2">{{
+                <p class="text-slate-300 text-sm px-4 text-pretty line-clamp-2">{{
                   service.description }}</p>
-                <a [routerLink]="'detail/' + service.name"
-                  class="text-sm">Selengkapnya</a>
+                <a [routerLink]="'detail/' + service.name" class="text-sm">Selengkapnya</a>
               </div>
             </div>
           </ng-container>
         </div>
-      </ng-container>
-    </div>
-
-    <div *ngIf="isLoading" class="text-center">
-      <p>Loading...</p>
-    </div>
-    <ng-container *ngIf="!isLoading"></ng-container>
-    <div *ngIf="clientReviews.length > 0">
-      <h2 class="text-2xl text-center font-semibold mb-6">Review Klien Kami</h2>
-      <div class="overflow-hidden">
-        <swiper-container slides-per-view="3" space-between="24"
-          centered-slides="true" loop="true" autoplay-delay="2500"
-          autoplay-disable-on-interaction="false">
-          <ng-container *ngFor="let clientReview of clientReviews">
-            <swiper-slide>
-              <div class="relative cursor-pointer">
-                <div
-                  class="mx-auto overflow-hidden pointer-events-none size-20 rounded-full bg-gray-300">
-                  <ng-container *ngIf="clientReview.image_url; else noImage">
-                    <img [src]="clientReview.signed_image_url"
-                      [alt]="clientReview.name + ' Image'"
-                      class="w-full h-full object-cover">
-                  </ng-container>
-                  <ng-template #noImage>
-                    <img src="/placeholders/person.svg"
-                      [alt]="clientReview.name + ' Image'"
-                      class="w-full h-full object-cover">
-                  </ng-template>
-                </div>
-                <div class="p-1 pt-2 text-center">
-                  <h2 class="text-base font-bold text-gray-900 capitalize">{{
-                    clientReview.name }}</h2>
-                  <p class="text-sm">{{ clientReview.position }}</p>
-                  <p class="text-sm">"{{ clientReview.description }}"</p>
-                </div>
-              </div>
-            </swiper-slide>
-          </ng-container>
-        </swiper-container>
       </div>
-    </div>
+    </section>
+  </ng-container>
+</div>
 
-    <div class="mt-4">
-      <p class="text-center text-base text-gray-900 mb-4">
-        Hubungi kami sekarang untuk konsultasi hukum yang profesional dan solusi
-        tepat. Tim ahli kami siap membantu Anda mengatasi tantangan hukum dengan
-        layanan yang cepat dan terpercaya. Mari bicarakan kebutuhan hukum
-        Anda!</p>
-      <a routerLink="/kontak-kami"
-        class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-white">
-        <span>Kontak Kami</span>
-      </a>
+
+<div *ngIf="isLoading" class="text-center">
+  <p>Loading...</p>
+</div>
+<ng-container *ngIf="!isLoading"></ng-container>
+<div *ngIf="clientReviews.length > 0">
+  <section class="relative max-w-5xl px-4 lg:px-0 mx-auto py-10">
+
+    <h2 class="text-xl sm:text-3xl text-center font-semibold mb-6">Review Klien Kami</h2>
+    <div class="overflow-hidden">
+      <swiper-container slides-per-view="3" space-between="24" centered-slides="true" loop="true" autoplay-delay="2500"
+        autoplay-disable-on-interaction="false">
+        <ng-container *ngFor="let clientReview of clientReviews">
+          <swiper-slide>
+            <div class="relative cursor-pointer">
+              <div class="mx-auto overflow-hidden pointer-events-none size-20 rounded-full bg-gray-300">
+                <ng-container *ngIf="clientReview.image_url; else noImage">
+                  <img [src]="clientReview.signed_image_url" [alt]="clientReview.name + ' Image'"
+                    class="w-full h-full object-cover">
+                </ng-container>
+                <ng-template #noImage>
+                  <img src="/placeholders/person.svg" [alt]="clientReview.name + ' Image'"
+                    class="w-full h-full object-cover">
+                </ng-template>
+              </div>
+              <div class="p-1 pt-2 text-center">
+                <h2 class="text-base font-bold text-gray-900 capitalize">{{
+                  clientReview.name }}</h2>
+                <p class="text-sm">{{ clientReview.position }}</p>
+                <p class="text-sm">"{{ clientReview.description }}"</p>
+              </div>
+            </div>
+          </swiper-slide>
+        </ng-container>
+      </swiper-container>
     </div>
+  </section>
+</div>
+
+<section class="bg-gray-400/20">
+  <div class="relative max-w-5xl px-4 lg:px-0 mx-auto py-10">
+    <p class="text-center text-base text-gray-900 mb-4">
+      Hubungi kami sekarang untuk konsultasi hukum yang profesional dan solusi
+      tepat. Tim ahli kami siap membantu Anda mengatasi tantangan hukum dengan
+      layanan yang cepat dan terpercaya. Mari bicarakan kebutuhan hukum
+      Anda!</p>
+    <a routerLink="/kontak-kami" class="w-fit mx-auto px-5 py-2.5 text-sm block leading-4 gap-2 bg-black text-white">
+      <span>Kontak Kami</span>
+    </a>
   </div>
 </section>

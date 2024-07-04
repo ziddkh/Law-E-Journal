@@ -17,7 +17,7 @@ interface NavigationItemProps {
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-
+  currentYear = new Date().getFullYear();
   navigations: NavigationProps[] = [
     {
       name: 'Navigasi',
@@ -62,6 +62,18 @@ export class FooterComponent {
       ]
     },
   ]
+
+  // getCopyrightYear(): string {
+  //   let displayYear = this.startYear.toString();
+
+  //   if (this.currentYear > this.startYear) {
+  //     displayYear += ` – ${this.currentYear}`;
+  //   } else if (this.currentYear === this.startYear) {
+  //     displayYear += ` – 2024`;
+  //   }
+
+  //   return displayYear;
+  // }
 
   constructor(
     public settingService: SettingService

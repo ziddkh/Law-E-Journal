@@ -19,7 +19,7 @@
               <div
                 class="absolute top-1/2 lg:left-1/2 -translate-y-1/2 lg:-translate-x-1/2 left-4 right-4 lg:w-[64rem] max-w-5xl lg:px-0">
                 <h1
-                  class="text-4xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-white">{{
+                  class="text-3xl md:text-6xl leading-10 font-bold tracking-tight mb-4 text-white">{{
                   banner.title }}</h1>
                 <p
                   class="text-base md:text-lg leading-6 tracking-normal mb-8 text-white">{{
@@ -52,7 +52,7 @@
         <div class="relative max-w-5xl px-4 lg:px-0 mx-auto">
           <div class="mx-auto mb-6">
             <h2
-              class="text-center text-xl md:text-4xl leading-8 font-bold tracking-tight mb-3">{{
+              class="text-center text-xl md:text-3xl leading-8 font-bold tracking-tight mb-3">{{
               companyInformation.title }}</h2>
             <p class="text-center text-sm mb-5">{{
               companyInformation.short_description }}</p>
@@ -238,6 +238,9 @@
       *ngIf="recommendedPosts.length > 0; else emptyRecommendedPost">
       <section class="relative py-10">
         <div class="relative max-w-5xl px-4 lg:px-0 mx-auto pt-10">
+          <h2
+                class="text-xl md:text-3xl text-gray-900 leading-8 font-bold tracking-tight mb-5">
+                Rekomendasi Artikel</h2>
           <div class="overflow-hidden mb-6">
             <swiper-container loop="true" slides-per-view="3"
               space-between="30">

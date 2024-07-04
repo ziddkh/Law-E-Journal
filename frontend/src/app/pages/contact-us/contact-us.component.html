@@ -6,8 +6,8 @@
 
 <section class="w-full mb-14">
   <div class="max-w-5xl px-4 lg:px-0 mx-auto">
-    <div class="flex gap-10 items-center">
-      <div class="flex flex-col gap-6">
+    <div class="flex flex-col sm:flex-row gap-10 items-center">
+      <div class="flex flex-col gap-6 order-2 sm:order-1">
         <div class="flex gap-4">
           <div
             class="w-14 h-14 rounded-full mb-4 border-[1.5px] border-yellow-700 stroke-yellow-700 inline-flex items-center justify-center mx-auto">
@@ -95,8 +95,8 @@
           </div>
         </div>
       </div>
-      <div>
-        <h3 class="text-center text-3xl font-bold mb-6">Kontak Kami</h3>
+      <div class="w-full order-1 sm:order-2">
+        <h3 class="text-center text-xl sm:text-3xl font-bold mb-6">Kontak Kami</h3>
         <div class="flex-1 flex justify-center flex-col sm:flex-row gap-6">
           <div class="w-full sm:w-[400px]">
             <ng-container *ngIf="successMessage">
