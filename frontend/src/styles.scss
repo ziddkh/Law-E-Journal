@@ -18,6 +18,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-1/Poppins-Regular.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('./fonts/Poppins-1/Poppins-Medium.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --swiper-theme-color: rgb(255, 255, 255);
   --swiper-pagination-color: rgb(255, 255, 255);
@@ -26,7 +40,7 @@
 
 body {
   background: #d1d5db;
-  font-family: 'Playfair';
+  font-family: 'Poppins';
 }
 
 h1,
@@ -36,6 +50,12 @@ h4,
 h5 {
   font-family: 'Playfair Bold' !important;
 }
+
+a {
+  font-family: 'Poppins Bold' !important;
+}
+
+
 
 *:focus-within {
   outline: none;
